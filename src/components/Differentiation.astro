@@ -1,0 +1,327 @@
+<section class="section difference" id="diferencia" aria-labelledby="difference-title" data-track-section="differentiation">
+  <div class="container difference-grid">
+    <div class="difference-content">
+      <span class="section-kicker">La diferencia</span>
+      <h2 class="section-title" id="difference-title">No es otra lista de tareas gamificada</h2>
+      <p class="section-lede">Virtus no premia que repitas por repetir. Entiende lo que pasa alrededor de cada tarea para ayudarte a avanzar con sentido.</p>
+
+      <table class="comparison" aria-label="Comparación entre las apps habituales y Virtus">
+        <thead>
+          <tr>
+            <th scope="col">Lo habitual</th>
+            <th scope="col">Virtus</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>
+            <span class="cell-label">Lo habitual</span>
+            Repite la misma tarea aunque llevas 3 días evitándola
+          </td>
+          <td>
+            <span class="cell-label">Virtus</span>
+            Nota el patrón y ajusta el plan contigo
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="cell-label">Lo habitual</span>
+            Rachas y puntos sin contexto
+          </td>
+          <td>
+            <span class="cell-label">Virtus</span>
+            Un resumen que dice qué está funcionando de verdad — y por qué
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="insight-card" aria-label="Ejemplo ilustrativo de un insight semanal de Virtus">
+      <div class="insight-topbar">
+        <div>
+          <span class="insight-dot"></span>
+          <span>RESUMEN SEMANAL</span>
+        </div>
+        <span>SEM · 08</span>
+      </div>
+
+      <div class="insight-compass" aria-hidden="true">
+        <svg viewBox="0 0 110 110" fill="none">
+          <circle cx="55" cy="55" r="49" stroke="currentColor" stroke-opacity=".18"></circle>
+          <circle cx="55" cy="55" r="35" stroke="currentColor" stroke-opacity=".12"></circle>
+          <path d="m66 29-6.8 31.2L43 81l6.8-31.2L66 29Z" fill="currentColor"></path>
+          <circle cx="55" cy="55" r="4" fill="#17181c"></circle>
+        </svg>
+      </div>
+
+      <p class="insight-label">LO QUE ESTÁ FUNCIONANDO</p>
+      <h3>Avanzas más cuando el primer paso cabe en 25 minutos.</h3>
+      <p class="insight-body">Esta semana completaste 4 de 5 bloques cortos. Las sesiones largas se quedaron a medias.</p>
+      <div class="insight-action">
+        <span>Próximo ajuste</span>
+        Dividimos el trabajo de mañana en dos bloques breves.
+      </div>
+      <p class="mockup-caption">Ejemplo ilustrativo de un resumen</p>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .difference {
+    background:
+      radial-gradient(circle at 12% 80%, rgb(59 76 140 / 22%), transparent 26rem),
+      var(--ink);
+    color: var(--bone);
+  }
+
+  .difference-grid {
+    display: grid;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .difference .section-kicker {
+    color: var(--ochre);
+  }
+
+  .difference .section-title {
+    max-width: 15ch;
+  }
+
+  .difference .section-lede {
+    color: rgb(242 238 230 / 64%);
+  }
+
+  .comparison {
+    display: block;
+    width: 100%;
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--line-on-dark);
+    border-collapse: collapse;
+  }
+
+  .comparison thead {
+    display: none;
+  }
+
+  .comparison tbody,
+  .comparison tr,
+  .comparison td {
+    display: block;
+  }
+
+  .comparison th {
+    padding-block: 0.75rem;
+    color: rgb(242 238 230 / 64%);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  .comparison th:last-child {
+    padding-left: 1.5rem;
+    color: var(--ochre);
+  }
+
+  .comparison tr {
+    display: grid;
+    border-bottom: 1px solid var(--line-on-dark);
+  }
+
+  .comparison td {
+    padding: 1.25rem 0;
+    color: rgb(242 238 230 / 66%);
+    font-size: 0.94rem;
+    line-height: 1.5;
+  }
+
+  .comparison td:last-child {
+    border-top: 1px dashed rgb(242 238 230 / 12%);
+    color: var(--bone);
+    font-weight: 620;
+  }
+
+  .cell-label {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: rgb(242 238 230 / 64%);
+    font-family: var(--font-mono);
+    font-size: 0.57rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .comparison td:last-child .cell-label {
+    color: var(--ochre);
+  }
+
+  .insight-card {
+    position: relative;
+    max-width: 32rem;
+    overflow: hidden;
+    border: 1px solid rgb(242 238 230 / 16%);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.4rem, 4vw, 2.2rem);
+    background: var(--bone);
+    color: var(--ink);
+    box-shadow: 0 35px 90px rgb(0 0 0 / 28%);
+  }
+
+  .insight-card::after {
+    position: absolute;
+    right: -5rem;
+    bottom: -5rem;
+    width: 15rem;
+    height: 15rem;
+    border: 1px solid rgb(59 76 140 / 14%);
+    border-radius: 50%;
+    content: '';
+  }
+
+  .insight-topbar {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+  }
+
+  .insight-topbar > div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .insight-dot {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: var(--ochre);
+  }
+
+  .insight-compass {
+    position: absolute;
+    top: 3.2rem;
+    right: 1.5rem;
+    width: 6.8rem;
+    color: var(--ochre);
+    opacity: 0.65;
+  }
+
+  .insight-label {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 0.75rem;
+    color: var(--indigo);
+    font-family: var(--font-mono);
+    font-size: 0.59rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+
+  .insight-card h3 {
+    position: relative;
+    z-index: 2;
+    max-width: 16ch;
+    margin-bottom: 1rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 5vw, 2.3rem);
+    font-weight: 570;
+    letter-spacing: -0.035em;
+    line-height: 1.08;
+  }
+
+  .insight-body {
+    position: relative;
+    z-index: 2;
+    max-width: 28rem;
+    margin-bottom: 1.5rem;
+    color: var(--muted);
+    font-size: 0.86rem;
+  }
+
+  .insight-action {
+    position: relative;
+    z-index: 2;
+    border-left: 2px solid var(--indigo);
+    padding: 0.85rem 1rem;
+    background: var(--indigo-soft);
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+  .insight-action span {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--indigo);
+    font-family: var(--font-mono);
+    font-size: 0.56rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .mockup-caption {
+    position: relative;
+    z-index: 2;
+    margin: 1rem 0 0;
+    color: var(--muted);
+    font-size: 0.62rem;
+    text-align: right;
+  }
+
+  @media (min-width: 42rem) {
+    .comparison {
+      display: table;
+    }
+
+    .comparison thead {
+      display: table-header-group;
+    }
+
+    .comparison tbody {
+      display: table-row-group;
+    }
+
+    .comparison tr {
+      display: table-row;
+    }
+
+    .comparison td {
+      display: table-cell;
+      width: 50%;
+      border-bottom: 1px solid var(--line-on-dark);
+      padding: 1.25rem 1.5rem 1.25rem 0;
+    }
+
+    .comparison td:last-child {
+      border-top: 0;
+      border-left: 1px solid var(--line-on-dark);
+      padding-left: 1.5rem;
+    }
+
+    .cell-label {
+      display: none;
+    }
+  }
+
+  @media (min-width: 62rem) {
+    .difference-grid {
+      grid-template-columns: minmax(0, 1.08fr) minmax(27rem, 0.92fr);
+      gap: clamp(4rem, 8vw, 8rem);
+    }
+
+    .insight-card {
+      justify-self: end;
+    }
+  }
+</style>

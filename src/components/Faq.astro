@@ -1,0 +1,154 @@
+---
+const faqs = [
+  {
+    question: '¿Esto no es como Habitica/Notion?',
+    answer: 'No intenta ser otra herramienta donde organizarlo todo. Virtus empieza por lo que te importa, crea un plan conectado con esa dirección y lo adapta según tu progreso real.',
+  },
+  {
+    question: '¿Qué pasa si dejo una tarea a medias?',
+    answer: 'No pierdes una racha ni recibes un castigo. Tu mentor tiene en cuenta lo ocurrido y puede reducir, dividir o replantear el siguiente paso contigo.',
+  },
+  {
+    question: '¿Necesito saber ya cuál es mi propósito?',
+    answer: 'No. Empiezas con un ejemplo ya escrito y puedes cambiarlo con tus palabras. Una intención concreta para esta etapa es suficiente para crear el primer plan.',
+  },
+  {
+    question: '¿Cuánto tarda en generar mi primer plan?',
+    answer: 'La demo de esta página responde al instante y el flujo está pensado para mostrarte un primer resultado en unos diez segundos.',
+  },
+  {
+    question: '¿Quién ve mi diario y mis datos de sueño/entreno?',
+    answer: 'Tus reflexiones son privadas y se usan para que tu mentor te ayude mejor. Tú controlas los avisos de patrones y puedes ajustarlos o desactivarlos.',
+  },
+  {
+    question: '¿Qué relación tiene Virtus con NeruxAI?',
+    answer: 'Virtus es el primer producto de NeruxAI, la empresa detrás de la herramienta. NeruxAI aplica tecnología al cuidado de la salud física, mental y espiritual.',
+  },
+];
+---
+
+<section class="section faq" id="faq" aria-labelledby="faq-title" data-track-section="faq">
+  <div class="container faq-grid">
+    <div class="faq-intro">
+      <span class="section-kicker">Antes de empezar</span>
+      <h2 class="section-title" id="faq-title">Preguntas que merece la pena aclarar</h2>
+      <p>Virtus quiere ayudarte a decidir y actuar con más claridad, no añadir otra capa de presión a tu día.</p>
+    </div>
+
+    <div class="faq-list">
+      {faqs.map((faq, index) => (
+        <details>
+          <summary>
+            <span class="faq-number">0{index + 1}</span>
+            <span>{faq.question}</span>
+            <span class="faq-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-answer"><p>{faq.answer}</p></div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    background: var(--bone);
+  }
+
+  .faq-grid {
+    display: grid;
+    gap: 3rem 7rem;
+    align-items: start;
+  }
+
+  .faq-intro {
+    max-width: 33rem;
+  }
+
+  .faq-intro > p {
+    color: var(--muted);
+  }
+
+  .faq-list {
+    border-top: 1px solid var(--line);
+  }
+
+  details {
+    border-bottom: 1px solid var(--line);
+  }
+
+  summary {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0.8rem;
+    align-items: center;
+    min-height: 5rem;
+    padding: 1rem 0;
+    cursor: pointer;
+    font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.08rem);
+    font-weight: 650;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-number {
+    color: var(--indigo);
+    font-family: var(--font-mono);
+    font-size: 0.57rem;
+    letter-spacing: 0.08em;
+  }
+
+  .faq-toggle {
+    position: relative;
+    width: 1.7rem;
+    height: 1.7rem;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+  }
+
+  .faq-toggle::before,
+  .faq-toggle::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.65rem;
+    height: 1px;
+    background: var(--ink);
+    content: '';
+    transition: transform 160ms ease;
+    transform: translate(-50%, -50%);
+  }
+
+  .faq-toggle::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  details[open] .faq-toggle::after {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  .faq-answer {
+    overflow: hidden;
+  }
+
+  .faq-answer p {
+    max-width: 42rem;
+    margin: -0.35rem 2.5rem 1.4rem 1.7rem;
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+
+  @media (min-width: 60rem) {
+    .faq-grid {
+      grid-template-columns: minmax(18rem, 0.65fr) minmax(0, 1.1fr);
+    }
+
+    .faq-intro {
+      position: sticky;
+      top: 7rem;
+    }
+  }
+</style>

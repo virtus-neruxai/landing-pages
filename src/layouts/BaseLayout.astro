@@ -1,0 +1,107 @@
+---
+import '@fontsource-variable/fraunces';
+import '@fontsource-variable/inter';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Virtus por NeruxAI — convierte tu propósito en acción',
+  description = 'Convierte tus objetivos en tareas y rutinas conectadas con lo que de verdad te importa. Virtus se adapta a tu progreso, energía y contexto real.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#17181c" />
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <slot />
+
+    <script>
+      type LandingEvent = {
+        name: string;
+        properties?: Record<string, string>;
+      };
+
+      const emitLandingEvent = ({ name, properties = {} }: LandingEvent) => {
+        window.dispatchEvent(
+          new CustomEvent('virtus:analytics', {
+            detail: { name, properties, timestamp: new Date().toISOString() },
+          }),
+        );
+      };
+
+      document.addEventListener('click', (event) => {
+        const target = event.target as HTMLElement;
+        const trackedElement = target.closest<HTMLElement>('[data-track]');
+
+        if (trackedElement) {
+          emitLandingEvent({
+            name: trackedElement.dataset.track ?? 'landing_click',
+            properties: {
+              location: trackedElement.dataset.trackLocation ?? 'unknown',
+              label: trackedElement.textContent?.trim() ?? '',
+            },
+          });
+        }
+
+        const demoLink = target.closest<HTMLElement>('[data-focus-demo]');
+        if (demoLink) {
+          const focusMissionInput = () => {
+            document.querySelector<HTMLTextAreaElement>('#mission-input')?.focus({ preventScroll: true });
+          };
+          const demoIsland = document.querySelector('#mission-input')?.closest('astro-island');
+
+          if (demoIsland?.hasAttribute('ssr')) {
+            window.addEventListener('virtus:demo-ready', focusMissionInput, { once: true });
+          } else {
+            window.setTimeout(focusMissionInput, 100);
+          }
+        }
+      });
+
+      const observedSections = new Set<string>();
+      const sectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            const section = entry.target as HTMLElement;
+            const sectionName = section.dataset.trackSection;
+            if (!sectionName || observedSections.has(sectionName)) return;
+
+            observedSections.add(sectionName);
+            emitLandingEvent({
+              name: 'landing_section_view',
+              properties: { section: sectionName },
+            });
+            sectionObserver.unobserve(section);
+          });
+        },
+        { threshold: 0.35 },
+      );
+
+      document.querySelectorAll<HTMLElement>('[data-track-section]').forEach((section) => {
+        sectionObserver.observe(section);
+      });
+    </script>
+  </body>
+</html>

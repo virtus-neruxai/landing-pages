@@ -1,0 +1,201 @@
+<section class="section nerux" id="neruxai" aria-labelledby="nerux-title" data-track-section="about_neruxai">
+  <div class="nerux-orbit" aria-hidden="true"></div>
+  <div class="container">
+    <div class="nerux-intro">
+      <span class="section-kicker">La idea que lo conecta todo</span>
+      <h2 class="section-title" id="nerux-title">Virtus es el primer paso. NeruxAI es el camino.</h2>
+      <p class="section-lede">NeruxAI existe para ayudarte a cuidar tu salud física, mental y espiritual con tecnología que te entiende de verdad. Virtus es donde empieza: conectando lo que haces cada día con quién quieres ser.</p>
+    </div>
+
+    <div class="pillars">
+      <article class="pillar">
+        <div class="pillar-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M9 20c1.5-6 4.5-9 10-10M18 6l2 4-3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M9 24c3 2 8 2.5 12-.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+            <circle cx="8.5" cy="20.5" r="2.5" fill="currentColor"></circle>
+          </svg>
+        </div>
+        <span class="pillar-number">01</span>
+        <h3>Física</h3>
+        <p>Tu energía, descanso y movimiento dan contexto al plan de hoy.</p>
+        <small>Check-in corporal</small>
+      </article>
+
+      <article class="pillar">
+        <div class="pillar-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="10" stroke="currentColor" stroke-width="1.6"></circle>
+            <path d="m20 10-2.2 8-6 4 2.2-8 6-4Z" fill="currentColor"></path>
+          </svg>
+        </div>
+        <span class="pillar-number">02</span>
+        <h3>Mental</h3>
+        <p>Tu mentor convierte el bloqueo en claridad y la claridad en acción.</p>
+        <small>Mentor y tareas</small>
+      </article>
+
+      <article class="pillar">
+        <div class="pillar-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M16 5v22M8 13c5 0 8 3 8 8M24 9c-5 0-8 3-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+            <path d="M8 13c0-4 2-6 6-6 0 4-2 6-6 6ZM24 9c0-3-1.5-4.5-4.5-4.5C19.5 7.5 21 9 24 9Z" fill="currentColor"></path>
+          </svg>
+        </div>
+        <span class="pillar-number">03</span>
+        <h3>Espiritual</h3>
+        <p>Tu forma de crecer respeta los valores y la mirada que eliges.</p>
+        <small>Perfiles de mentor</small>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .nerux {
+    background: var(--indigo-deep);
+    color: var(--bone);
+  }
+
+  .nerux::before {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgb(242 238 230 / 4%) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(242 238 230 / 4%) 1px, transparent 1px);
+    background-size: 54px 54px;
+    content: '';
+    mask-image: linear-gradient(to bottom, transparent, #000 35%, #000 75%, transparent);
+  }
+
+  .nerux-orbit {
+    position: absolute;
+    top: -18rem;
+    right: -12rem;
+    width: 42rem;
+    height: 42rem;
+    border: 1px solid rgb(242 238 230 / 9%);
+    border-radius: 50%;
+  }
+
+  .nerux-intro {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 1rem 5rem;
+    align-items: end;
+    margin-bottom: 3.5rem;
+  }
+
+  .nerux .section-kicker {
+    color: var(--ochre);
+  }
+
+  .nerux .section-title {
+    max-width: 19ch;
+  }
+
+  .nerux .section-lede {
+    color: rgb(242 238 230 / 68%);
+  }
+
+  .pillars {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    border-top: 1px solid var(--line-on-dark);
+  }
+
+  .pillar {
+    position: relative;
+    min-height: 19rem;
+    border-bottom: 1px solid var(--line-on-dark);
+    padding: 2rem 0;
+  }
+
+  .pillar-icon {
+    display: grid;
+    width: 3.3rem;
+    height: 3.3rem;
+    place-items: center;
+    margin-bottom: 2rem;
+    border: 1px solid rgb(242 238 230 / 20%);
+    border-radius: 50%;
+    color: var(--ochre);
+  }
+
+  .pillar-icon svg {
+    width: 1.9rem;
+    height: 1.9rem;
+  }
+
+  .pillar-number {
+    position: absolute;
+    top: 2rem;
+    right: 0;
+    color: rgb(242 238 230 / 64%);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+  }
+
+  .pillar h3 {
+    margin-bottom: 0.55rem;
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 570;
+  }
+
+  .pillar p {
+    max-width: 22rem;
+    margin-bottom: 1.4rem;
+    color: rgb(242 238 230 / 62%);
+    font-size: 0.9rem;
+  }
+
+  .pillar small {
+    color: var(--ochre);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 54rem) {
+    .nerux-intro {
+      grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 0.75fr);
+    }
+
+    .pillars {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-bottom: 1px solid var(--line-on-dark);
+    }
+
+    .pillar {
+      border-right: 1px solid var(--line-on-dark);
+      border-bottom: 0;
+      padding: 2.2rem clamp(1.4rem, 3vw, 2.4rem);
+    }
+
+    .pillar:first-child {
+      padding-left: 0;
+    }
+
+    .pillar:last-child {
+      border-right: 0;
+      padding-right: 0;
+    }
+
+    .pillar-number {
+      right: clamp(1.4rem, 3vw, 2.4rem);
+    }
+
+    .pillar:first-child .pillar-number {
+      right: clamp(1.4rem, 3vw, 2.4rem);
+    }
+
+    .pillar:last-child .pillar-number {
+      right: 0;
+    }
+  }
+</style>

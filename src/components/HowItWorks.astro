@@ -1,0 +1,231 @@
+<section class="section how" id="como-funciona" aria-labelledby="how-title" data-track-section="how_it_works">
+  <div class="container">
+    <div class="how-heading">
+      <div>
+        <span class="section-kicker">De misión a movimiento</span>
+        <h2 class="section-title" id="how-title">Un norte claro. Un siguiente paso posible.</h2>
+      </div>
+      <p class="section-lede">No tienes que saber por dónde empezar. Tu primera frase ya viene preparada: la haces tuya y Virtus construye desde ahí.</p>
+    </div>
+
+    <ol class="steps">
+      <li class="step-card">
+        <div class="step-meta">
+          <span>01</span>
+          <svg aria-hidden="true" viewBox="0 0 28 28" fill="none">
+            <path d="M5 21.5h4l12-12-4-4-12 12v4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path>
+            <path d="m14.8 7.7 4 4" stroke="currentColor" stroke-width="1.6"></path>
+          </svg>
+        </div>
+        <h3>Empieza con un ejemplo ya escrito</h3>
+        <p>Edita una misión preconfigurada o sustitúyela por la tuya, con tus propias palabras.</p>
+        <div class="step-example step-example--input">
+          <span aria-hidden="true">“</span>
+          Quiero acabar la carrera sin perderme por el camino
+        </div>
+      </li>
+
+      <li class="step-card">
+        <div class="step-meta">
+          <span>02</span>
+          <svg aria-hidden="true" viewBox="0 0 28 28" fill="none">
+            <circle cx="14" cy="14" r="9" stroke="currentColor" stroke-width="1.6"></circle>
+            <path d="m17 8.5-1.8 7.2-4.2 3.8 1.8-7.2L17 8.5Z" fill="currentColor"></path>
+          </svg>
+        </div>
+        <h3>Recibe tu plan</h3>
+        <p>Tareas, rutinas y retos que apuntan a esa misión, no a una lista genérica.</p>
+        <div class="step-example step-example--plan" aria-hidden="true">
+          <span><i></i> Bloque de proyecto · 25 min</span>
+          <span><i></i> Revisión semanal · viernes</span>
+          <span><i></i> Rutina de descanso · 22:30</span>
+        </div>
+      </li>
+
+      <li class="step-card">
+        <div class="step-meta">
+          <span>03</span>
+          <svg aria-hidden="true" viewBox="0 0 28 28" fill="none">
+            <path d="M5 19.5c3-8 7-11 18-11M18.5 5 23 8.5 19.5 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle cx="7" cy="20" r="2.5" fill="currentColor"></circle>
+          </svg>
+        </div>
+        <h3>Síguelo a tu ritmo</h3>
+        <p>Tu mentor ajusta el plan según lo que completas, dejas a medias y cómo llegas de energía y sueño.</p>
+        <div class="step-example step-example--adjust">
+          <span>Plan ajustado</span>
+          Hoy empezamos con 15 minutos. Lo importante es volver a moverte.
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<style>
+  .how {
+    background: var(--paper);
+  }
+
+  .how-heading {
+    display: grid;
+    gap: 1rem 4rem;
+    align-items: end;
+    margin-bottom: 3.5rem;
+  }
+
+  .how-heading .section-title,
+  .how-heading .section-lede {
+    margin-bottom: 0;
+  }
+
+  .steps {
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: steps;
+  }
+
+  .step-card {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    min-height: 27rem;
+    flex-direction: column;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: clamp(1.3rem, 3vw, 2rem);
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .step-card::after {
+    position: absolute;
+    z-index: 1;
+    right: 50%;
+    bottom: -1.1rem;
+    width: 2.1rem;
+    height: 2.1rem;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: var(--paper);
+    color: var(--indigo);
+    content: '↓';
+    font-family: var(--font-mono);
+    line-height: 2rem;
+    text-align: center;
+    transform: translateX(50%);
+  }
+
+  .step-card:last-child::after {
+    display: none;
+  }
+
+  .step-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2.2rem;
+    color: var(--indigo);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+  }
+
+  .step-meta svg {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+
+  h3 {
+    max-width: 15ch;
+    margin-bottom: 0.8rem;
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 580;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+  }
+
+  .step-card > p {
+    margin-bottom: 1.8rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .step-example {
+    margin-top: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+    background: var(--bone);
+    color: #44454a;
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  .step-example--input {
+    position: relative;
+    padding-left: 2rem;
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+  }
+
+  .step-example--input > span {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    color: var(--ochre);
+    font-size: 1.5rem;
+  }
+
+  .step-example--plan {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .step-example--plan span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .step-example--plan i {
+    width: 0.55rem;
+    height: 0.55rem;
+    flex: 0 0 auto;
+    border: 1px solid var(--indigo);
+    border-radius: 50%;
+  }
+
+  .step-example--adjust span {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: var(--indigo);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 52rem) {
+    .how-heading {
+      grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.75fr);
+    }
+
+    .steps {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .step-card::after {
+      top: 50%;
+      right: -1.1rem;
+      bottom: auto;
+      content: '→';
+      transform: translateY(-50%);
+    }
+  }
+</style>

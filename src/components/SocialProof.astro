@@ -1,0 +1,99 @@
+<section class="section early" id="primeros" aria-labelledby="early-title" data-track-section="early_access">
+  <div class="container early-panel">
+    <div class="early-mark" aria-hidden="true">
+      <svg viewBox="0 0 84 84" fill="none">
+        <circle cx="42" cy="42" r="35" stroke="currentColor" stroke-width="1.2"></circle>
+        <circle cx="42" cy="42" r="24" stroke="currentColor" stroke-opacity=".38"></circle>
+        <path d="m51 24-5.3 24L33 60l5.3-24L51 24Z" fill="currentColor"></path>
+        <circle cx="42" cy="42" r="3" fill="#17181c"></circle>
+      </svg>
+    </div>
+
+    <div class="early-copy">
+      <span class="section-kicker">Primera etapa</span>
+      <h2 class="section-title" id="early-title">Únete a los primeros en probar Virtus</h2>
+      <p>Sin cifras infladas ni promesas prestadas. Estamos abriendo el camino con personas que quieren dejar de avanzar por inercia y empezar a moverse con dirección.</p>
+    </div>
+
+    <div class="early-action">
+      <a class="button button--primary" href="#prueba-tu-mision" data-focus-demo data-track="mission_cta_clicked" data-track-location="early_access">
+        Escribe tu misión
+        <span aria-hidden="true">→</span>
+      </a>
+      <small>Prueba el resultado antes de crear una cuenta.</small>
+    </div>
+  </div>
+</section>
+
+<style>
+  .early {
+    background: var(--bone);
+  }
+
+  .early-panel {
+    position: relative;
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid rgb(199 154 62 / 35%);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.6rem, 5vw, 3.5rem);
+    background: var(--ochre-soft);
+  }
+
+  .early-panel::after {
+    position: absolute;
+    right: -6rem;
+    bottom: -9rem;
+    width: 20rem;
+    height: 20rem;
+    border: 1px solid rgb(199 154 62 / 25%);
+    border-radius: 50%;
+    content: '';
+  }
+
+  .early-mark {
+    width: 4.6rem;
+    color: var(--ochre);
+  }
+
+  .early .section-kicker {
+    color: #7c5c1f;
+  }
+
+  .early .section-title {
+    margin-bottom: 0.8rem;
+  }
+
+  .early-copy p {
+    max-width: 43rem;
+    margin: 0;
+    color: #605741;
+  }
+
+  .early-action {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .early-action small {
+    color: #6d634b;
+    font-size: 0.67rem;
+  }
+
+  @media (min-width: 64rem) {
+    .early-panel {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 2.5rem;
+    }
+
+    .early-action {
+      align-items: center;
+    }
+  }
+</style>

@@ -1,0 +1,246 @@
+---
+interface Props {
+  appUrl: string;
+}
+
+const { appUrl } = Astro.props;
+
+const profiles = [
+  { name: 'Estoico', symbol: '⚖', description: 'Claridad · dominio · acción', tone: 'indigo' },
+  { name: 'Espiritual', symbol: '◌', description: 'Propósito · coherencia · pausa', tone: 'sage' },
+  { name: 'Calma', symbol: '≈', description: 'Recuperar · respirar · avanzar', tone: 'blue' },
+  { name: 'Rendimiento', symbol: '↗', description: 'Cuerpo · hábito · medida', tone: 'ochre' },
+  { name: 'Estudiante', symbol: '⌁', description: 'Foco · estudio · progreso', tone: 'terracotta' },
+];
+
+// Las rutas quedan declaradas aquí. Cuando existan sus páginas, basta con
+// sustituir cada button por un enlace conservando `route` como href.
+const futureZones = [
+  { label: 'Para estudiantes', route: '/estudiante' },
+  { label: 'Para rendimiento', route: '/rendimiento' },
+];
+---
+
+<section class="section profiles" id="perfiles" aria-labelledby="profiles-title" data-track-section="profiles">
+  <div class="container">
+    <div class="profiles-heading">
+      <div>
+        <span class="section-kicker">Un mentor con tu tono</span>
+        <h2 class="section-title" id="profiles-title">Tu mentor no habla igual con todo el mundo</h2>
+      </div>
+      <div>
+        <p class="section-lede">Elige la perspectiva que te ayuda a escuchar y actuar. La dirección es la misma; cambia la forma de acompañarte.</p>
+        <a class="profile-discover" href={`${appUrl}/profile`} data-track="profile_cta_clicked" data-track-location="profiles">
+          Descubre tu perfil
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="profile-list">
+      {profiles.map((profile, index) => (
+        <article class:list={['profile-card', `profile-card--${profile.tone}`]}>
+          <div class="profile-top">
+            <span class="profile-index">0{index + 1}</span>
+            <span class="profile-symbol" aria-hidden="true">{profile.symbol}</span>
+          </div>
+          <h3>{profile.name}</h3>
+          <p>{profile.description}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="future-zones" role="group" aria-labelledby="future-zones-title">
+      <div>
+        <span class="future-label">Próximamente</span>
+        <h3 id="future-zones-title">Experiencias para tu momento concreto</h3>
+        <p>Estamos preparando recorridos específicos. La landing principal ya funciona para cualquier misión.</p>
+      </div>
+      <div class="zone-buttons">
+        {futureZones.map((zone) => (
+          <button type="button" disabled data-route={zone.route} aria-describedby="zone-status">
+            {zone.label}
+            <span aria-hidden="true">↗</span>
+          </button>
+        ))}
+        <span class="sr-only" id="zone-status">Ruta preparada, todavía no disponible</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .profiles {
+    background: var(--paper);
+  }
+
+  .profiles-heading {
+    display: grid;
+    gap: 1.5rem 5rem;
+    align-items: end;
+    margin-bottom: 3rem;
+  }
+
+  .profiles-heading .section-title,
+  .profiles-heading .section-lede {
+    margin-bottom: 0;
+  }
+
+  .profile-discover {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 1rem;
+    color: var(--indigo);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-underline-offset: 0.25rem;
+  }
+
+  .profile-list {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .profile-card {
+    --profile-color: var(--indigo);
+    min-height: 13rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.3rem;
+    background: var(--white);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+
+  .profile-card:hover {
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-3px);
+  }
+
+  .profile-card--sage { --profile-color: #61745f; }
+  .profile-card--blue { --profile-color: #517287; }
+  .profile-card--ochre { --profile-color: #9c762c; }
+  .profile-card--terracotta { --profile-color: var(--terracotta); }
+
+  .profile-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2.3rem;
+    color: var(--profile-color);
+  }
+
+  .profile-index {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+  }
+
+  .profile-symbol {
+    display: grid;
+    width: 2.4rem;
+    height: 2.4rem;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, var(--profile-color) 30%, transparent);
+    border-radius: 50%;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+  }
+
+  .profile-card h3 {
+    margin-bottom: 0.3rem;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+  }
+
+  .profile-card p {
+    margin: 0;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.025em;
+  }
+
+  .future-zones {
+    display: grid;
+    gap: 1.5rem 3rem;
+    align-items: center;
+    margin-top: 2rem;
+    border: 1px dashed rgb(59 76 140 / 28%);
+    border-radius: var(--radius-md);
+    padding: clamp(1.2rem, 4vw, 2rem);
+    background: var(--indigo-soft);
+  }
+
+  .future-label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: var(--indigo);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .future-zones h3 {
+    margin-bottom: 0.3rem;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 590;
+  }
+
+  .future-zones p {
+    max-width: 38rem;
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+
+  .zone-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .zone-buttons button {
+    display: inline-flex;
+    min-height: 2.85rem;
+    align-items: center;
+    gap: 0.55rem;
+    border: 1px solid rgb(59 76 140 / 24%);
+    border-radius: 999px;
+    padding: 0.7rem 1rem;
+    background: rgb(255 255 255 / 45%);
+    color: var(--indigo-deep);
+    cursor: not-allowed;
+    font-size: 0.76rem;
+    font-weight: 700;
+    opacity: 0.72;
+  }
+
+  @media (min-width: 34rem) {
+    .profile-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 54rem) {
+    .profiles-heading {
+      grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.75fr);
+    }
+
+    .profile-list {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .future-zones {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .zone-buttons {
+      justify-content: flex-end;
+    }
+  }
+</style>

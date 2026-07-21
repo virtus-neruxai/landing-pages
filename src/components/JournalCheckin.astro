@@ -1,0 +1,399 @@
+<section class="section journal" id="te-conoce" aria-labelledby="journal-title" data-track-section="context_and_patterns">
+  <div class="container journal-grid">
+    <div class="journal-copy">
+      <span class="section-kicker">Contexto, no juicio</span>
+      <h2 class="section-title" id="journal-title">Tu mentor sabe que un mal día no es un fallo</h2>
+      <p class="section-lede">Anota cómo duermes, cómo entrenas, cómo te sientes. Tu mentor lo tiene en cuenta al proponerte tareas — así un mal día se convierte en un ajuste, no en otra tarea sin hacer.</p>
+
+      <div class="pattern-copy">
+        <span class="pattern-index">02 / PATRONES</span>
+        <h3>Y cuando ve un patrón, te lo dice a tiempo</h3>
+        <p>Así puedes anticiparte, no solo reaccionar cuando ya ha pasado.</p>
+      </div>
+
+      <div class="trust-line">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+          <rect x="5" y="10" width="14" height="10" rx="3" stroke="currentColor" stroke-width="1.6"></rect>
+          <path d="M8.5 10V7.5a3.5 3.5 0 0 1 7 0V10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+          <circle cx="12" cy="15" r="1.3" fill="currentColor"></circle>
+        </svg>
+        <p><strong>Tus reflexiones son privadas.</strong> Solo las usa tu mentor para ayudarte mejor. Tú decides la frecuencia y puedes desactivar los avisos.</p>
+      </div>
+    </div>
+
+    <div class="context-visual" role="img" aria-label="Ejemplo ilustrativo de check-in y aviso de patrón">
+      <div class="checkin-card">
+        <div class="mockup-titlebar">
+          <div>
+            <span class="mockup-dot"></span>
+            <strong>CHECK-IN DE HOY</strong>
+          </div>
+          <span>21:14</span>
+        </div>
+
+        <div class="checkin-row">
+          <div class="checkin-label">
+            <span>Sueño</span>
+            <strong>6 h 40</strong>
+          </div>
+          <div class="meter"><span></span></div>
+        </div>
+
+        <div class="checkin-row">
+          <div class="checkin-label">
+            <span>Energía</span>
+            <strong>2 / 5</strong>
+          </div>
+          <div class="energy-dots" aria-hidden="true">
+            <i class="active"></i><i class="active"></i><i></i><i></i><i></i>
+          </div>
+        </div>
+
+        <div class="checkin-row checkin-row--last">
+          <div class="checkin-label">
+            <span>Movimiento</span>
+            <strong>20 min</strong>
+          </div>
+          <span class="movement-chip">Paseo suave</span>
+        </div>
+
+        <div class="mentor-adjustment">
+          <span>AJUSTE DEL MENTOR</span>
+          <p>Hoy reducimos el bloque a 15 minutos. Mantienes el rumbo sin ignorar cómo llegas.</p>
+        </div>
+      </div>
+
+      <div class="pattern-notification">
+        <div class="notification-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M5 16c2-6 5-8 14-8M15 5l4 3-3 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle cx="6" cy="16" r="2" fill="currentColor"></circle>
+          </svg>
+        </div>
+        <div>
+          <span>UN PATRÓN QUE PUEDE AYUDARTE</span>
+          <p>Notamos que los domingos por la noche te cuesta más arrancar.</p>
+          <small>Podemos preparar un inicio más ligero para el lunes.</small>
+        </div>
+      </div>
+
+      <div class="notification-control">
+        <span>Avisos de patrones</span>
+        <span class="control-status"><i aria-hidden="true"></i> Activados · Ajustar</span>
+      </div>
+      <p class="visual-caption">Ejemplo ilustrativo · datos ficticios</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .journal {
+    background: var(--bone);
+  }
+
+  .journal-grid {
+    display: grid;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .journal-copy {
+    max-width: 43rem;
+  }
+
+  .pattern-copy {
+    max-width: 38rem;
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--line);
+    padding-top: 2rem;
+  }
+
+  .pattern-index {
+    display: block;
+    margin-bottom: 0.65rem;
+    color: var(--indigo);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+
+  .pattern-copy h3 {
+    max-width: 20ch;
+    margin-bottom: 0.6rem;
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 580;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .pattern-copy p {
+    color: var(--muted);
+  }
+
+  .trust-line {
+    display: flex;
+    gap: 0.9rem;
+    max-width: 39rem;
+    margin-top: 2rem;
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.1rem;
+    background: var(--indigo-soft);
+    color: var(--indigo-deep);
+  }
+
+  .trust-line svg {
+    width: 1.4rem;
+    height: 1.4rem;
+    flex: 0 0 auto;
+    margin-top: 0.08rem;
+  }
+
+  .trust-line p {
+    margin: 0;
+    font-size: 0.76rem;
+    line-height: 1.55;
+  }
+
+  .context-visual {
+    position: relative;
+    max-width: 34rem;
+    padding: 0.2rem 0 1.5rem;
+  }
+
+  .context-visual::before {
+    position: absolute;
+    z-index: 0;
+    top: -2rem;
+    right: -3rem;
+    width: 17rem;
+    height: 17rem;
+    border: 1px solid rgb(59 76 140 / 11%);
+    border-radius: 50%;
+    content: '';
+  }
+
+  .checkin-card {
+    position: relative;
+    z-index: 1;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: clamp(1.15rem, 4vw, 1.8rem);
+    background: var(--white);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .mockup-titlebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 0.57rem;
+    letter-spacing: 0.1em;
+  }
+
+  .mockup-titlebar > div {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .mockup-dot {
+    width: 0.48rem;
+    height: 0.48rem;
+    border-radius: 50%;
+    background: var(--indigo);
+  }
+
+  .checkin-row {
+    border-bottom: 1px solid var(--line);
+    padding: 0.85rem 0;
+  }
+
+  .checkin-row--last {
+    border-bottom: 0;
+  }
+
+  .checkin-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.55rem;
+    font-size: 0.75rem;
+  }
+
+  .checkin-label span {
+    color: var(--muted);
+  }
+
+  .checkin-label strong {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+  }
+
+  .meter {
+    height: 0.35rem;
+    overflow: hidden;
+    border-radius: 1rem;
+    background: var(--indigo-soft);
+  }
+
+  .meter span {
+    display: block;
+    width: 58%;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--indigo);
+  }
+
+  .energy-dots {
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .energy-dots i {
+    width: 0.75rem;
+    height: 0.75rem;
+    border: 1px solid rgb(59 76 140 / 30%);
+    border-radius: 50%;
+  }
+
+  .energy-dots i.active {
+    border-color: var(--indigo);
+    background: var(--indigo);
+  }
+
+  .movement-chip {
+    display: inline-block;
+    border-radius: 999px;
+    padding: 0.28rem 0.55rem;
+    background: var(--ochre-soft);
+    color: #6b501a;
+    font-size: 0.65rem;
+    font-weight: 650;
+  }
+
+  .mentor-adjustment {
+    margin-top: 1rem;
+    border-left: 2px solid var(--indigo);
+    padding: 0.8rem 0.9rem;
+    background: var(--bone);
+  }
+
+  .mentor-adjustment span {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: var(--indigo);
+    font-family: var(--font-mono);
+    font-size: 0.56rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+  }
+
+  .mentor-adjustment p {
+    margin: 0;
+    font-size: 0.74rem;
+    line-height: 1.5;
+  }
+
+  .pattern-notification {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.8rem;
+    width: calc(100% - 1rem);
+    margin: -0.6rem 0 0 1rem;
+    border: 1px solid rgb(59 76 140 / 22%);
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+    background: var(--indigo-deep);
+    color: var(--bone);
+    box-shadow: 0 15px 36px rgb(23 24 28 / 18%);
+  }
+
+  .notification-icon {
+    display: grid;
+    width: 2.2rem;
+    height: 2.2rem;
+    place-items: center;
+    border-radius: 50%;
+    background: rgb(242 238 230 / 10%);
+    color: var(--ochre);
+  }
+
+  .notification-icon svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .pattern-notification span {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: rgb(242 238 230 / 64%);
+    font-family: var(--font-mono);
+    font-size: 0.52rem;
+    letter-spacing: 0.08em;
+  }
+
+  .pattern-notification p {
+    margin-bottom: 0.3rem;
+    font-family: var(--font-display);
+    font-size: 0.94rem;
+    line-height: 1.3;
+  }
+
+  .pattern-notification small {
+    display: block;
+    color: rgb(242 238 230 / 60%);
+    font-size: 0.65rem;
+    line-height: 1.4;
+  }
+
+  .notification-control {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.65rem 0 0 1rem;
+    color: var(--muted);
+    font-size: 0.62rem;
+  }
+
+  .control-status {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--indigo);
+    font-weight: 650;
+  }
+
+  .control-status i {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background: var(--indigo);
+  }
+
+  .visual-caption {
+    margin: 0.65rem 0 0;
+    color: var(--muted);
+    font-size: 0.58rem;
+    text-align: right;
+  }
+
+  @media (min-width: 62rem) {
+    .journal-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(28rem, 0.82fr);
+      gap: clamp(4rem, 8vw, 8rem);
+    }
+
+    .context-visual {
+      justify-self: end;
+    }
+  }
+</style>

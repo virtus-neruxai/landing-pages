@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Problem from '../components/Problem.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Differentiation from '../components/Differentiation.astro';
+import JournalCheckin from '../components/JournalCheckin.astro';
+import NeruxAI from '../components/NeruxAI.astro';
+import Profiles from '../components/Profiles.astro';
+import SocialProof from '../components/SocialProof.astro';
+import DashboardPreview from '../components/DashboardPreview.astro';
+import FinalCta from '../components/FinalCta.astro';
+import Faq from '../components/Faq.astro';
+import Footer from '../components/Footer.astro';
+
+const appUrl = (import.meta.env.PUBLIC_APP_URL || 'https://virtus.neruxai.com').replace(/\/+$/, '');
+const subscriptionUrl = `${appUrl}/suscripcion`;
+---
+
+<BaseLayout>
+  <Header appUrl={appUrl} variant="global" />
+  <main id="contenido">
+    <Hero />
+    <Problem />
+    <HowItWorks />
+    <Differentiation />
+    <JournalCheckin />
+    <NeruxAI />
+    <Profiles appUrl={appUrl} />
+    <SocialProof />
+    <DashboardPreview />
+    <FinalCta subscriptionUrl={subscriptionUrl} />
+    <Faq />
+  </main>
+  <Footer appUrl={appUrl} />
+</BaseLayout>

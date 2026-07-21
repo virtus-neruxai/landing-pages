@@ -1,0 +1,165 @@
+---
+interface Props {
+  appUrl: string;
+  variant?: 'global' | 'zone';
+}
+
+const { appUrl, variant = 'global' } = Astro.props;
+---
+
+<header class:list={['site-header', `site-header--${variant}`]}>
+  <div class="header-inner container">
+    <a class="brand" href="/" aria-label="NeruxAI Virtus — Inicio">
+      <span class="brand-compass" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="17" stroke="currentColor" stroke-width="1.4"></circle>
+          <path d="M24.2 10.5 21.8 22l-6 7.5L18.2 18l6-7.5Z" fill="currentColor"></path>
+          <circle cx="20" cy="20" r="1.9" fill="var(--bone)"></circle>
+        </svg>
+      </span>
+      <span class="brand-name">NeruxAI</span>
+      <span class="brand-product">Virtus</span>
+    </a>
+
+    <nav class="header-nav" aria-label="Navegación principal">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#diferencia">La diferencia</a>
+      <a href="#perfiles">Perfiles</a>
+    </nav>
+
+    <a
+      class="login-link"
+      href={appUrl}
+      data-track="app_login_clicked"
+      data-track-location="header"
+    >
+      <span class="login-long">Iniciar sesión</span>
+      <span class="login-short">Entrar</span>
+      <svg aria-hidden="true" viewBox="0 0 20 20" fill="none">
+        <path d="M4 10h11m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </a>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    z-index: 100;
+    inset: 0 0 auto;
+    height: 4.7rem;
+    border-bottom: 1px solid rgb(242 238 230 / 12%);
+    background: rgb(23 24 28 / 84%);
+    color: var(--bone);
+    backdrop-filter: blur(18px) saturate(130%);
+  }
+
+  .header-inner {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-width: 0;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .brand-compass {
+    width: 2rem;
+    height: 2rem;
+    color: var(--ochre);
+  }
+
+  .brand-name {
+    font-size: 1.03rem;
+    font-weight: 740;
+    letter-spacing: -0.025em;
+  }
+
+  .brand-product {
+    border: 1px solid rgb(242 238 230 / 28%);
+    border-radius: 999px;
+    padding: 0.18rem 0.55rem;
+    color: rgb(242 238 230 / 72%);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .header-nav {
+    display: none;
+    align-items: center;
+    gap: 1.7rem;
+  }
+
+  .header-nav a {
+    color: rgb(242 238 230 / 72%);
+    font-size: 0.84rem;
+    font-weight: 550;
+    text-decoration: none;
+    transition: color 160ms ease;
+  }
+
+  .header-nav a:hover {
+    color: var(--bone);
+  }
+
+  .login-link {
+    display: inline-flex;
+    min-height: 2.55rem;
+    align-items: center;
+    gap: 0.45rem;
+    border: 1px solid rgb(242 238 230 / 24%);
+    border-radius: 999px;
+    padding: 0.6rem 0.85rem;
+    color: var(--bone);
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    transition: background-color 160ms ease, border-color 160ms ease;
+  }
+
+  .login-link:hover {
+    border-color: rgb(242 238 230 / 44%);
+    background: rgb(242 238 230 / 8%);
+  }
+
+  .login-link svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .login-long {
+    display: none;
+  }
+
+  @media (min-width: 44rem) {
+    .login-long {
+      display: inline;
+    }
+
+    .login-short {
+      display: none;
+    }
+  }
+
+  @media (min-width: 60rem) {
+    .header-nav {
+      display: flex;
+    }
+
+    .login-link {
+      padding-inline: 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,47 @@
+:root {
+  color-scheme: light;
+
+  --ink: #17181c;
+  --ink-soft: #26272d;
+  --bone: #f2eee6;
+  --paper: #fbf8f2;
+  --white: #fffdf9;
+  --indigo: #3b4c8c;
+  --indigo-deep: #2e3b70;
+  --indigo-soft: #e0e3ef;
+  --ochre: #c79a3e;
+  --ochre-on-dark: #e4c77f;
+  --ochre-soft: #f1e5c8;
+  --terracotta: #b4592f;
+  --terracotta-deep: #8f3f1e;
+  --terracotta-soft: #f1ddd3;
+  --muted: #6b6b70;
+  --line: rgb(23 24 28 / 14%);
+  --line-on-dark: rgb(242 238 230 / 16%);
+
+  --font-display: 'Fraunces Variable', Georgia, serif;
+  --font-body: 'Inter Variable', Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+
+  --step--1: clamp(0.78rem, 0.76rem + 0.1vw, 0.84rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.18rem, 1.08rem + 0.5vw, 1.5rem);
+  --step-2: clamp(1.45rem, 1.25rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3.2rem);
+  --step-4: clamp(2.7rem, 2rem + 3.5vw, 5.3rem);
+
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: clamp(4.5rem, 8vw, 7.5rem);
+
+  --radius-sm: 0.7rem;
+  --radius-md: 1.2rem;
+  --radius-lg: 2rem;
+  --shadow-sm: 0 12px 30px rgb(23 24 28 / 8%);
+  --shadow-lg: 0 30px 80px rgb(23 24 28 / 18%);
+  --container: 74rem;
+}

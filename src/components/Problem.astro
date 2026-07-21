@@ -1,0 +1,210 @@
+<section class="section problem" id="problema" aria-labelledby="problem-title" data-track-section="problem">
+  <div class="container problem-grid">
+    <div class="problem-copy">
+      <span class="section-kicker">El bloqueo</span>
+      <h2 class="section-title" id="problem-title">Tienes la lista de tareas perfecta. Y aun así no la haces.</h2>
+      <div class="problem-lines">
+        <p class="problem-emphasis">No es pereza.</p>
+        <p>Es que la tarea no está conectada con nada que te importe de verdad.</p>
+        <p>Por eso la pospones — y por eso las apps de productividad normales no funcionan contigo.</p>
+      </div>
+    </div>
+
+    <div class="abandoned-list" role="img" aria-label="Ejemplo de una lista de tareas abandonada">
+      <div class="list-topline">
+        <span>LISTA DE HOY</span>
+        <span>1 / 5</span>
+      </div>
+      <div class="list-progress" aria-hidden="true"><span></span></div>
+      <ul>
+        <li class="done">
+          <span class="task-check" aria-hidden="true">✓</span>
+          <span>Responder mensajes</span>
+          <small>08:42</small>
+        </li>
+        <li>
+          <span class="task-check" aria-hidden="true"></span>
+          <span>Avanzar el proyecto final</span>
+          <small>3 días</small>
+        </li>
+        <li>
+          <span class="task-check" aria-hidden="true"></span>
+          <span>Preparar la exposición</span>
+          <small>2 días</small>
+        </li>
+        <li class="faded">
+          <span class="task-check" aria-hidden="true"></span>
+          <span>Revisar apuntes</span>
+          <small>mañana</small>
+        </li>
+      </ul>
+      <p class="list-note">
+        <svg aria-hidden="true" viewBox="0 0 20 20" fill="none">
+          <path d="m4 13.8-.5 3 3-.6L15 7.7 12.3 5 4 13.8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path>
+          <path d="m10.8 6.7 2.6 2.6" stroke="currentColor" stroke-width="1.5"></path>
+        </svg>
+        “Lo haré cuando tenga más energía.”
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .problem {
+    background:
+      linear-gradient(90deg, transparent 49.8%, rgb(180 89 47 / 5%) 50%, transparent 50.2%),
+      var(--bone);
+  }
+
+  .problem-grid {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .problem .section-kicker {
+    color: var(--terracotta-deep);
+  }
+
+  .problem-copy {
+    max-width: 42rem;
+  }
+
+  .problem-lines {
+    max-width: 38rem;
+    margin-top: 2rem;
+  }
+
+  .problem-lines p {
+    margin-bottom: 0.7rem;
+    color: #555459;
+    font-size: clamp(1.05rem, 1rem + 0.25vw, 1.22rem);
+    line-height: 1.55;
+  }
+
+  .problem-lines .problem-emphasis {
+    margin-bottom: 1rem;
+    color: var(--terracotta);
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+  }
+
+  .abandoned-list {
+    position: relative;
+    max-width: 31rem;
+    border: 1px solid rgb(180 89 47 / 20%);
+    border-radius: var(--radius-md);
+    padding: clamp(1.2rem, 4vw, 2rem);
+    background: var(--paper);
+    box-shadow: 0 26px 60px rgb(83 45 28 / 12%);
+    transform: rotate(1deg);
+  }
+
+  .abandoned-list::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0.7rem -0.65rem -0.65rem 0.7rem;
+    border: 1px solid rgb(180 89 47 / 13%);
+    border-radius: inherit;
+    content: '';
+  }
+
+  .list-topline {
+    display: flex;
+    justify-content: space-between;
+    color: var(--terracotta-deep);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.11em;
+  }
+
+  .list-progress {
+    height: 3px;
+    margin: 0.8rem 0 1.4rem;
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--terracotta-soft);
+  }
+
+  .list-progress span {
+    display: block;
+    width: 20%;
+    height: 100%;
+    background: var(--terracotta);
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: grid;
+    grid-template-columns: 1.3rem 1fr auto;
+    gap: 0.7rem;
+    align-items: center;
+    min-height: 3.3rem;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.9rem;
+  }
+
+  li small {
+    color: var(--terracotta-deep);
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+  }
+
+  li.done span:nth-child(2) {
+    color: var(--muted);
+    text-decoration: line-through;
+  }
+
+  li.faded {
+    opacity: 0.45;
+  }
+
+  .task-check {
+    display: grid;
+    width: 1.1rem;
+    height: 1.1rem;
+    place-items: center;
+    border: 1px solid rgb(23 24 28 / 25%);
+    border-radius: 50%;
+    color: var(--paper);
+    font-size: 0.65rem;
+  }
+
+  .done .task-check {
+    border-color: var(--terracotta);
+    background: var(--terracotta);
+  }
+
+  .list-note {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 1.4rem 0 0;
+    color: var(--terracotta-deep);
+    font-family: var(--font-display);
+    font-size: 0.96rem;
+    font-style: italic;
+  }
+
+  .list-note svg {
+    width: 1.05rem;
+    flex: 0 0 auto;
+  }
+
+  @media (min-width: 56rem) {
+    .problem-grid {
+      grid-template-columns: minmax(0, 1.08fr) minmax(22rem, 0.92fr);
+      gap: clamp(4rem, 8vw, 8rem);
+    }
+
+    .abandoned-list {
+      justify-self: end;
+    }
+  }
+</style>
