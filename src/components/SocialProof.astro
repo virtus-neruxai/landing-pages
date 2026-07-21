@@ -2,10 +2,9 @@
   <div class="container early-panel">
     <div class="early-mark" aria-hidden="true">
       <svg viewBox="0 0 84 84" fill="none">
-        <circle cx="42" cy="42" r="35" stroke="currentColor" stroke-width="1.2"></circle>
-        <circle cx="42" cy="42" r="24" stroke="currentColor" stroke-opacity=".38"></circle>
-        <path d="m51 24-5.3 24L33 60l5.3-24L51 24Z" fill="currentColor"></path>
-        <circle cx="42" cy="42" r="3" fill="#17181c"></circle>
+        <path d="M18 52c15-2 23-12 25-30 14 8 20 19 14 31-7 13-24 14-39-1Z" fill="currentColor" opacity=".18"></path>
+        <path d="M22 57c10-12 21-20 34-24" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"></path>
+        <path d="M27 48c7 0 12 3 15 8M37 39c6 0 10 2 13 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".62"></path>
       </svg>
     </div>
 
@@ -27,7 +26,7 @@
 
 <style>
   .early {
-    background: var(--bone);
+    background: var(--background);
   }
 
   .early-panel {
@@ -36,30 +35,33 @@
     gap: 2rem;
     align-items: center;
     overflow: hidden;
-    border: 1px solid rgb(199 154 62 / 35%);
+    border: 1px solid color-mix(in srgb, var(--sage) 32%, var(--line));
     border-radius: var(--radius-lg);
     padding: clamp(1.6rem, 5vw, 3.5rem);
-    background: var(--ochre-soft);
+    background:
+      linear-gradient(125deg, color-mix(in srgb, var(--flow) 7%, var(--surface)), color-mix(in srgb, var(--sage) 13%, var(--surface)));
+    box-shadow: var(--shadow-sm);
   }
 
   .early-panel::after {
     position: absolute;
-    right: -6rem;
-    bottom: -9rem;
-    width: 20rem;
-    height: 20rem;
-    border: 1px solid rgb(199 154 62 / 25%);
-    border-radius: 50%;
+    right: -7rem;
+    bottom: -7rem;
+    width: 19rem;
+    height: 15rem;
+    border-radius: 66% 34% 57% 43% / 43% 61% 39% 57%;
+    background: color-mix(in srgb, var(--root) 10%, transparent);
     content: '';
+    transform: rotate(-13deg);
   }
 
   .early-mark {
     width: 4.6rem;
-    color: var(--ochre);
+    color: var(--root);
   }
 
   .early .section-kicker {
-    color: #7c5c1f;
+    color: var(--root);
   }
 
   .early .section-title {
@@ -69,7 +71,7 @@
   .early-copy p {
     max-width: 43rem;
     margin: 0;
-    color: #605741;
+    color: var(--text-muted);
   }
 
   .early-action {
@@ -82,7 +84,7 @@
   }
 
   .early-action small {
-    color: #6d634b;
+    color: var(--text-muted);
     font-size: 0.67rem;
   }
 

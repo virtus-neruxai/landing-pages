@@ -1,5 +1,4 @@
 <section class="section nerux" id="neruxai" aria-labelledby="nerux-title" data-track-section="about_neruxai">
-  <div class="nerux-orbit" aria-hidden="true"></div>
   <div class="container">
     <div class="nerux-intro">
       <span class="section-kicker">La idea que lo conecta todo</span>
@@ -25,8 +24,8 @@
       <article class="pillar">
         <div class="pillar-icon" aria-hidden="true">
           <svg viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="16" r="10" stroke="currentColor" stroke-width="1.6"></circle>
-            <path d="m20 10-2.2 8-6 4 2.2-8 6-4Z" fill="currentColor"></path>
+            <path d="M5 18c4-7 7 7 11 0s7 7 11 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
+            <path d="M7 11c3-4 6 4 9 0s6 4 9 0" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".55"></path>
           </svg>
         </div>
         <span class="pillar-number">02</span>
@@ -53,29 +52,24 @@
 
 <style>
   .nerux {
-    background: var(--indigo-deep);
-    color: var(--bone);
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 4% 90%, color-mix(in srgb, var(--sage) 20%, transparent), transparent 30rem),
+      radial-gradient(ellipse at 94% 10%, color-mix(in srgb, var(--flow) 14%, transparent), transparent 32rem),
+      var(--surface-strong);
+    color: var(--text);
   }
 
   .nerux::before {
     position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgb(242 238 230 / 4%) 1px, transparent 1px),
-      linear-gradient(90deg, rgb(242 238 230 / 4%) 1px, transparent 1px);
-    background-size: 54px 54px;
+    top: 4rem;
+    right: -8rem;
+    width: 22rem;
+    height: 16rem;
+    border-radius: 68% 32% 56% 44% / 40% 63% 37% 60%;
+    background: color-mix(in srgb, var(--flow) 11%, transparent);
     content: '';
-    mask-image: linear-gradient(to bottom, transparent, #000 35%, #000 75%, transparent);
-  }
-
-  .nerux-orbit {
-    position: absolute;
-    top: -18rem;
-    right: -12rem;
-    width: 42rem;
-    height: 42rem;
-    border: 1px solid rgb(242 238 230 / 9%);
-    border-radius: 50%;
+    transform: rotate(-9deg);
   }
 
   .nerux-intro {
@@ -87,31 +81,46 @@
     margin-bottom: 3.5rem;
   }
 
-  .nerux .section-kicker {
-    color: var(--ochre);
-  }
-
   .nerux .section-title {
     max-width: 19ch;
   }
 
   .nerux .section-lede {
-    color: rgb(242 238 230 / 68%);
+    color: var(--text-muted);
   }
 
   .pillars {
     position: relative;
     z-index: 1;
     display: grid;
-    border-top: 1px solid var(--line-on-dark);
+    gap: 0.8rem;
   }
 
   .pillar {
     position: relative;
     min-height: 19rem;
-    border-bottom: 1px solid var(--line-on-dark);
-    padding: 2rem 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.6rem;
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
+    box-shadow: var(--shadow-sm);
   }
+
+  .pillar::after {
+    position: absolute;
+    right: -2.6rem;
+    bottom: -3.4rem;
+    width: 8rem;
+    height: 7rem;
+    border-radius: 70% 30% 46% 54% / 42% 66% 34% 58%;
+    background: color-mix(in srgb, var(--pillar-accent, var(--flow)) 9%, transparent);
+    content: '';
+    transform: rotate(18deg);
+  }
+
+  .pillar:nth-child(2) { --pillar-accent: var(--flow); }
+  .pillar:nth-child(3) { --pillar-accent: var(--root); }
 
   .pillar-icon {
     display: grid;
@@ -119,9 +128,10 @@
     height: 3.3rem;
     place-items: center;
     margin-bottom: 2rem;
-    border: 1px solid rgb(242 238 230 / 20%);
-    border-radius: 50%;
-    color: var(--ochre);
+    border: 1px solid color-mix(in srgb, var(--root) 22%, transparent);
+    border-radius: 65% 35% 58% 42% / 38% 62% 38% 62%;
+    background: color-mix(in srgb, var(--sage) 13%, var(--surface));
+    color: var(--root);
   }
 
   .pillar-icon svg {
@@ -131,34 +141,34 @@
 
   .pillar-number {
     position: absolute;
-    top: 2rem;
-    right: 0;
-    color: rgb(242 238 230 / 64%);
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.12em;
+    top: 1.7rem;
+    right: 1.7rem;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-variant-numeric: tabular-nums;
   }
 
   .pillar h3 {
     margin-bottom: 0.55rem;
     font-family: var(--font-display);
     font-size: var(--step-2);
-    font-weight: 570;
+    font-weight: 500;
+    font-style: italic;
   }
 
   .pillar p {
     max-width: 22rem;
     margin-bottom: 1.4rem;
-    color: rgb(242 238 230 / 62%);
+    color: var(--text-muted);
     font-size: 0.9rem;
   }
 
   .pillar small {
-    color: var(--ochre);
-    font-family: var(--font-mono);
-    font-size: 0.58rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    color: var(--root);
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 700;
   }
 
   @media (min-width: 54rem) {
@@ -168,34 +178,10 @@
 
     .pillars {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      border-bottom: 1px solid var(--line-on-dark);
     }
 
     .pillar {
-      border-right: 1px solid var(--line-on-dark);
-      border-bottom: 0;
-      padding: 2.2rem clamp(1.4rem, 3vw, 2.4rem);
-    }
-
-    .pillar:first-child {
-      padding-left: 0;
-    }
-
-    .pillar:last-child {
-      border-right: 0;
-      padding-right: 0;
-    }
-
-    .pillar-number {
-      right: clamp(1.4rem, 3vw, 2.4rem);
-    }
-
-    .pillar:first-child .pillar-number {
-      right: clamp(1.4rem, 3vw, 2.4rem);
-    }
-
-    .pillar:last-child .pillar-number {
-      right: 0;
+      padding: 2rem;
     }
   }
 </style>

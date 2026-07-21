@@ -3,12 +3,24 @@ import HeroDemo from './HeroDemo';
 ---
 
 <section class="hero" aria-labelledby="hero-title" data-track-section="hero">
-  <div class="hero-orbit hero-orbit--outer" aria-hidden="true"></div>
-  <div class="hero-orbit hero-orbit--inner" aria-hidden="true"></div>
+  <div class="hero-ambient" aria-hidden="true">
+    <span class="hero-blob hero-blob--flow"></span>
+    <span class="hero-blob hero-blob--root"></span>
+    <svg class="hero-current" viewBox="0 0 1200 720" preserveAspectRatio="none">
+      <path d="M-80 510C140 398 238 566 432 453S742 227 1280 350"></path>
+      <path d="M-40 576C184 466 300 624 518 501S820 317 1250 416"></path>
+    </svg>
+  </div>
+
   <div class="container hero-grid">
     <div class="hero-copy">
       <p class="hero-eyebrow">
-        <span class="eyebrow-mark" aria-hidden="true"></span>
+        <span class="eyebrow-mark" aria-hidden="true">
+          <svg viewBox="0 0 28 18" fill="none">
+            <path d="M2 11c4.5-5.2 9.2-5.2 13.6-1.2 3.4 3.1 6.7 3.1 10.4-1.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M15.5 9.5c1.2-4 4.3-6.2 8.2-6.5-.4 3.8-2.7 6.7-6.5 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+          </svg>
+        </span>
         NeruxAI — salud física, mental y espiritual
       </p>
       <h1 id="hero-title">Deja de posponer lo que de verdad te importa</h1>
@@ -38,99 +50,130 @@ import HeroDemo from './HeroDemo';
     </div>
 
     <div class="hero-demo-wrap">
-      <p class="demo-coordinate" aria-hidden="true">N 40.4168° · W 3.7038°</p>
       <HeroDemo client:visible />
     </div>
-  </div>
-
-  <div class="hero-footer container" aria-hidden="true">
-    <span>Tu norte</span>
-    <span class="hero-footer-line"></span>
-    <span>Un plan posible</span>
   </div>
 </section>
 
 <style>
   .hero {
     position: relative;
+    isolation: isolate;
     min-height: 100svh;
     overflow: clip;
-    padding: 8.5rem 0 3rem;
+    padding: 8.5rem 0 4rem;
     background:
-      radial-gradient(circle at 86% 32%, rgb(59 76 140 / 28%), transparent 30rem),
-      linear-gradient(145deg, #17181c 0%, #1b1c22 55%, #17181c 100%);
-    color: var(--bone);
+      linear-gradient(155deg, rgb(255 253 249 / 76%), rgb(243 249 246 / 72%)),
+      var(--background);
+    color: var(--text);
   }
 
-  .hero::before {
+  .hero-ambient {
     position: absolute;
+    z-index: -1;
     inset: 0;
-    background-image: radial-gradient(rgb(242 238 230 / 12%) 0.7px, transparent 0.7px);
-    background-size: 22px 22px;
-    content: '';
-    mask-image: linear-gradient(to right, transparent, #000 35%, #000 100%);
-    opacity: 0.35;
+    overflow: hidden;
     pointer-events: none;
   }
 
+  .hero-blob {
+    position: absolute;
+    border-radius: var(--radius-blob);
+    filter: blur(1px);
+    will-change: transform;
+  }
+
+  .hero-blob--flow {
+    top: -12rem;
+    right: -15rem;
+    width: clamp(31rem, 58vw, 56rem);
+    height: clamp(30rem, 54vw, 52rem);
+    background: radial-gradient(circle at 40% 48%, rgb(47 128 237 / 24%), rgb(47 128 237 / 8%) 48%, transparent 72%);
+    animation: flow-drift 20s ease-in-out infinite alternate;
+  }
+
+  .hero-blob--root {
+    bottom: -19rem;
+    left: -18rem;
+    width: clamp(34rem, 62vw, 59rem);
+    height: clamp(31rem, 56vw, 54rem);
+    border-radius: 58% 42% 34% 66% / 48% 62% 38% 52%;
+    background: radial-gradient(circle at 56% 38%, rgb(47 107 79 / 20%), rgb(138 166 106 / 11%) 48%, transparent 72%);
+    animation: root-drift 22s ease-in-out infinite alternate;
+  }
+
+  .hero-current {
+    position: absolute;
+    right: -4rem;
+    bottom: -4rem;
+    width: min(78rem, 105vw);
+    height: 48rem;
+    opacity: 0.18;
+  }
+
+  .hero-current path {
+    fill: none;
+    stroke: var(--root);
+    stroke-linecap: round;
+    stroke-width: 1.2;
+  }
+
+  .hero-current path:last-child {
+    stroke: var(--flow);
+    stroke-width: 0.9;
+  }
+
   .hero-grid {
-    position: relative;
-    z-index: 2;
     display: grid;
     gap: 3.5rem;
     align-items: center;
   }
 
   .hero-copy {
-    max-width: 42rem;
+    max-width: 43rem;
   }
 
   .hero-eyebrow {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.72rem;
     margin-bottom: 1.45rem;
-    color: rgb(242 238 230 / 68%);
-    font-family: var(--font-mono);
-    font-size: 0.69rem;
-    font-weight: 500;
-    letter-spacing: 0.075em;
+    color: var(--root);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 720;
+    letter-spacing: 0;
     line-height: 1.5;
-    text-transform: uppercase;
   }
 
   .eyebrow-mark {
-    position: relative;
-    width: 0.7rem;
-    height: 0.7rem;
+    display: inline-grid;
+    width: 2rem;
+    height: 1.3rem;
     flex: 0 0 auto;
-    border: 1px solid var(--ochre);
-    border-radius: 50%;
+    place-items: center;
+    color: var(--flow);
   }
 
-  .eyebrow-mark::after {
-    position: absolute;
-    inset: 2px;
-    border-radius: 50%;
-    background: var(--ochre);
-    content: '';
+  .eyebrow-mark svg {
+    width: 100%;
   }
 
   h1 {
-    max-width: 11ch;
+    max-width: 11.7ch;
     margin-bottom: 1.5rem;
     font-family: var(--font-display);
     font-size: var(--step-4);
-    font-variation-settings: 'SOFT' 64, 'WONK' 0;
-    font-weight: 520;
-    letter-spacing: -0.055em;
-    line-height: 0.97;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.01;
   }
 
   .hero-lede {
     max-width: 38rem;
     margin-bottom: 2rem;
-    color: rgb(242 238 230 / 76%);
+    color: var(--text-muted);
     font-size: var(--step-1);
     line-height: 1.55;
   }
@@ -146,14 +189,15 @@ import HeroDemo from './HeroDemo';
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    color: rgb(242 238 230 / 58%);
-    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 550;
   }
 
   .hero-note svg {
     width: 1rem;
     height: 1rem;
-    color: var(--ochre);
+    color: var(--root);
   }
 
   .hero-demo-wrap {
@@ -161,54 +205,42 @@ import HeroDemo from './HeroDemo';
     min-width: 0;
   }
 
-  .demo-coordinate {
-    margin: 0 0 0.7rem;
-    color: rgb(242 238 230 / 37%);
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.14em;
-    text-align: right;
-  }
-
-  .hero-orbit {
+  .hero-demo-wrap::before {
     position: absolute;
-    border: 1px solid rgb(242 238 230 / 8%);
-    border-radius: 50%;
-    pointer-events: none;
+    z-index: -1;
+    inset: 7% -4% -5% 8%;
+    border-radius: 35% 65% 58% 42% / 52% 38% 62% 48%;
+    background: linear-gradient(145deg, rgb(47 128 237 / 15%), rgb(47 107 79 / 17%));
+    content: '';
+    filter: blur(18px);
   }
 
-  .hero-orbit--outer {
-    top: 2rem;
-    right: -18rem;
-    width: 48rem;
-    height: 48rem;
+  @keyframes flow-drift {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    }
+
+    50% {
+      transform: translate3d(-1.4rem, 1rem, 0) scale(1.035) rotate(2deg);
+    }
+
+    100% {
+      transform: translate3d(1rem, 2rem, 0) scale(0.985) rotate(-2deg);
+    }
   }
 
-  .hero-orbit--inner {
-    top: 11rem;
-    right: -9rem;
-    width: 30rem;
-    height: 30rem;
-  }
+  @keyframes root-drift {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    }
 
-  .hero-footer {
-    position: relative;
-    z-index: 2;
-    display: none;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 4rem;
-    color: rgb(242 238 230 / 32%);
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
+    50% {
+      transform: translate3d(1.5rem, -1.2rem, 0) scale(1.025) rotate(-2deg);
+    }
 
-  .hero-footer-line {
-    width: 7rem;
-    height: 1px;
-    background: linear-gradient(to right, var(--ochre), transparent);
+    100% {
+      transform: translate3d(-0.8rem, -2rem, 0) scale(0.98) rotate(2.5deg);
+    }
   }
 
   @media (min-width: 42rem) {
@@ -223,20 +255,19 @@ import HeroDemo from './HeroDemo';
       display: flex;
       min-height: 52rem;
       align-items: center;
-      padding: 8rem 0 3rem;
+      padding: 8rem 0 4rem;
     }
 
     .hero-grid {
       grid-template-columns: minmax(0, 0.92fr) minmax(30rem, 1.08fr);
       gap: clamp(3rem, 6vw, 6rem);
     }
+  }
 
-    .hero-footer {
-      position: absolute;
-      right: 0;
-      bottom: 2.15rem;
-      left: 0;
-      display: flex;
+  @media (prefers-reduced-motion: reduce) {
+    .hero-blob {
+      animation: none;
+      transform: none;
     }
   }
 </style>

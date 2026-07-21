@@ -10,11 +10,11 @@ const { appUrl, variant = 'global' } = Astro.props;
 <header class:list={['site-header', `site-header--${variant}`]}>
   <div class="header-inner container">
     <a class="brand" href="/" aria-label="NeruxAI Virtus — Inicio">
-      <span class="brand-compass" aria-hidden="true">
+      <span class="brand-mark" aria-hidden="true">
         <svg viewBox="0 0 40 40" fill="none">
-          <circle cx="20" cy="20" r="17" stroke="currentColor" stroke-width="1.4"></circle>
-          <path d="M24.2 10.5 21.8 22l-6 7.5L18.2 18l6-7.5Z" fill="currentColor"></path>
-          <circle cx="20" cy="20" r="1.9" fill="var(--bone)"></circle>
+          <path d="M9.5 23.6c5.1-9.2 13.5-12.4 21.8-11.8-.5 8.7-5.8 16.2-16.3 17.2" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"></path>
+          <path d="M10.1 29.4c6.4-6.4 12.9-10.3 20.7-14.2" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"></path>
+          <path d="M8.7 31.1c4.9 2.2 9.8 2.1 14.4.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
         </svg>
       </span>
       <span class="brand-name">NeruxAI</span>
@@ -48,10 +48,11 @@ const { appUrl, variant = 'global' } = Astro.props;
     z-index: 100;
     inset: 0 0 auto;
     height: 4.7rem;
-    border-bottom: 1px solid rgb(242 238 230 / 12%);
-    background: rgb(23 24 28 / 84%);
-    color: var(--bone);
-    backdrop-filter: blur(18px) saturate(130%);
+    border-bottom: 1px solid rgb(47 107 79 / 14%);
+    background: rgb(248 245 242 / 82%);
+    color: var(--text);
+    box-shadow: 0 8px 28px rgb(47 107 79 / 5%);
+    backdrop-filter: blur(20px) saturate(145%);
   }
 
   .header-inner {
@@ -71,28 +72,41 @@ const { appUrl, variant = 'global' } = Astro.props;
     text-decoration: none;
   }
 
-  .brand-compass {
-    width: 2rem;
-    height: 2rem;
-    color: var(--ochre);
+  .brand-mark {
+    display: grid;
+    width: 2.15rem;
+    height: 2.15rem;
+    flex: 0 0 auto;
+    place-items: center;
+    border-radius: 44% 56% 58% 42% / 48% 42% 58% 52%;
+    background: var(--gradient-brand);
+    color: var(--white);
+    box-shadow: 0 7px 18px rgb(41 103 121 / 19%);
+  }
+
+  .brand-mark svg {
+    width: 1.72rem;
+    height: 1.72rem;
   }
 
   .brand-name {
     font-size: 1.03rem;
     font-weight: 740;
-    letter-spacing: -0.025em;
+    letter-spacing: 0;
   }
 
   .brand-product {
-    border: 1px solid rgb(242 238 230 / 28%);
+    border: 1px solid rgb(47 107 79 / 22%);
     border-radius: 999px;
     padding: 0.18rem 0.55rem;
-    color: rgb(242 238 230 / 72%);
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.08em;
+    background: rgb(255 253 249 / 72%);
+    color: var(--root);
+    font-family: var(--font-body);
+    font-size: 0.69rem;
+    font-weight: 720;
+    letter-spacing: 0;
     line-height: 1.35;
-    text-transform: uppercase;
+    text-transform: none;
   }
 
   .header-nav {
@@ -102,7 +116,7 @@ const { appUrl, variant = 'global' } = Astro.props;
   }
 
   .header-nav a {
-    color: rgb(242 238 230 / 72%);
+    color: var(--text-muted);
     font-size: 0.84rem;
     font-weight: 550;
     text-decoration: none;
@@ -110,7 +124,7 @@ const { appUrl, variant = 'global' } = Astro.props;
   }
 
   .header-nav a:hover {
-    color: var(--bone);
+      color: var(--root);
   }
 
   .login-link {
@@ -118,20 +132,23 @@ const { appUrl, variant = 'global' } = Astro.props;
     min-height: 2.55rem;
     align-items: center;
     gap: 0.45rem;
-    border: 1px solid rgb(242 238 230 / 24%);
+    border: 1px solid transparent;
     border-radius: 999px;
     padding: 0.6rem 0.85rem;
-    color: var(--bone);
+    background: var(--gradient-action);
+    color: var(--white);
     font-size: 0.82rem;
     font-weight: 700;
     line-height: 1;
     text-decoration: none;
-    transition: background-color 160ms ease, border-color 160ms ease;
+    box-shadow: 0 8px 20px rgb(40 101 128 / 17%);
+    transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
   }
 
   .login-link:hover {
-    border-color: rgb(242 238 230 / 44%);
-    background: rgb(242 238 230 / 8%);
+    filter: saturate(108%) brightness(0.96);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgb(40 101 128 / 24%);
   }
 
   .login-link svg {

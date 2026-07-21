@@ -303,12 +303,13 @@ export default function HeroDemo() {
       <div className="hero-demo__topbar">
         <div className="hero-demo__product">
           <svg
-            className="hero-demo__compass"
+            className="hero-demo__mark"
             viewBox="0 0 24 24"
             aria-hidden="true"
           >
-            <circle cx="12" cy="12" r="9.25" />
-            <path d="m14.9 9.1-1.6 4.2-4.2 1.6 1.6-4.2 4.2-1.6Z" />
+            <path d="M3.5 14.4c3.3-5.8 8.6-7.9 14.5-7.5-.4 5.7-3.9 10.3-10.5 10.9" />
+            <path d="M4.3 18.2c4.3-4.2 8.6-6.7 13.6-9.2" />
+            <path d="M4 19.3c3 1.3 6 1.3 8.9.1" />
           </svg>
           <span>Virtus · plan de misión</span>
         </div>

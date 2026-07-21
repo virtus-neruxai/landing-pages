@@ -11,11 +11,11 @@ const year = new Date().getFullYear();
   <div class="container footer-main">
     <div class="footer-brand">
       <a href="/" class="brand-lockup" aria-label="NeruxAI Virtus — Inicio">
-        <span class="footer-compass" aria-hidden="true">
+        <span class="footer-mark" aria-hidden="true">
           <svg viewBox="0 0 48 48" fill="none">
-            <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="1.3"></circle>
-            <path d="m29 13-3 14-8 8 3-14 8-8Z" fill="currentColor"></path>
-            <circle cx="24" cy="24" r="2.4" fill="#17181c"></circle>
+            <path d="M9 31c10-1 16-8 18-21 10 6 14 14 10 23-5 9-17 10-28-2Z" fill="currentColor" opacity=".2"></path>
+            <path d="M11 35c7-9 15-15 25-18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M15 29c5 0 9 2 11 6M22 23c4 0 7 2 9 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".65"></path>
           </svg>
         </span>
         <span><strong>NeruxAI</strong><small>Virtus, un producto de NeruxAI</small></span>
@@ -53,8 +53,11 @@ const year = new Date().getFullYear();
 <style>
   .site-footer {
     padding: 4rem 0 1.5rem;
-    background: var(--ink);
-    color: var(--bone);
+    border-top: 1px solid color-mix(in srgb, var(--root) 18%, var(--line));
+    background:
+      radial-gradient(ellipse at 10% 100%, color-mix(in srgb, var(--sage) 18%, transparent), transparent 25rem),
+      color-mix(in srgb, var(--sage) 9%, var(--surface-strong));
+    color: var(--text);
   }
 
   .footer-main {
@@ -70,9 +73,9 @@ const year = new Date().getFullYear();
     text-decoration: none;
   }
 
-  .footer-compass {
+  .footer-mark {
     width: 2.7rem;
-    color: var(--ochre);
+    color: var(--root);
   }
 
   .brand-lockup strong,
@@ -86,16 +89,15 @@ const year = new Date().getFullYear();
   }
 
   .brand-lockup small {
-    color: rgb(242 238 230 / 52%);
-    font-family: var(--font-mono);
-    font-size: 0.56rem;
-    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.62rem;
   }
 
   .footer-brand > p {
     max-width: 24rem;
     margin: 1.3rem 0 0;
-    color: rgb(242 238 230 / 62%);
+    color: var(--text-muted);
     font-size: 0.75rem;
   }
 
@@ -104,12 +106,12 @@ const year = new Date().getFullYear();
     align-items: flex-start;
     flex-direction: column;
     gap: 0.55rem;
-    border-left: 1px solid var(--ochre);
+    border-left: 2px solid var(--root);
     padding-left: 1.1rem;
   }
 
   .footer-action > span {
-    color: rgb(242 238 230 / 62%);
+    color: var(--text-muted);
     font-size: 0.7rem;
   }
 
@@ -119,7 +121,9 @@ const year = new Date().getFullYear();
     gap: 0.55rem;
     font-family: var(--font-display);
     font-size: 1.25rem;
-    font-weight: 570;
+    color: var(--root);
+    font-weight: 500;
+    font-style: italic;
     text-underline-offset: 0.25rem;
   }
 
@@ -138,21 +142,20 @@ const year = new Date().getFullYear();
 
   .footer-nav span {
     margin-bottom: 0.25rem;
-    color: rgb(242 238 230 / 62%);
-    font-family: var(--font-mono);
-    font-size: 0.56rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    color: var(--root);
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    font-weight: 750;
   }
 
   .footer-nav a {
-    color: rgb(242 238 230 / 68%);
+    color: var(--text-muted);
     font-size: 0.75rem;
     text-decoration: none;
   }
 
   .footer-nav a:hover {
-    color: var(--bone);
+    color: var(--root);
     text-decoration: underline;
     text-underline-offset: 0.25rem;
   }
@@ -162,12 +165,11 @@ const year = new Date().getFullYear();
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    border-top: 1px solid var(--line-on-dark);
+    border-top: 1px solid var(--line);
     padding-top: 1.3rem;
-    color: rgb(242 238 230 / 58%);
-    font-family: var(--font-mono);
-    font-size: 0.53rem;
-    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.58rem;
   }
 
   @media (min-width: 50rem) {

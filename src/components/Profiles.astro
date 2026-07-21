@@ -6,11 +6,11 @@ interface Props {
 const { appUrl } = Astro.props;
 
 const profiles = [
-  { name: 'Estoico', symbol: '⚖', description: 'Claridad · dominio · acción', tone: 'indigo' },
-  { name: 'Espiritual', symbol: '◌', description: 'Propósito · coherencia · pausa', tone: 'sage' },
-  { name: 'Calma', symbol: '≈', description: 'Recuperar · respirar · avanzar', tone: 'blue' },
-  { name: 'Rendimiento', symbol: '↗', description: 'Cuerpo · hábito · medida', tone: 'ochre' },
-  { name: 'Estudiante', symbol: '⌁', description: 'Foco · estudio · progreso', tone: 'terracotta' },
+  { name: 'Estoico', symbol: '⚖', description: 'Claridad · dominio · acción', tone: 'stoic' },
+  { name: 'Espiritual', symbol: '◌', description: 'Propósito · coherencia · pausa', tone: 'spiritual' },
+  { name: 'Calma', symbol: '≈', description: 'Recuperar · respirar · avanzar', tone: 'calm' },
+  { name: 'Rendimiento', symbol: '↗', description: 'Cuerpo · hábito · medida', tone: 'performance' },
+  { name: 'Estudiante', symbol: '⌁', description: 'Foco · estudio · progreso', tone: 'student' },
 ];
 
 // Las rutas quedan declaradas aquí. Cuando existan sus páginas, basta con
@@ -71,7 +71,8 @@ const futureZones = [
 
 <style>
   .profiles {
-    background: var(--paper);
+    overflow: hidden;
+    background: var(--surface);
   }
 
   .profiles-heading {
@@ -91,7 +92,7 @@ const futureZones = [
     align-items: center;
     gap: 0.55rem;
     margin-top: 1rem;
-    color: var(--indigo);
+    color: var(--root);
     font-size: 0.9rem;
     font-weight: 700;
     text-underline-offset: 0.25rem;
@@ -103,13 +104,31 @@ const futureZones = [
   }
 
   .profile-card {
-    --profile-color: var(--indigo);
+    --profile-color: var(--flow);
+    --profile-secondary: var(--flow-deep);
+    --profile-heading: var(--profile-secondary);
+    --profile-font: var(--font-body);
+    position: relative;
     min-height: 13rem;
+    overflow: hidden;
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
     padding: 1.3rem;
-    background: var(--white);
+    background:
+      linear-gradient(145deg, color-mix(in srgb, var(--profile-color) 9%, var(--surface)) 0%, var(--surface) 58%);
     transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+
+  .profile-card::after {
+    position: absolute;
+    right: -3.2rem;
+    bottom: -3.5rem;
+    width: 8.2rem;
+    height: 7.5rem;
+    border-radius: 62% 38% 53% 47% / 39% 61% 39% 61%;
+    background: color-mix(in srgb, var(--profile-secondary) 9%, transparent);
+    content: '';
+    transform: rotate(-14deg);
   }
 
   .profile-card:hover {
@@ -117,23 +136,50 @@ const futureZones = [
     transform: translateY(-3px);
   }
 
-  .profile-card--sage { --profile-color: #61745f; }
-  .profile-card--blue { --profile-color: #517287; }
-  .profile-card--ochre { --profile-color: #9c762c; }
-  .profile-card--terracotta { --profile-color: var(--terracotta); }
+  .profile-card--stoic {
+    --profile-color: #c6a75e;
+    --profile-secondary: #8b2f1f;
+    --profile-font: var(--font-stoic);
+  }
+
+  .profile-card--calm {
+    --profile-color: #2f80ed;
+    --profile-secondary: #174a7c;
+    --profile-font: var(--font-calm);
+  }
+
+  .profile-card--spiritual {
+    --profile-color: #2f6b4f;
+    --profile-secondary: #8aa66a;
+    --profile-heading: var(--profile-color);
+    --profile-font: var(--font-spiritual);
+  }
+
+  .profile-card--performance {
+    --profile-color: #e0702f;
+    --profile-secondary: #9c3f1b;
+    --profile-font: var(--font-performance);
+  }
+
+  .profile-card--student {
+    --profile-color: #d8b56d;
+    --profile-secondary: #5d78a6;
+    --profile-font: var(--font-student);
+  }
 
   .profile-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 2.3rem;
-    color: var(--profile-color);
+    color: color-mix(in srgb, var(--profile-heading) 82%, var(--text));
   }
 
   .profile-index {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.1em;
+    font-family: var(--font-body);
+    font-size: 0.67rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
   }
 
   .profile-symbol {
@@ -141,25 +187,31 @@ const futureZones = [
     width: 2.4rem;
     height: 2.4rem;
     place-items: center;
-    border: 1px solid color-mix(in srgb, var(--profile-color) 30%, transparent);
-    border-radius: 50%;
-    font-family: var(--font-display);
+    border: 1px solid color-mix(in srgb, var(--profile-color) 36%, transparent);
+    border-radius: 64% 36% 56% 44% / 40% 64% 36% 60%;
+    background: color-mix(in srgb, var(--profile-color) 10%, var(--surface));
+    color: var(--profile-color);
+    font-family: var(--profile-font);
     font-size: 1.15rem;
   }
 
   .profile-card h3 {
     margin-bottom: 0.3rem;
-    font-family: var(--font-display);
+    position: relative;
+    z-index: 1;
+    color: var(--profile-heading);
+    font-family: var(--profile-font);
     font-size: 1.35rem;
     font-weight: 600;
   }
 
   .profile-card p {
+    position: relative;
+    z-index: 1;
     margin: 0;
-    color: var(--muted);
-    font-family: var(--font-mono);
-    font-size: 0.64rem;
-    letter-spacing: 0.025em;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.7rem;
   }
 
   .future-zones {
@@ -167,34 +219,34 @@ const futureZones = [
     gap: 1.5rem 3rem;
     align-items: center;
     margin-top: 2rem;
-    border: 1px dashed rgb(59 76 140 / 28%);
+    border: 1px solid color-mix(in srgb, var(--flow) 22%, var(--line));
     border-radius: var(--radius-md);
     padding: clamp(1.2rem, 4vw, 2rem);
-    background: var(--indigo-soft);
+    background:
+      linear-gradient(120deg, color-mix(in srgb, var(--flow) 8%, var(--surface)), color-mix(in srgb, var(--root) 8%, var(--surface)));
   }
 
   .future-label {
     display: block;
     margin-bottom: 0.4rem;
-    color: var(--indigo);
-    font-family: var(--font-mono);
-    font-size: 0.58rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    color: var(--root);
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 750;
   }
 
   .future-zones h3 {
     margin-bottom: 0.3rem;
     font-family: var(--font-display);
     font-size: 1.35rem;
-    font-weight: 590;
+    font-weight: 500;
+    font-style: italic;
   }
 
   .future-zones p {
     max-width: 38rem;
     margin: 0;
-    color: var(--muted);
+    color: var(--text-muted);
     font-size: 0.78rem;
   }
 
@@ -209,11 +261,11 @@ const futureZones = [
     min-height: 2.85rem;
     align-items: center;
     gap: 0.55rem;
-    border: 1px solid rgb(59 76 140 / 24%);
+    border: 1px solid color-mix(in srgb, var(--flow) 22%, var(--line));
     border-radius: 999px;
     padding: 0.7rem 1rem;
-    background: rgb(255 255 255 / 45%);
-    color: var(--indigo-deep);
+    background: color-mix(in srgb, var(--surface) 74%, transparent);
+    color: var(--flow-deep);
     cursor: not-allowed;
     font-size: 0.76rem;
     font-weight: 700;

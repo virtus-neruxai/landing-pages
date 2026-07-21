@@ -85,7 +85,10 @@
 
 <style>
   .dashboard-section {
-    background: var(--paper);
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 100% 20%, color-mix(in srgb, var(--flow) 8%, transparent), transparent 28rem),
+      var(--background);
   }
 
   .dashboard-heading {
@@ -109,10 +112,10 @@
     display: grid;
     min-height: 34rem;
     overflow: hidden;
-    border: 1px solid rgb(23 24 28 / 18%);
+    border: 1px solid var(--line-strong);
     border-radius: var(--radius-lg);
-    background: #ece8df;
-    box-shadow: 0 35px 90px rgb(23 24 28 / 18%);
+    background: var(--surface-strong);
+    box-shadow: var(--shadow-lg);
   }
 
   .mock-sidebar {
@@ -121,8 +124,9 @@
     align-items: center;
     justify-content: space-between;
     padding: 1.2rem 0.75rem;
-    background: var(--ink);
-    color: var(--bone);
+    border-right: 1px solid color-mix(in srgb, var(--root) 18%, var(--line));
+    background: color-mix(in srgb, var(--sage) 16%, var(--surface));
+    color: var(--root);
   }
 
   .mock-brand {
@@ -134,15 +138,15 @@
   .mock-brand span {
     width: 1.45rem;
     height: 1.45rem;
-    border: 1px solid var(--ochre);
-    border-radius: 50%;
-    background: radial-gradient(circle, var(--ochre) 0 16%, transparent 18%);
+    border-radius: 68% 32% 58% 42% / 42% 64% 36% 58%;
+    background: var(--gradient-brand);
+    transform: rotate(-12deg);
   }
 
   .mock-brand strong {
     font-size: 0.54rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    color: var(--root);
+    font-family: var(--font-body);
   }
 
   .mock-nav {
@@ -153,20 +157,20 @@
   .mock-nav i {
     width: 1.25rem;
     height: 1.25rem;
-    border: 1px solid rgb(242 238 230 / 26%);
+    border: 1px solid color-mix(in srgb, var(--root) 20%, var(--line));
     border-radius: 0.3rem;
   }
 
   .mock-nav i.active {
-    border-color: var(--ochre);
-    background: rgb(199 154 62 / 22%);
+    border-color: var(--flow);
+    background: color-mix(in srgb, var(--flow) 14%, var(--surface));
   }
 
   .mock-avatar {
     width: 1.8rem;
     height: 1.8rem;
     border-radius: 50%;
-    background: var(--indigo);
+    background: var(--gradient-brand);
   }
 
   .mock-main {
@@ -187,18 +191,18 @@
   .panel-heading,
   .mission-panel > span,
   .challenge-label {
-    color: var(--muted);
-    font-family: var(--font-mono);
+    color: var(--text-muted);
+    font-family: var(--font-body);
     font-size: 0.53rem;
-    letter-spacing: 0.09em;
+    font-weight: 650;
   }
 
   .mock-header h3 {
     margin: 0.2rem 0 0;
     font-family: var(--font-display);
     font-size: clamp(1.55rem, 4vw, 2.2rem);
-    font-weight: 590;
-    letter-spacing: -0.035em;
+    font-weight: 500;
+    font-style: italic;
   }
 
   .level-chip {
@@ -206,15 +210,16 @@
     grid-template-columns: auto auto;
     gap: 0.5rem;
     align-items: center;
-    border: 1px solid rgb(199 154 62 / 32%);
+    border: 1px solid color-mix(in srgb, var(--root) 22%, var(--line));
     border-radius: 999px;
     padding: 0.35rem 0.65rem;
-    background: var(--ochre-soft);
-    color: #6b501a;
-    font-family: var(--font-mono);
+    background: color-mix(in srgb, var(--sage) 13%, var(--surface));
+    color: var(--root);
+    font-family: var(--font-body);
+    font-variant-numeric: tabular-nums;
   }
 
-  .level-chip span { font-size: 0.5rem; letter-spacing: 0.08em; }
+  .level-chip span { font-size: 0.5rem; }
   .level-chip strong { font-size: 0.73rem; }
 
   .mock-metrics {
@@ -228,31 +233,33 @@
     border: 1px solid var(--line);
     border-radius: var(--radius-sm);
     padding: 1rem;
-    background: var(--white);
+    background: var(--surface);
   }
 
   .mock-metrics strong {
     display: block;
     margin-top: 0.25rem;
-    font-family: var(--font-mono);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-variant-numeric: tabular-nums;
     font-size: 1.35rem;
   }
 
-  .mock-metrics strong small { color: var(--muted); font-size: 0.6rem; }
+  .mock-metrics strong small { color: var(--text-muted); font-size: 0.6rem; }
 
   .metric-bar {
     height: 0.35rem;
     margin-top: 0.65rem;
     overflow: hidden;
     border-radius: 1rem;
-    background: var(--indigo-soft);
+    background: color-mix(in srgb, var(--flow) 11%, var(--surface-strong));
   }
 
   .metric-bar i {
     display: block;
     width: 68%;
     height: 100%;
-    background: var(--indigo);
+    background: var(--gradient-brand);
   }
 
   .metric-spark {
@@ -266,7 +273,7 @@
   .metric-spark i {
     width: 0.35rem;
     border-radius: 0.15rem 0.15rem 0 0;
-    background: var(--ochre);
+    background: var(--sage);
   }
 
   .metric-spark i:nth-child(1) { height: 35%; }
@@ -287,7 +294,7 @@
   .challenge-strip {
     border: 1px solid var(--line);
     border-radius: var(--radius-sm);
-    background: var(--white);
+    background: var(--surface);
   }
 
   .task-panel {
@@ -308,17 +315,16 @@
   }
 
   .panel-heading strong {
-    color: var(--ink);
+    color: var(--text);
     font-family: var(--font-body);
     font-size: 0.7rem;
-    letter-spacing: 0;
   }
 
   .panel-dot {
     width: 0.4rem;
     height: 0.4rem;
     border-radius: 50%;
-    background: var(--indigo);
+    background: var(--flow);
   }
 
   .task-panel ul {
@@ -341,15 +347,15 @@
     width: 1rem;
     height: 1rem;
     place-items: center;
-    border: 1px solid rgb(23 24 28 / 24%);
+    border: 1px solid var(--line-strong);
     border-radius: 50%;
     font-size: 0.55rem;
   }
 
   li.complete .mock-check {
-    border-color: var(--indigo);
-    background: var(--indigo);
-    color: var(--white);
+    border-color: var(--flow);
+    background: var(--gradient-brand);
+    color: var(--surface);
   }
 
   .task-panel li strong,
@@ -358,26 +364,27 @@
   }
 
   .task-panel li strong { font-size: 0.62rem; }
-  .task-panel li small { color: var(--muted); font-size: 0.52rem; }
-  .task-panel time { color: var(--muted); font-family: var(--font-mono); font-size: 0.48rem; }
+  .task-panel li small { color: var(--text-muted); font-size: 0.52rem; }
+  .task-panel time { color: var(--text-muted); font-family: var(--font-body); font-size: 0.48rem; font-variant-numeric: tabular-nums; }
 
   .mission-panel {
     position: relative;
     overflow: hidden;
     padding: 1rem;
-    background: var(--indigo-deep);
-    color: var(--bone);
+    background: var(--root);
+    color: var(--surface);
   }
 
   .mission-panel::after {
     position: absolute;
-    right: -3rem;
-    bottom: -3rem;
+    right: -2.6rem;
+    bottom: -3.2rem;
     width: 8rem;
-    height: 8rem;
-    border: 1px solid rgb(242 238 230 / 13%);
-    border-radius: 50%;
+    height: 7rem;
+    border-radius: 67% 33% 54% 46% / 42% 62% 38% 58%;
+    background: color-mix(in srgb, var(--sage) 18%, transparent);
     content: '';
+    transform: rotate(17deg);
   }
 
   .mission-icon {
@@ -386,19 +393,21 @@
     height: 2rem;
     place-items: center;
     margin-bottom: 1rem;
-    border: 1px solid rgb(242 238 230 / 20%);
-    border-radius: 50%;
-    color: var(--ochre);
+    border: 1px solid color-mix(in srgb, var(--surface) 28%, transparent);
+    border-radius: 65% 35% 58% 42% / 38% 62% 38% 62%;
+    background: color-mix(in srgb, var(--sage) 20%, transparent);
+    color: var(--surface);
   }
 
-  .mission-panel > span { color: rgb(242 238 230 / 55%); }
+  .mission-panel > span { color: color-mix(in srgb, var(--surface) 86%, transparent); }
 
   .mission-panel h4 {
     max-width: 17rem;
     margin: 0.4rem 0 1.3rem;
     font-family: var(--font-display);
     font-size: 1.15rem;
-    font-weight: 560;
+    font-weight: 500;
+    font-style: italic;
     line-height: 1.2;
   }
 
@@ -406,21 +415,22 @@
     height: 0.28rem;
     overflow: hidden;
     border-radius: 1rem;
-    background: rgb(242 238 230 / 13%);
+    background: color-mix(in srgb, var(--surface) 18%, transparent);
   }
 
-  .mission-progress i { display: block; width: 42%; height: 100%; background: var(--ochre); }
+  .mission-progress i { display: block; width: 42%; height: 100%; background: var(--sage); }
 
   .mission-meta {
     display: flex;
     justify-content: space-between;
     margin-top: 0.45rem;
-    color: rgb(242 238 230 / 56%);
-    font-family: var(--font-mono);
+    color: color-mix(in srgb, var(--surface) 86%, transparent);
+    font-family: var(--font-body);
+    font-variant-numeric: tabular-nums;
     font-size: 0.48rem;
   }
 
-  .mission-meta strong { color: var(--ochre); }
+  .mission-meta strong { color: var(--surface); }
 
   .challenge-strip {
     display: none;
@@ -445,8 +455,8 @@
     border-radius: 50%;
   }
 
-  .challenge-days i.done { border-color: var(--indigo); background: var(--indigo); }
-  .challenge-days i.today { border: 2px solid var(--ochre); }
+  .challenge-days i.done { border-color: var(--root); background: var(--root); }
+  .challenge-days i.today { border: 2px solid var(--flow); }
 
   .annotation {
     position: absolute;
@@ -454,8 +464,8 @@
     max-width: 14rem;
     align-items: center;
     gap: 0.6rem;
-    color: var(--muted);
-    font-family: var(--font-mono);
+    color: var(--text-muted);
+    font-family: var(--font-body);
     font-size: 0.6rem;
     line-height: 1.45;
   }
@@ -466,9 +476,9 @@
     height: 1.65rem;
     flex: 0 0 auto;
     place-items: center;
-    border-radius: 50%;
-    background: var(--indigo);
-    color: var(--bone);
+    border-radius: 60% 40% 55% 45% / 43% 60% 40% 57%;
+    background: var(--gradient-brand);
+    color: var(--surface);
     font-size: 0.54rem;
   }
 
@@ -477,7 +487,7 @@
     right: 0;
     bottom: 5.2rem;
     margin: 0;
-    color: var(--muted);
+    color: var(--text-muted);
     font-size: 0.6rem;
   }
 

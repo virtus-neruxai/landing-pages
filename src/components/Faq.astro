@@ -52,7 +52,9 @@ const faqs = [
 
 <style>
   .faq {
-    background: var(--bone);
+    background:
+      radial-gradient(ellipse at 0% 30%, color-mix(in srgb, var(--sage) 10%, transparent), transparent 24rem),
+      var(--background);
   }
 
   .faq-grid {
@@ -66,7 +68,7 @@ const faqs = [
   }
 
   .faq-intro > p {
-    color: var(--muted);
+    color: var(--text-muted);
   }
 
   .faq-list {
@@ -75,6 +77,11 @@ const faqs = [
 
   details {
     border-bottom: 1px solid var(--line);
+    transition: background-color 160ms ease;
+  }
+
+  details[open] {
+    background: color-mix(in srgb, var(--flow) 4%, transparent);
   }
 
   summary {
@@ -95,18 +102,20 @@ const faqs = [
   }
 
   .faq-number {
-    color: var(--indigo);
-    font-family: var(--font-mono);
-    font-size: 0.57rem;
-    letter-spacing: 0.08em;
+    color: var(--root);
+    font-family: var(--font-body);
+    font-size: 0.63rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 750;
   }
 
   .faq-toggle {
     position: relative;
     width: 1.7rem;
     height: 1.7rem;
-    border: 1px solid var(--line);
+    border: 1px solid var(--line-strong);
     border-radius: 50%;
+    background: var(--surface);
   }
 
   .faq-toggle::before,
@@ -116,7 +125,7 @@ const faqs = [
     left: 50%;
     width: 0.65rem;
     height: 1px;
-    background: var(--ink);
+    background: var(--root);
     content: '';
     transition: transform 160ms ease;
     transform: translate(-50%, -50%);
@@ -137,7 +146,7 @@ const faqs = [
   .faq-answer p {
     max-width: 42rem;
     margin: -0.35rem 2.5rem 1.4rem 1.7rem;
-    color: var(--muted);
+    color: var(--text-muted);
     font-size: 0.88rem;
   }
 

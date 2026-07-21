@@ -7,15 +7,6 @@ const { subscriptionUrl } = Astro.props;
 ---
 
 <section class="section final-cta" id="empieza" aria-labelledby="final-title" data-track-section="final_cta">
-  <div class="final-compass" aria-hidden="true">
-    <svg viewBox="0 0 400 400" fill="none">
-      <circle cx="200" cy="200" r="188" stroke="currentColor"></circle>
-      <circle cx="200" cy="200" r="132" stroke="currentColor" stroke-opacity=".55"></circle>
-      <circle cx="200" cy="200" r="72" stroke="currentColor" stroke-opacity=".35"></circle>
-      <path d="m238 110-23 106-53 74 23-106 53-74Z" fill="currentColor"></path>
-      <circle cx="200" cy="200" r="10" fill="#2e3b70"></circle>
-    </svg>
-  </div>
   <div class="container final-inner">
     <span class="section-kicker">El siguiente paso</span>
     <h2 id="final-title">Tu próxima misión te está esperando</h2>
@@ -42,25 +33,37 @@ const { subscriptionUrl } = Astro.props;
 
 <style>
   .final-cta {
+    overflow: hidden;
     min-height: 44rem;
-    background: var(--indigo-deep);
-    color: var(--bone);
+    background:
+      radial-gradient(ellipse at 8% 20%, color-mix(in srgb, var(--flow) 16%, transparent), transparent 28rem),
+      radial-gradient(ellipse at 92% 78%, color-mix(in srgb, var(--sage) 24%, transparent), transparent 30rem),
+      var(--surface-strong);
+    color: var(--text);
   }
 
   .final-cta::before {
     position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 50% 45%, rgb(242 238 230 / 7%), transparent 30rem);
+    top: 4rem;
+    left: -8rem;
+    width: 24rem;
+    height: 17rem;
+    border-radius: 69% 31% 55% 45% / 42% 64% 36% 58%;
+    background: color-mix(in srgb, var(--flow) 10%, transparent);
     content: '';
+    transform: rotate(12deg);
   }
 
-  .final-compass {
+  .final-cta::after {
     position: absolute;
-    top: 45%;
-    left: 50%;
-    width: min(34rem, 92vw);
-    color: rgb(242 238 230 / 8%);
-    transform: translate(-50%, -50%);
+    right: -9rem;
+    bottom: 5rem;
+    width: 26rem;
+    height: 18rem;
+    border-radius: 37% 63% 42% 58% / 61% 36% 64% 39%;
+    background: color-mix(in srgb, var(--root) 10%, transparent);
+    content: '';
+    transform: rotate(-9deg);
   }
 
   .final-inner {
@@ -72,34 +75,40 @@ const { subscriptionUrl } = Astro.props;
     text-align: center;
   }
 
-  .final-cta .section-kicker {
-    color: var(--ochre-on-dark);
-  }
-
   .final-cta h2 {
     max-width: 13ch;
     margin-bottom: 1.2rem;
     font-family: var(--font-display);
     font-size: var(--step-4);
-    font-weight: 530;
-    letter-spacing: -0.05em;
-    line-height: 0.98;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.02;
   }
 
   .final-inner > p {
     max-width: 39rem;
     margin-bottom: 2rem;
-    color: rgb(242 238 230 / 68%);
+    color: var(--text-muted);
     font-size: var(--step-1);
   }
 
   .final-note {
     margin-top: 0.8rem;
-    color: rgb(242 238 230 / 76%);
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.66rem;
+    font-weight: 650;
+  }
+
+  .final-inner > .button {
+    border-color: transparent;
+    background: var(--gradient-action);
+    box-shadow: var(--shadow-sm);
+    color: var(--surface);
+  }
+
+  .final-inner > .button:hover {
+    box-shadow: var(--shadow-lg);
   }
 
   .premium-note {
@@ -108,32 +117,34 @@ const { subscriptionUrl } = Astro.props;
     width: min(100%, 47rem);
     align-items: center;
     margin-top: 4.5rem;
-    border-top: 1px solid rgb(242 238 230 / 18%);
-    border-bottom: 1px solid rgb(242 238 230 / 18%);
-    padding: 1.4rem 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.4rem;
+    background: color-mix(in srgb, var(--surface) 82%, transparent);
+    box-shadow: var(--shadow-sm);
     text-align: left;
   }
 
   .premium-note div > span {
     display: block;
     margin-bottom: 0.35rem;
-    color: var(--ochre-on-dark);
-    font-family: var(--font-mono);
-    font-size: 0.58rem;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
+    color: var(--root);
+    font-family: var(--font-body);
+    font-size: 0.64rem;
+    font-weight: 750;
   }
 
   .premium-note strong {
     display: block;
     font-family: var(--font-display);
     font-size: 1.15rem;
-    font-weight: 580;
+    font-weight: 500;
+    font-style: italic;
   }
 
   .premium-note p {
     margin: 0.2rem 0 0;
-    color: rgb(242 238 230 / 74%);
+    color: var(--text-muted);
     font-size: 0.7rem;
   }
 
@@ -142,7 +153,7 @@ const { subscriptionUrl } = Astro.props;
     align-items: center;
     justify-self: start;
     gap: 0.5rem;
-    color: var(--bone);
+    color: var(--flow-deep);
     font-size: 0.74rem;
     font-weight: 700;
     text-underline-offset: 0.25rem;

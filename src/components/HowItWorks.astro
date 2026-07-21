@@ -29,8 +29,8 @@
         <div class="step-meta">
           <span>02</span>
           <svg aria-hidden="true" viewBox="0 0 28 28" fill="none">
-            <circle cx="14" cy="14" r="9" stroke="currentColor" stroke-width="1.6"></circle>
-            <path d="m17 8.5-1.8 7.2-4.2 3.8 1.8-7.2L17 8.5Z" fill="currentColor"></path>
+            <path d="M5.5 22c2.2-8.2 7.3-14.1 16.8-17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+            <path d="M10.8 16.4c-1.7-3.2-4-4.8-7.1-4.8.4 3.8 2.6 6.1 6.5 6.7M15.5 11.1c.8-3.5 3.2-5.8 7-6.3-.2 3.8-2.5 6.3-6.4 7.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
         </div>
         <h3>Recibe tu plan</h3>
@@ -63,7 +63,10 @@
 
 <style>
   .how {
-    background: var(--paper);
+    background:
+      radial-gradient(ellipse at 4% 12%, color-mix(in srgb, var(--flow) 8%, transparent), transparent 32%),
+      radial-gradient(ellipse at 96% 88%, color-mix(in srgb, var(--sage) 12%, transparent), transparent 36%),
+      var(--surface);
   }
 
   .how-heading {
@@ -94,10 +97,18 @@
     min-height: 27rem;
     flex-direction: column;
     border: 1px solid var(--line);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) var(--radius-sm);
     padding: clamp(1.3rem, 3vw, 2rem);
-    background: var(--white);
+    background: color-mix(in srgb, var(--surface) 94%, var(--flow) 6%);
     box-shadow: var(--shadow-sm);
+  }
+
+  .step-card:nth-child(2) {
+    background: color-mix(in srgb, var(--surface) 94%, var(--root) 6%);
+  }
+
+  .step-card:nth-child(3) {
+    background: color-mix(in srgb, var(--surface) 93%, var(--sage) 7%);
   }
 
   .step-card::after {
@@ -108,11 +119,12 @@
     width: 2.1rem;
     height: 2.1rem;
     border: 1px solid var(--line);
-    border-radius: 50%;
-    background: var(--paper);
-    color: var(--indigo);
+    border-radius: 65% 35% 62% 38%;
+    background: var(--surface);
+    color: var(--flow);
     content: '↓';
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
+    font-weight: 700;
     line-height: 2rem;
     text-align: center;
     transform: translateX(50%);
@@ -127,10 +139,10 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 2.2rem;
-    color: var(--indigo);
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
+    color: var(--flow-deep);
+    font-family: var(--font-body);
+    font-size: 0.76rem;
+    font-weight: 750;
   }
 
   .step-meta svg {
@@ -143,14 +155,14 @@
     margin-bottom: 0.8rem;
     font-family: var(--font-display);
     font-size: var(--step-2);
-    font-weight: 580;
-    letter-spacing: -0.03em;
-    line-height: 1.08;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.12;
   }
 
   .step-card > p {
     margin-bottom: 1.8rem;
-    color: var(--muted);
+    color: var(--text-muted);
     font-size: 0.95rem;
     line-height: 1.55;
   }
@@ -160,8 +172,8 @@
     border: 1px solid var(--line);
     border-radius: var(--radius-sm);
     padding: 1rem;
-    background: var(--bone);
-    color: #44454a;
+    background: color-mix(in srgb, var(--background) 84%, transparent);
+    color: var(--text-muted);
     font-size: 0.78rem;
     line-height: 1.5;
   }
@@ -177,7 +189,7 @@
     position: absolute;
     top: 0.75rem;
     left: 0.75rem;
-    color: var(--ochre);
+    color: var(--flow);
     font-size: 1.5rem;
   }
 
@@ -196,19 +208,18 @@
     width: 0.55rem;
     height: 0.55rem;
     flex: 0 0 auto;
-    border: 1px solid var(--indigo);
+    border: 1px solid var(--flow);
     border-radius: 50%;
+    background: color-mix(in srgb, var(--flow) 12%, transparent);
   }
 
   .step-example--adjust span {
     display: block;
     margin-bottom: 0.4rem;
-    color: var(--indigo);
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    color: var(--root);
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 750;
   }
 
   @media (min-width: 52rem) {

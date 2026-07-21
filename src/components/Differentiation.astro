@@ -46,12 +46,10 @@
         <span>SEM · 08</span>
       </div>
 
-      <div class="insight-compass" aria-hidden="true">
+      <div class="insight-mark" aria-hidden="true">
         <svg viewBox="0 0 110 110" fill="none">
-          <circle cx="55" cy="55" r="49" stroke="currentColor" stroke-opacity=".18"></circle>
-          <circle cx="55" cy="55" r="35" stroke="currentColor" stroke-opacity=".12"></circle>
-          <path d="m66 29-6.8 31.2L43 81l6.8-31.2L66 29Z" fill="currentColor"></path>
-          <circle cx="55" cy="55" r="4" fill="#17181c"></circle>
+          <path d="M20 75c20-3 28-24 33-48 18 12 28 28 23 44-6 17-27 22-56 4Z" fill="currentColor" opacity=".13"></path>
+          <path d="M23 78c18-12 31-28 39-49M39 61c8 0 16 3 23 9M47 49c-1-7 0-13 2-19" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
         </svg>
       </div>
 
@@ -70,9 +68,10 @@
 <style>
   .difference {
     background:
-      radial-gradient(circle at 12% 80%, rgb(59 76 140 / 22%), transparent 26rem),
-      var(--ink);
-    color: var(--bone);
+      radial-gradient(ellipse at 10% 88%, color-mix(in srgb, var(--root) 11%, transparent), transparent 36%),
+      radial-gradient(ellipse at 92% 8%, color-mix(in srgb, var(--flow) 10%, transparent), transparent 38%),
+      var(--background);
+    color: var(--text);
   }
 
   .difference-grid {
@@ -82,7 +81,7 @@
   }
 
   .difference .section-kicker {
-    color: var(--ochre);
+    color: var(--root);
   }
 
   .difference .section-title {
@@ -90,14 +89,14 @@
   }
 
   .difference .section-lede {
-    color: rgb(242 238 230 / 64%);
+    color: var(--text-muted);
   }
 
   .comparison {
     display: block;
     width: 100%;
     margin-top: 2.5rem;
-    border-top: 1px solid var(--line-on-dark);
+    border-top: 1px solid var(--line-strong);
     border-collapse: collapse;
   }
 
@@ -113,62 +112,60 @@
 
   .comparison th {
     padding-block: 0.75rem;
-    color: rgb(242 238 230 / 64%);
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 750;
     text-align: left;
-    text-transform: uppercase;
   }
 
   .comparison th:last-child {
     padding-left: 1.5rem;
-    color: var(--ochre);
+    color: var(--root);
   }
 
   .comparison tr {
     display: grid;
-    border-bottom: 1px solid var(--line-on-dark);
+    border-bottom: 1px solid var(--line);
   }
 
   .comparison td {
     padding: 1.25rem 0;
-    color: rgb(242 238 230 / 66%);
+    color: var(--text-muted);
     font-size: 0.94rem;
     line-height: 1.5;
   }
 
   .comparison td:last-child {
-    border-top: 1px dashed rgb(242 238 230 / 12%);
-    color: var(--bone);
+    border-top: 1px solid var(--line);
+    color: var(--text);
     font-weight: 620;
   }
 
   .cell-label {
     display: block;
     margin-bottom: 0.35rem;
-    color: rgb(242 238 230 / 64%);
-    font-family: var(--font-mono);
-    font-size: 0.57rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    font-weight: 700;
   }
 
   .comparison td:last-child .cell-label {
-    color: var(--ochre);
+    color: var(--root);
   }
 
   .insight-card {
     position: relative;
     max-width: 32rem;
     overflow: hidden;
-    border: 1px solid rgb(242 238 230 / 16%);
-    border-radius: var(--radius-lg);
+    border: 1px solid color-mix(in srgb, var(--flow) 16%, var(--line));
+    border-radius: var(--radius-lg) var(--radius-lg) var(--radius-sm) var(--radius-lg);
     padding: clamp(1.4rem, 4vw, 2.2rem);
-    background: var(--bone);
-    color: var(--ink);
-    box-shadow: 0 35px 90px rgb(0 0 0 / 28%);
+    background:
+      linear-gradient(145deg, color-mix(in srgb, var(--surface) 90%, var(--flow) 10%), color-mix(in srgb, var(--surface) 94%, var(--root) 6%));
+    color: var(--text);
+    box-shadow: var(--shadow-lg);
   }
 
   .insight-card::after {
@@ -177,8 +174,8 @@
     bottom: -5rem;
     width: 15rem;
     height: 15rem;
-    border: 1px solid rgb(59 76 140 / 14%);
-    border-radius: 50%;
+    border-radius: 63% 37% 31% 69% / 46% 58% 42% 54%;
+    background: color-mix(in srgb, var(--sage) 12%, transparent);
     content: '';
   }
 
@@ -189,10 +186,10 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 2rem;
-    color: var(--muted);
-    font-family: var(--font-mono);
-    font-size: 0.58rem;
-    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    font-weight: 700;
   }
 
   .insight-topbar > div {
@@ -205,27 +202,26 @@
     width: 0.45rem;
     height: 0.45rem;
     border-radius: 50%;
-    background: var(--ochre);
+    background: var(--root);
   }
 
-  .insight-compass {
+  .insight-mark {
     position: absolute;
     top: 3.2rem;
     right: 1.5rem;
     width: 6.8rem;
-    color: var(--ochre);
-    opacity: 0.65;
+    color: var(--root);
+    opacity: 0.72;
   }
 
   .insight-label {
     position: relative;
     z-index: 2;
     margin-bottom: 0.75rem;
-    color: var(--indigo);
-    font-family: var(--font-mono);
-    font-size: 0.59rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
+    color: var(--flow-deep);
+    font-family: var(--font-body);
+    font-size: 0.64rem;
+    font-weight: 750;
   }
 
   .insight-card h3 {
@@ -235,9 +231,9 @@
     margin-bottom: 1rem;
     font-family: var(--font-display);
     font-size: clamp(1.6rem, 5vw, 2.3rem);
-    font-weight: 570;
-    letter-spacing: -0.035em;
-    line-height: 1.08;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.12;
   }
 
   .insight-body {
@@ -245,16 +241,16 @@
     z-index: 2;
     max-width: 28rem;
     margin-bottom: 1.5rem;
-    color: var(--muted);
+    color: var(--text-muted);
     font-size: 0.86rem;
   }
 
   .insight-action {
     position: relative;
     z-index: 2;
-    border-left: 2px solid var(--indigo);
+    border-left: 3px solid var(--root);
     padding: 0.85rem 1rem;
-    background: var(--indigo-soft);
+    background: color-mix(in srgb, var(--sage) 15%, var(--surface));
     font-size: 0.78rem;
     line-height: 1.45;
   }
@@ -262,19 +258,17 @@
   .insight-action span {
     display: block;
     margin-bottom: 0.25rem;
-    color: var(--indigo);
-    font-family: var(--font-mono);
-    font-size: 0.56rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    color: var(--root);
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    font-weight: 750;
   }
 
   .mockup-caption {
     position: relative;
     z-index: 2;
     margin: 1rem 0 0;
-    color: var(--muted);
+    color: var(--text-muted);
     font-size: 0.62rem;
     text-align: right;
   }
@@ -299,13 +293,13 @@
     .comparison td {
       display: table-cell;
       width: 50%;
-      border-bottom: 1px solid var(--line-on-dark);
+      border-bottom: 1px solid var(--line);
       padding: 1.25rem 1.5rem 1.25rem 0;
     }
 
     .comparison td:last-child {
       border-top: 0;
-      border-left: 1px solid var(--line-on-dark);
+      border-left: 1px solid var(--line);
       padding-left: 1.5rem;
     }
 
