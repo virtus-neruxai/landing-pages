@@ -1,0 +1,109 @@
+---
+interface Props {
+  profile: 'student' | 'performance';
+  appUrl: string;
+}
+
+const { profile, appUrl } = Astro.props;
+---
+
+<footer class:list={['zone-footer', `zone-footer--${profile}`]}>
+  <div class="container zone-footer__inner">
+    <div class="zone-footer__brand">
+      <span class="zone-footer__mark" aria-hidden="true"></span>
+      <div>
+        <strong>VIRTUS</strong>
+        <small>by NeruxAI</small>
+      </div>
+    </div>
+    <p>Dirección antes que más ruido. Un siguiente paso que puedas contrastar.</p>
+    <nav aria-label="Enlaces del pie">
+      <a href="/">Visión general</a>
+      <a href={appUrl} data-app-link data-track="app_login_clicked" data-track-location="zone_footer">Iniciar sesión</a>
+      <a href="https://neruxai.com" data-track="neruxai_clicked" data-track-location="zone_footer">NeruxAI</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .zone-footer {
+    --footer-primary: #d8b56d;
+    --footer-secondary: #5d78a6;
+    --footer-action: #4d668f;
+    border-top: 1px solid color-mix(in srgb, var(--footer-secondary) 15%, var(--line));
+    padding: 2.4rem 0;
+    background: color-mix(in srgb, var(--footer-secondary) 7%, var(--background));
+  }
+
+  .zone-footer--performance {
+    --footer-primary: #e0702f;
+    --footer-secondary: #9c3f1b;
+    --footer-action: #8b3519;
+  }
+
+  .zone-footer__inner {
+    display: grid;
+    gap: 1.25rem 3rem;
+    align-items: center;
+  }
+
+  .zone-footer__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .zone-footer__mark {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 65% 35% 58% 42% / 40% 62% 38% 60%;
+    background: linear-gradient(135deg, var(--footer-secondary), color-mix(in srgb, var(--footer-primary) 52%, var(--footer-secondary)));
+    transform: rotate(-12deg);
+  }
+
+  .zone-footer__brand div {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+
+  .zone-footer__brand strong {
+    font-size: 0.9rem;
+    font-weight: 820;
+  }
+
+  .zone-footer__brand small {
+    color: var(--text-muted);
+    font-size: 0.62rem;
+  }
+
+  .zone-footer__inner > p {
+    max-width: 29rem;
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.72rem;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+  }
+
+  nav a {
+    color: var(--footer-action);
+    font-size: 0.72rem;
+    font-weight: 680;
+    text-underline-offset: 0.22rem;
+  }
+
+  @media (min-width: 50rem) {
+    .zone-footer__inner {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+    }
+
+    nav {
+      justify-content: flex-end;
+    }
+  }
+</style>

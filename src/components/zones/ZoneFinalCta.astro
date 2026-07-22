@@ -1,0 +1,195 @@
+---
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  profile: 'student' | 'performance';
+  title: string;
+  primaryLabel: string;
+  microcopy: string;
+  faqs: FaqItem[];
+}
+
+const { profile, title, primaryLabel, microcopy, faqs } = Astro.props;
+---
+
+<section class:list={['section', 'zone-final', `zone-final--${profile}`]} id="empezar" aria-labelledby={`${profile}-final-title`} data-track-section={`${profile}_final`}>
+  <div class="zone-final__shape zone-final__shape--one" aria-hidden="true"></div>
+  <div class="zone-final__shape zone-final__shape--two" aria-hidden="true"></div>
+  <div class="container zone-final__inner">
+    <div class="zone-final__cta">
+      <span class="section-kicker">Tu siguiente movimiento</span>
+      <h2 class="zone-title" id={`${profile}-final-title`}>{title}</h2>
+      <div class="zone-final__actions">
+        <a class="zone-button" href="#zone-demo" data-track="zone_final_cta_clicked" data-track-location="zone_final">
+          {primaryLabel}
+          <span aria-hidden="true">→</span>
+        </a>
+        <a class="zone-button zone-button--ghost" href="/" data-track="zone_global_clicked" data-track-location="zone_final">
+          Conocer Virtus en general
+        </a>
+      </div>
+      <p class="zone-trust">{microcopy}</p>
+    </div>
+
+    <div class="zone-final__faq" aria-labelledby={`${profile}-faq-title`}>
+      <p class="zone-final__faq-label" id={`${profile}-faq-title`}>Antes de empezar</p>
+      {faqs.map((item, index) => (
+        <details>
+          <summary>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            {item.question}
+            <i aria-hidden="true">+</i>
+          </summary>
+          <p>{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .zone-final {
+    min-height: 43rem;
+    background:
+      radial-gradient(ellipse at 8% 20%, color-mix(in srgb, var(--zone-primary) 18%, transparent), transparent 30rem),
+      radial-gradient(ellipse at 92% 82%, color-mix(in srgb, var(--zone-secondary) 15%, transparent), transparent 32rem),
+      var(--surface-strong);
+  }
+
+  .zone-final__shape {
+    position: absolute;
+    border-radius: var(--radius-blob);
+    pointer-events: none;
+  }
+
+  .zone-final__shape--one {
+    top: 4rem;
+    left: -9rem;
+    width: 24rem;
+    height: 17rem;
+    background: color-mix(in srgb, var(--zone-primary) 10%, transparent);
+    transform: rotate(12deg);
+  }
+
+  .zone-final__shape--two {
+    right: -9rem;
+    bottom: 3rem;
+    width: 27rem;
+    height: 19rem;
+    border-radius: 37% 63% 42% 58% / 61% 36% 64% 39%;
+    background: color-mix(in srgb, var(--zone-secondary) 9%, transparent);
+    transform: rotate(-10deg);
+  }
+
+  .zone-final__inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 3.5rem 6rem;
+    align-items: center;
+  }
+
+  .zone-final__cta h2 {
+    max-width: 17ch;
+    margin-bottom: 1.75rem;
+    font-size: clamp(2.35rem, 5.4vw, 4.5rem);
+    line-height: 1.04;
+  }
+
+  .zone-final--performance .zone-final__cta h2 {
+    max-width: 18ch;
+    font-size: clamp(2.15rem, 4.7vw, 3.9rem);
+  }
+
+  .zone-final__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .zone-final__cta > .zone-trust {
+    margin: 1rem 0 0;
+  }
+
+  .zone-final__faq {
+    border: 1px solid color-mix(in srgb, var(--zone-secondary) 18%, var(--line));
+    border-radius: var(--radius-lg);
+    padding: clamp(1rem, 3vw, 1.6rem);
+    background: color-mix(in srgb, var(--surface) 86%, transparent);
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(12px);
+  }
+
+  .zone-final__faq-label {
+    margin-bottom: 0.55rem;
+    color: var(--zone-action);
+    font-size: 0.76rem;
+    font-weight: 760;
+  }
+
+  details {
+    border-top: 1px solid var(--line);
+  }
+
+  summary {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 0.7rem;
+    align-items: center;
+    padding: 1rem 0;
+    cursor: pointer;
+    font-size: 0.86rem;
+    font-weight: 700;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary > span {
+    color: var(--zone-action);
+    font-size: 0.62rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  summary i {
+    display: grid;
+    width: 1.45rem;
+    height: 1.45rem;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, var(--zone-secondary) 30%, var(--line));
+    border-radius: 50%;
+    color: var(--zone-action);
+    font-style: normal;
+    transition: transform 160ms ease;
+  }
+
+  details[open] summary i {
+    transform: rotate(45deg);
+  }
+
+  details > p {
+    margin: -0.15rem 0 1rem 1.9rem;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+
+  @media (min-width: 38rem) {
+    .zone-final__actions {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .zone-final__inner {
+      grid-template-columns: minmax(0, 1fr) minmax(25rem, 0.82fr);
+    }
+  }
+</style>

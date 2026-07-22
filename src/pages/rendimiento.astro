@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import ZoneHero from '../components/zones/ZoneHero.astro';
+import ZoneDemoSection from '../components/zones/ZoneDemoSection.astro';
+import ZoneFinalCta from '../components/zones/ZoneFinalCta.astro';
+import ZoneFooter from '../components/zones/ZoneFooter.astro';
+import ZoneStickyCta from '../components/zones/ZoneStickyCta.astro';
+import PerformanceProblem from '../components/zones/performance/PerformanceProblem.astro';
+import PerformanceFramework from '../components/zones/performance/PerformanceFramework.astro';
+import PerformanceCoherence from '../components/zones/performance/PerformanceCoherence.astro';
+import '../styles/zones.css';
+
+const appUrl = (import.meta.env.PUBLIC_APP_URL || 'https://virtus.neruxai.com').replace(/\/+$/, '');
+
+const faqs = [
+  {
+    question: '¿Sirve si ya soy productivo?',
+    answer: 'Sí. Virtus no intenta enseñarte a organizarte mejor: te ayuda a revisar qué estás consiguiendo con esa capacidad y qué merece seguir recibiendo tu energía.',
+  },
+  {
+    question: '¿Necesito tener claro mi propósito?',
+    answer: 'No. Parte de tu situación actual, de las prioridades que ya declaras y de las decisiones que hoy siguen abiertas.',
+  },
+  {
+    question: '¿Sustituye a un coach o terapeuta?',
+    answer: 'No. Puede complementar una reflexión o un proceso profesional, pero no diagnostica ni sustituye acompañamiento especializado.',
+  },
+];
+---
+
+<BaseLayout
+  profile="performance"
+  title="Virtus para rendimiento — alinea tu siguiente etapa"
+  description="Revisa tu dirección, redefine prioridades y convierte tu siguiente etapa en decisiones concretas con Virtus."
+>
+  <Header appUrl={appUrl} variant="zone" activeZone="performance" />
+  <div class="zone-page zone-page--performance">
+    <main id="contenido">
+      <ZoneHero
+        profile="performance"
+        eyebrow="Virtus para alto rendimiento · by NeruxAI"
+        title="Hacer más no sirve si ya no sabes hacia dónde vas"
+        lede="Revisa tu dirección, reordena prioridades y convierte tu siguiente etapa en decisiones que puedas ejecutar."
+        selectorLabel="¿Qué describe tu momento?"
+        ctaLabel="Definir mi siguiente etapa"
+        microcopy="No necesitas empezar de cero. Necesitas decidir qué merece continuar."
+      />
+      <PerformanceProblem />
+      <ZoneDemoSection
+        profile="performance"
+        appUrl={appUrl}
+        eyebrow="Auditoría de dirección"
+        title="Convierte una sensación difusa en una decisión que puedas contrastar"
+        lede="Parte de una situación real. Virtus ordena qué proteger, qué cuestionar y qué experimento de 14 días puede darte evidencia antes de tomar una decisión mayor."
+      />
+      <PerformanceFramework />
+      <PerformanceCoherence />
+      <ZoneFinalCta
+        profile="performance"
+        title="El siguiente nivel no es producir más. Es alinear tu rendimiento con una dirección que te represente."
+        primaryLabel="Definir mi siguiente etapa"
+        microcopy="Tu primera auditoría se muestra antes del registro."
+        faqs={faqs}
+      />
+    </main>
+    <ZoneFooter profile="performance" appUrl={appUrl} />
+    <ZoneStickyCta profile="performance" label="Definir mi siguiente etapa" />
+  </div>
+</BaseLayout>

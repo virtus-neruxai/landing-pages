@@ -1,0 +1,237 @@
+<section
+  class="section performance-coherence"
+  id="coherencia"
+  aria-labelledby="performance-coherence-title"
+  data-track-section="performance_coherence"
+>
+  <div class="container performance-coherence__layout">
+    <div class="performance-coherence__copy">
+      <span class="section-kicker">Coherencia</span>
+      <h2 class="section-title" id="performance-coherence-title">
+        Virtus te devuelve la distancia entre tus prioridades y tu comportamiento
+      </h2>
+      <p class="section-lede">
+        A partir de tus tareas, decisiones y reflexiones, te muestra qué estás protegiendo de verdad con tu tiempo — no para juzgar, sino para recuperar criterio.
+      </p>
+
+      <p class="coherence-trust">
+        Virtus trabaja con lo que tú decides registrar. Sus observaciones son patrones de comportamiento, no diagnósticos.
+      </p>
+      <p class="coherence-audience">
+        Para profesionales que ya saben rendir y ahora necesitan volver a elegir.
+      </p>
+    </div>
+
+    <figure class="coherence-audit" aria-labelledby="coherence-audit-caption">
+      <figcaption class="sr-only" id="coherence-audit-caption">
+        Ejemplo de una revisión de coherencia entre una prioridad declarada y el comportamiento registrado
+      </figcaption>
+
+      <div class="audit-step audit-step--priority">
+        <span>Prioridad declarada</span>
+        <p>“Querías espacio estratégico”</p>
+      </div>
+
+      <div class="audit-step audit-step--behavior">
+        <span>Comportamiento registrado</span>
+        <ul>
+          <li><strong>18</strong> tareas operativas</li>
+          <li><strong>4</strong> bloques estratégicos reprogramados</li>
+          <li>La misma decisión sigue pendiente</li>
+        </ul>
+      </div>
+
+      <blockquote class="audit-step audit-step--insight">
+        <span>Insight del mentor</span>
+        <p>“Esta semana protegiste la urgencia mejor que la dirección.”</p>
+      </blockquote>
+
+      <div class="audit-step audit-step--action">
+        <span>Acción propuesta</span>
+        <p>Protege un bloque estratégico para resolver la decisión pendiente.</p>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .performance-coherence {
+    --performance-accent: #e0702f;
+    --performance-deep: #9c3f1b;
+    --performance-soft: #f7e8de;
+    background:
+      radial-gradient(ellipse at 10% 90%, color-mix(in srgb, var(--performance-deep) 7%, transparent), transparent 32rem),
+      radial-gradient(ellipse at 94% 8%, color-mix(in srgb, var(--performance-accent) 11%, transparent), transparent 34rem),
+      var(--background);
+  }
+
+  .performance-coherence__layout {
+    display: grid;
+    gap: 3.5rem;
+    align-items: center;
+  }
+
+  .performance-coherence__copy {
+    max-width: 50rem;
+  }
+
+  .performance-coherence .section-kicker {
+    color: var(--performance-deep);
+  }
+
+  .performance-coherence .section-title {
+    max-width: 23ch;
+    font-family: var(--font-performance);
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.08;
+  }
+
+  .coherence-trust {
+    position: relative;
+    margin: clamp(2rem, 5vw, 3rem) 0 0;
+    border-left: 3px solid var(--performance-accent);
+    padding: 0.2rem 0 0.2rem 1rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .coherence-audience {
+    margin: 1.4rem 0 0;
+    color: var(--performance-deep);
+    font-family: var(--font-performance);
+    font-size: 0.93rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .coherence-audit {
+    position: relative;
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+    border: 1px solid color-mix(in srgb, var(--performance-deep) 18%, var(--line));
+    border-radius: var(--radius-lg) var(--radius-sm) var(--radius-lg) var(--radius-lg);
+    padding: clamp(1rem, 4vw, 1.7rem);
+    background: color-mix(in srgb, var(--surface) 94%, var(--performance-soft));
+    box-shadow: 0 26px 64px rgb(100 58 35 / 13%);
+  }
+
+  .coherence-audit::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0.8rem -0.65rem -0.65rem 0.8rem;
+    border-radius: inherit;
+    background: color-mix(in srgb, var(--performance-accent) 8%, transparent);
+    content: '';
+  }
+
+  .audit-step {
+    position: relative;
+    margin: 0;
+    border: 1px solid color-mix(in srgb, var(--performance-deep) 12%, var(--line));
+    border-radius: var(--radius-md);
+    padding: 1rem 1.05rem;
+    background: var(--surface);
+  }
+
+  .audit-step > span {
+    display: block;
+    margin-bottom: 0.45rem;
+    color: var(--performance-deep);
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 800;
+  }
+
+  .audit-step p {
+    margin: 0;
+    color: var(--text);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .audit-step--priority p,
+  .audit-step--insight p {
+    font-family: var(--font-performance);
+    font-size: clamp(1.02rem, 0.96rem + 0.3vw, 1.18rem);
+    font-weight: 600;
+  }
+
+  .audit-step--behavior ul {
+    display: grid;
+    gap: 0.45rem;
+    margin: 0;
+    padding: 0;
+    color: var(--text-muted);
+    font-size: 0.84rem;
+    line-height: 1.45;
+    list-style: none;
+  }
+
+  .audit-step--behavior li {
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .audit-step--behavior li::before {
+    position: absolute;
+    top: 0.62em;
+    left: 0;
+    width: 0.5rem;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--performance-accent);
+    content: '';
+  }
+
+  .audit-step--behavior strong {
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .audit-step--insight {
+    border-color: color-mix(in srgb, var(--performance-accent) 31%, var(--line));
+    background: linear-gradient(135deg, color-mix(in srgb, var(--performance-soft) 75%, var(--surface)), var(--surface));
+  }
+
+  .audit-step--insight::before {
+    position: absolute;
+    top: 1rem;
+    right: 1.1rem;
+    width: 2.7rem;
+    height: 0.28rem;
+    border-radius: 999px;
+    background: var(--performance-accent);
+    box-shadow: -0.55rem 0.48rem 0 color-mix(in srgb, var(--performance-accent) 55%, var(--performance-deep));
+    content: '';
+    transform: rotate(-4deg);
+  }
+
+  .audit-step--insight p {
+    max-width: 27rem;
+    padding-right: 2.5rem;
+  }
+
+  .audit-step--action {
+    border-color: color-mix(in srgb, var(--performance-deep) 26%, var(--line));
+    background: color-mix(in srgb, var(--performance-deep) 8%, var(--surface));
+  }
+
+  .audit-step--action p {
+    font-weight: 650;
+  }
+
+  @media (min-width: 58rem) {
+    .performance-coherence__layout {
+      grid-template-columns: minmax(0, 1fr) minmax(25rem, 0.86fr);
+      gap: clamp(4rem, 8vw, 7rem);
+    }
+
+    .coherence-audit {
+      transform: rotate(0.35deg);
+    }
+  }
+</style>

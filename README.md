@@ -33,6 +33,7 @@ Sin esta variable, los enlaces usan `https://virtus.neruxai.com` como fallback. 
 
 ## Alcance actual
 
-- Implementada únicamente la landing global `/`.
-- Las rutas futuras `/estudiante` y `/rendimiento` están declaradas en los botones de perfil como “Próximamente”, pero no navegan ni tienen página todavía.
+- Landing global disponible en `/`.
+- Zonas segmentadas disponibles en `/estudiante` y `/rendimiento`, con selector de situación y demo local específica para cada perfil.
+- Los parámetros UTM se conservan en `sessionStorage` y se propagan a los enlaces hacia la app.
 - No incluye infraestructura, Docker, Kubernetes ni integración de pagos.

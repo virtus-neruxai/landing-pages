@@ -1,0 +1,182 @@
+<section
+  class="section performance-problem"
+  id="criterio"
+  aria-labelledby="performance-problem-title"
+  data-track-section="performance_problem"
+>
+  <div class="container performance-problem__layout">
+    <div class="performance-problem__copy">
+      <span class="section-kicker">No necesitas otro sistema</span>
+      <h2 class="section-title" id="performance-problem-title">
+        Ya sabes ejecutar. Falta un criterio para decidir qué merece tu energía.
+      </h2>
+      <p class="section-lede">
+        Puedes optimizar tareas y reuniones. No puedes optimizar una dirección que ya no te representa.
+      </p>
+    </div>
+
+    <ul class="performance-signals" aria-label="Situaciones que indican una falta de dirección">
+      <li>
+        <span class="alignment-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>Éxito sin significado</span>
+      </li>
+      <li>
+        <span class="alignment-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>Actividad sin avance</span>
+      </li>
+      <li>
+        <span class="alignment-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>Transición sin criterio</span>
+      </li>
+      <li>
+        <span class="alignment-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>Identidad ligada al rendimiento</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <p class="performance-problem__closing">
+      El problema no siempre es cómo haces las cosas. A veces es por qué sigues haciéndolas.
+    </p>
+  </div>
+</section>
+
+<style>
+  .performance-problem {
+    --performance-accent: #e0702f;
+    --performance-deep: #9c3f1b;
+    --performance-soft: #f7e8de;
+    background:
+      radial-gradient(ellipse at 92% 12%, color-mix(in srgb, var(--performance-accent) 12%, transparent), transparent 34rem),
+      radial-gradient(ellipse at 5% 88%, color-mix(in srgb, var(--performance-deep) 7%, transparent), transparent 30rem),
+      var(--background);
+  }
+
+  .performance-problem::after {
+    position: absolute;
+    z-index: 0;
+    right: -7rem;
+    bottom: -5rem;
+    width: 20rem;
+    height: 11rem;
+    border-radius: 72% 28% 61% 39% / 42% 67% 33% 58%;
+    background: color-mix(in srgb, var(--performance-accent) 7%, transparent);
+    content: '';
+    transform: rotate(-8deg);
+  }
+
+  .performance-problem__layout,
+  .performance-problem > .container:last-child {
+    position: relative;
+    z-index: 1;
+  }
+
+  .performance-problem__layout {
+    display: grid;
+    gap: 2.75rem;
+    align-items: center;
+  }
+
+  .performance-problem__copy {
+    max-width: 46rem;
+  }
+
+  .performance-problem .section-kicker {
+    color: var(--performance-deep);
+  }
+
+  .performance-problem .section-title {
+    max-width: 21ch;
+    font-family: var(--font-performance);
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.08;
+  }
+
+  .performance-signals {
+    display: grid;
+    gap: 0.8rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .performance-signals li {
+    display: grid;
+    grid-template-columns: 4.4rem minmax(0, 1fr);
+    gap: 1rem;
+    align-items: center;
+    min-height: 5.4rem;
+    border: 1px solid color-mix(in srgb, var(--performance-deep) 17%, var(--line));
+    border-radius: var(--radius-md);
+    padding: 1rem 1.15rem;
+    background: color-mix(in srgb, var(--surface) 92%, var(--performance-soft));
+    color: var(--text);
+    box-shadow: 0 12px 28px rgb(100 58 35 / 7%);
+    font-family: var(--font-performance);
+    font-size: clamp(0.94rem, 0.9rem + 0.2vw, 1.06rem);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .alignment-mark {
+    display: grid;
+    gap: 0.32rem;
+    width: 3.6rem;
+  }
+
+  .alignment-mark i {
+    display: block;
+    width: 2.4rem;
+    height: 0.24rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--performance-accent) 76%, var(--performance-deep));
+  }
+
+  .alignment-mark i:nth-child(2) {
+    width: 3.45rem;
+    transform: translateX(0.15rem);
+  }
+
+  .alignment-mark i:nth-child(3) {
+    width: 1.75rem;
+    transform: translateX(0.75rem);
+  }
+
+  .performance-signals li:nth-child(2) .alignment-mark i:first-child {
+    transform: translateX(0.65rem);
+  }
+
+  .performance-signals li:nth-child(3) .alignment-mark i:nth-child(2) {
+    transform: translateX(0.05rem);
+  }
+
+  .performance-signals li:nth-child(4) .alignment-mark i {
+    transform: translateX(0.35rem);
+  }
+
+  .performance-problem__closing {
+    max-width: 54rem;
+    margin: clamp(2.5rem, 6vw, 4.5rem) 0 0;
+    border-left: 3px solid var(--performance-accent);
+    padding: 0.35rem 0 0.35rem clamp(1rem, 3vw, 1.5rem);
+    color: var(--text);
+    font-family: var(--font-performance);
+    font-size: clamp(1.18rem, 1.05rem + 0.6vw, 1.6rem);
+    font-weight: 600;
+    line-height: 1.45;
+  }
+
+  @media (min-width: 56rem) {
+    .performance-problem__layout {
+      grid-template-columns: minmax(0, 1.08fr) minmax(22rem, 0.92fr);
+      gap: clamp(4rem, 8vw, 7rem);
+    }
+
+    .performance-signals li:nth-child(even) {
+      transform: translateX(1.4rem);
+    }
+  }
+</style>

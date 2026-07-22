@@ -1,0 +1,55 @@
+---
+import ZoneDemo from './ZoneDemo';
+
+interface Props {
+  profile: 'student' | 'performance';
+  appUrl: string;
+  eyebrow: string;
+  title: string;
+  lede: string;
+}
+
+const { profile, appUrl, eyebrow, title, lede } = Astro.props;
+---
+
+<section class:list={['section', 'zone-demo-section', `zone-demo-section--${profile}`]} id="zone-demo" tabindex="-1" aria-labelledby={`${profile}-demo-title`} data-track-section={`${profile}_demo`}>
+  <div class="container">
+    <div class="zone-demo-section__heading">
+      <div>
+        <span class="section-kicker">{eyebrow}</span>
+        <h2 class="section-title" id={`${profile}-demo-title`}>{title}</h2>
+      </div>
+      <p class="section-lede">{lede}</p>
+    </div>
+
+    <ZoneDemo client:visible profile={profile} appUrl={appUrl} />
+  </div>
+</section>
+
+<style>
+  .zone-demo-section {
+    background:
+      radial-gradient(ellipse at 4% 18%, color-mix(in srgb, var(--zone-primary) 12%, transparent), transparent 28rem),
+      radial-gradient(ellipse at 96% 85%, color-mix(in srgb, var(--zone-secondary) 11%, transparent), transparent 30rem),
+      var(--surface);
+  }
+
+  .zone-demo-section__heading {
+    display: grid;
+    gap: 1rem 4rem;
+    align-items: end;
+    margin-bottom: 2.5rem;
+  }
+
+  .zone-demo-section__heading .section-title,
+  .zone-demo-section__heading .section-lede {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 58rem) {
+    .zone-demo-section__heading {
+      grid-template-columns: minmax(0, 1fr) minmax(23rem, 0.75fr);
+      margin-bottom: 3.25rem;
+    }
+  }
+</style>

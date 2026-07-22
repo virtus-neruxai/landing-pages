@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import ZoneHero from '../components/zones/ZoneHero.astro';
+import ZoneDemoSection from '../components/zones/ZoneDemoSection.astro';
+import ZoneFinalCta from '../components/zones/ZoneFinalCta.astro';
+import ZoneFooter from '../components/zones/ZoneFooter.astro';
+import ZoneStickyCta from '../components/zones/ZoneStickyCta.astro';
+import StudentProblem from '../components/zones/student/StudentProblem.astro';
+import StudentFramework from '../components/zones/student/StudentFramework.astro';
+import StudentContinuity from '../components/zones/student/StudentContinuity.astro';
+import '../styles/zones.css';
+
+const appUrl = (import.meta.env.PUBLIC_APP_URL || 'https://virtus.neruxai.com').replace(/\/+$/, '');
+
+const faqs = [
+  {
+    question: '¿Y si no sé qué quiero?',
+    answer: 'Ese es precisamente el punto de partida. No necesitas inventar una vocación: puedes ordenar la duda y probar pasos pequeños que te den información real.',
+  },
+  {
+    question: '¿Me dirá qué carrera elegir?',
+    answer: 'No. Virtus no decide por ti; te ayuda a formular mejores preguntas, proteger lo importante y contrastar opciones antes de elegir.',
+  },
+  {
+    question: '¿Sustituye a un orientador o profesional?',
+    answer: 'No. Virtus no diagnostica ni sustituye asesoramiento académico, psicológico o profesional. Puede ayudarte a preparar mejor esa conversación.',
+  },
+];
+---
+
+<BaseLayout
+  profile="student"
+  title="Virtus para estudiantes — convierte la duda en dirección"
+  description="Ordena la duda, descubre qué sigue teniendo sentido para ti y conviértelo en un siguiente paso concreto con Virtus."
+>
+  <Header appUrl={appUrl} variant="zone" activeZone="student" />
+  <div class="zone-page zone-page--student">
+    <main id="contenido">
+      <ZoneHero
+        profile="student"
+        eyebrow="Virtus para estudiantes · by NeruxAI"
+        title="Estudiar sin saber para qué agota más que cualquier examen"
+        lede="Ordena la duda, descubre qué sigue teniendo sentido para ti y conviértelo en un siguiente paso concreto."
+        selectorLabel="¿En qué punto estás?"
+        ctaLabel="Aclarar mi siguiente paso"
+        microcopy="No necesitas saber todavía qué quieres hacer con tu vida."
+      />
+      <StudentProblem />
+      <ZoneDemoSection
+        profile="student"
+        appUrl={appUrl}
+        eyebrow="Duda convertida en evidencia"
+        title="De “no sé qué hacer con mi vida” a un experimento de 7 días"
+        lede="No son frases motivacionales. Virtus protege el mínimo, propone acciones reversibles y te ayuda a observar qué despierta interés o rechazo antes de decidir."
+      />
+      <StudentFramework />
+      <StudentContinuity />
+      <ZoneFinalCta
+        profile="student"
+        title="No necesitas tener tu vocación resuelta. Necesitas dejar de avanzar en automático."
+        primaryLabel="Empezar mi proceso de claridad"
+        microcopy="Recibe tu primera propuesta antes de crear una cuenta."
+        faqs={faqs}
+      />
+    </main>
+    <ZoneFooter profile="student" appUrl={appUrl} />
+    <ZoneStickyCta profile="student" label="Aclarar mi siguiente paso" />
+  </div>
+</BaseLayout>

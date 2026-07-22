@@ -12,11 +12,13 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  profile?: 'student' | 'performance';
 }
 
 const {
   title = 'Virtus por NeruxAI — convierte tu propósito en acción',
   description = 'Convierte tus objetivos en tareas y rutinas conectadas con lo que de verdad te importa. Virtus se adapta a tu progreso, energía y contexto real.',
+  profile,
 } = Astro.props;
 ---
 
@@ -35,7 +37,7 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
-  <body>
+  <body data-profile={profile}>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <slot />
 
@@ -45,16 +47,108 @@ const {
         properties?: Record<string, string>;
       };
 
+      type CampaignData = Partial<Record<'source' | 'medium' | 'campaign' | 'content' | 'influencer_id', string>>;
+
+      const campaignStorageKey = 'virtus:campaign';
+      const campaignParams = [
+        ['utm_source', 'source'],
+        ['utm_medium', 'medium'],
+        ['utm_campaign', 'campaign'],
+        ['utm_content', 'content'],
+        ['influencer_id', 'influencer_id'],
+      ] as const;
+
+      const readCampaign = (): CampaignData => {
+        let stored: CampaignData = {};
+
+        try {
+          const parsed = JSON.parse(window.sessionStorage.getItem(campaignStorageKey) ?? '{}') as unknown;
+          if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+            stored = parsed as CampaignData;
+          }
+        } catch {
+          stored = {};
+        }
+
+        const query = new URLSearchParams(window.location.search);
+        campaignParams.forEach(([queryKey, propertyKey]) => {
+          const value = query.get(queryKey)?.trim();
+          if (value) stored[propertyKey] = value;
+        });
+
+        try {
+          window.sessionStorage.setItem(campaignStorageKey, JSON.stringify(stored));
+        } catch {
+          // La landing sigue funcionando si el navegador bloquea sessionStorage.
+        }
+
+        return stored;
+      };
+
+      const campaign = readCampaign();
+      const pageProfile = document.body.dataset.profile;
+      const sharedProperties = {
+        ...campaign,
+        ...(pageProfile ? { profile: pageProfile } : {}),
+      };
+
+      const decorateAppLink = (link: HTMLAnchorElement) => {
+        try {
+          const destination = new URL(link.href, window.location.href);
+          campaignParams.forEach(([queryKey, propertyKey]) => {
+            const value = campaign[propertyKey];
+            if (value && !destination.searchParams.has(queryKey)) destination.searchParams.set(queryKey, value);
+          });
+          if (pageProfile && !destination.searchParams.has('profile')) destination.searchParams.set('profile', pageProfile);
+
+          if (pageProfile) {
+            let selectedSituation: string | null = null;
+            try {
+              selectedSituation = window.sessionStorage.getItem(`virtus:zone-situation:${pageProfile}`);
+            } catch {
+              // La campaña de la URL se conserva aunque el navegador bloquee sessionStorage.
+            }
+            if (selectedSituation) destination.searchParams.set('selected_situation', selectedSituation);
+          }
+
+          link.href = destination.toString();
+        } catch {
+          // Un enlace inválido no debe bloquear el resto de la página.
+        }
+      };
+
+      document.querySelectorAll<HTMLAnchorElement>('a[data-app-link]').forEach(decorateAppLink);
+
+      window.addEventListener(
+        'virtus:analytics',
+        (event) => {
+          const detail = (event as CustomEvent<LandingEvent>).detail;
+          if (!detail) return;
+          detail.properties = { ...sharedProperties, ...(detail.properties ?? {}) };
+        },
+        { capture: true },
+      );
+
       const emitLandingEvent = ({ name, properties = {} }: LandingEvent) => {
         window.dispatchEvent(
           new CustomEvent('virtus:analytics', {
-            detail: { name, properties, timestamp: new Date().toISOString() },
+            detail: { name, properties: { ...sharedProperties, ...properties }, timestamp: new Date().toISOString() },
           }),
         );
       };
 
+      if (pageProfile) {
+        emitLandingEvent({
+          name: 'profile_landing_view',
+          properties: { profile: pageProfile },
+        });
+      }
+
       document.addEventListener('click', (event) => {
         const target = event.target as HTMLElement;
+        const appLink = target.closest<HTMLAnchorElement>('a[data-app-link]');
+        if (appLink) decorateAppLink(appLink);
+
         const trackedElement = target.closest<HTMLElement>('[data-track]');
 
         if (trackedElement) {

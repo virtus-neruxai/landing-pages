@@ -1,0 +1,102 @@
+.zone-page {
+  --zone-primary: #d8b56d;
+  --zone-secondary: #5d78a6;
+  --zone-action: #4d668f;
+  --zone-action-hover: #3f567b;
+  --zone-soft: #edf1f6;
+  --zone-primary-soft: #f7f0df;
+  --zone-font: var(--font-student);
+  min-height: 100vh;
+  overflow: clip;
+  background:
+    radial-gradient(circle at 96% 4%, color-mix(in srgb, var(--zone-secondary) 10%, transparent), transparent 26rem),
+    var(--background);
+}
+
+.zone-page--performance {
+  --zone-primary: #e0702f;
+  --zone-secondary: #9c3f1b;
+  --zone-action: #8b3519;
+  --zone-action-hover: #702a16;
+  --zone-soft: #f6ebe5;
+  --zone-primary-soft: #faeee6;
+  --zone-font: var(--font-performance);
+}
+
+.zone-page [id] {
+  scroll-margin-top: 8.2rem;
+}
+
+.zone-page .section-kicker {
+  color: var(--zone-action);
+}
+
+.zone-page .section-title,
+.zone-page .zone-title {
+  font-family: var(--zone-font);
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.zone-button {
+  display: inline-flex;
+  min-height: 3.35rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.9rem 1.4rem;
+  background: linear-gradient(120deg, var(--zone-action), color-mix(in srgb, var(--zone-primary) 18%, var(--zone-action)));
+  color: var(--white);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.96rem;
+  font-weight: 760;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 14px 30px color-mix(in srgb, var(--zone-secondary) 22%, transparent);
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.zone-button:hover {
+  background: linear-gradient(120deg, var(--zone-action-hover), color-mix(in srgb, var(--zone-primary) 28%, var(--zone-action-hover)));
+  box-shadow: 0 18px 34px color-mix(in srgb, var(--zone-secondary) 27%, transparent);
+  transform: translateY(-2px);
+}
+
+.zone-button--ghost {
+  border-color: color-mix(in srgb, var(--zone-secondary) 34%, var(--line));
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  color: var(--zone-action);
+  box-shadow: none;
+}
+
+.zone-button--ghost:hover {
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.zone-trust {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.zone-trust::before {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 60% 40% 58% 42%;
+  background: var(--zone-primary);
+  content: '';
+  transform: rotate(20deg);
+}
+
+@media (min-width: 60rem) {
+  .zone-page [id] {
+    scroll-margin-top: 5.5rem;
+  }
+}

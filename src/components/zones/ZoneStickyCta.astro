@@ -1,0 +1,95 @@
+---
+interface Props {
+  profile: 'student' | 'performance';
+  label: string;
+}
+
+const { profile, label } = Astro.props;
+---
+
+<aside class:list={['zone-sticky', `zone-sticky--${profile}`]} data-zone-sticky hidden aria-label="Acceso rápido a la demostración">
+  <a href="#zone-demo" data-track="zone_sticky_cta_clicked" data-track-location={`${profile}_sticky`}>
+    {label}
+    <span aria-hidden="true">→</span>
+  </a>
+</aside>
+
+<script>
+  const stickyCta = document.querySelector<HTMLElement>('[data-zone-sticky]');
+  const zoneHero = document.querySelector<HTMLElement>('#zone-hero');
+  const zoneFinal = document.querySelector<HTMLElement>('#empezar');
+
+  if (stickyCta && zoneHero) {
+    let heroVisible = true;
+    let finalVisible = false;
+    const updateSticky = () => {
+      stickyCta.hidden = heroVisible || finalVisible;
+    };
+
+    const heroObserver = new IntersectionObserver(
+      ([entry]) => {
+        heroVisible = entry?.isIntersecting ?? true;
+        updateSticky();
+      },
+      { threshold: 0.08 },
+    );
+
+    heroObserver.observe(zoneHero);
+
+    if (zoneFinal) {
+      const finalObserver = new IntersectionObserver(
+        ([entry]) => {
+          finalVisible = entry?.isIntersecting ?? false;
+          updateSticky();
+        },
+        { threshold: 0.04 },
+      );
+      finalObserver.observe(zoneFinal);
+    }
+  }
+</script>
+
+<style>
+  .zone-sticky {
+    --sticky-primary: #d8b56d;
+    --sticky-secondary: #4d668f;
+    position: fixed;
+    z-index: 90;
+    right: 0.75rem;
+    bottom: max(0.75rem, env(safe-area-inset-bottom));
+    left: 0.75rem;
+  }
+
+  .zone-sticky[hidden] {
+    display: none;
+  }
+
+  .zone-sticky--performance {
+    --sticky-primary: #e0702f;
+    --sticky-secondary: #8b3519;
+  }
+
+  .zone-sticky a {
+    display: flex;
+    min-height: 3.35rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border: 1px solid rgb(255 255 255 / 28%);
+    border-radius: 999px;
+    padding: 0.85rem 1.1rem;
+    background: linear-gradient(120deg, var(--sticky-secondary), color-mix(in srgb, var(--sticky-primary) 18%, var(--sticky-secondary)));
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: 760;
+    text-decoration: none;
+    box-shadow: 0 16px 36px color-mix(in srgb, var(--sticky-secondary) 30%, transparent);
+    backdrop-filter: blur(12px);
+  }
+
+  @media (min-width: 48rem) {
+    .zone-sticky {
+      display: none;
+    }
+  }
+</style>

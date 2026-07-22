@@ -13,8 +13,6 @@ const profiles = [
   { name: 'Estudiante', symbol: '⌁', description: 'Foco · estudio · progreso', tone: 'student' },
 ];
 
-// Las rutas quedan declaradas aquí. Cuando existan sus páginas, basta con
-// sustituir cada button por un enlace conservando `route` como href.
 const futureZones = [
   { label: 'Para estudiantes', route: '/estudiante' },
   { label: 'Para rendimiento', route: '/rendimiento' },
@@ -30,7 +28,7 @@ const futureZones = [
       </div>
       <div>
         <p class="section-lede">Elige la perspectiva que te ayuda a escuchar y actuar. La dirección es la misma; cambia la forma de acompañarte.</p>
-        <a class="profile-discover" href={`${appUrl}/profile`} data-track="profile_cta_clicked" data-track-location="profiles">
+        <a class="profile-discover" href={`${appUrl}/profile`} data-app-link data-track="profile_cta_clicked" data-track-location="profiles">
           Descubre tu perfil
           <span aria-hidden="true">→</span>
         </a>
@@ -50,20 +48,19 @@ const futureZones = [
       ))}
     </div>
 
-    <div class="future-zones" role="group" aria-labelledby="future-zones-title">
+    <div class="future-zones" aria-labelledby="future-zones-title">
       <div>
-        <span class="future-label">Próximamente</span>
-        <h3 id="future-zones-title">Experiencias para tu momento concreto</h3>
-        <p>Estamos preparando recorridos específicos. La landing principal ya funciona para cualquier misión.</p>
+        <span class="future-label">Recorridos específicos</span>
+        <h3 id="future-zones-title">Encuentra el recorrido para tu momento</h3>
+        <p>Explora una experiencia centrada en tu dirección académica o en la siguiente etapa de tu rendimiento.</p>
       </div>
       <div class="zone-buttons">
         {futureZones.map((zone) => (
-          <button type="button" disabled data-route={zone.route} aria-describedby="zone-status">
+          <a href={zone.route} data-route={zone.route} data-track="profile_zone_clicked" data-track-location="profiles">
             {zone.label}
             <span aria-hidden="true">↗</span>
-          </button>
+          </a>
         ))}
-        <span class="sr-only" id="zone-status">Ruta preparada, todavía no disponible</span>
       </div>
     </div>
   </div>
@@ -256,7 +253,7 @@ const futureZones = [
     gap: 0.65rem;
   }
 
-  .zone-buttons button {
+  .zone-buttons a {
     display: inline-flex;
     min-height: 2.85rem;
     align-items: center;
@@ -266,10 +263,29 @@ const futureZones = [
     padding: 0.7rem 1rem;
     background: color-mix(in srgb, var(--surface) 74%, transparent);
     color: var(--flow-deep);
-    cursor: not-allowed;
+    cursor: pointer;
     font-size: 0.76rem;
     font-weight: 700;
-    opacity: 0.72;
+    text-decoration: none;
+    transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
+  }
+
+  .zone-buttons a:hover {
+    border-color: color-mix(in srgb, var(--flow) 50%, var(--line));
+    background: var(--surface);
+    transform: translateY(-1px);
+  }
+
+  .zone-buttons a:first-child {
+    border-color: color-mix(in srgb, #5d78a6 34%, var(--line));
+    background: color-mix(in srgb, #d8b56d 10%, var(--surface));
+    color: #4d668f;
+  }
+
+  .zone-buttons a:last-child {
+    border-color: color-mix(in srgb, #9c3f1b 30%, var(--line));
+    background: color-mix(in srgb, #e0702f 9%, var(--surface));
+    color: #8b3519;
   }
 
   @media (min-width: 34rem) {

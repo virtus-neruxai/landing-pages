@@ -2,14 +2,17 @@
 interface Props {
   appUrl: string;
   variant?: 'global' | 'zone';
+  activeZone?: 'student' | 'performance';
 }
 
-const { appUrl, variant = 'global' } = Astro.props;
+const { appUrl, variant = 'global', activeZone } = Astro.props;
+const isZone = variant === 'zone';
+const brandHref = !isZone ? '/' : activeZone === 'student' ? '/estudiante' : activeZone === 'performance' ? '/rendimiento' : '/';
 ---
 
-<header class:list={['site-header', `site-header--${variant}`]}>
+<header class:list={['site-header', `site-header--${variant}`, activeZone && `site-header--${activeZone}`]}>
   <div class="header-inner container">
-    <a class="brand" href="/" aria-label="NeruxAI Virtus — Inicio">
+    <a class="brand" href={brandHref} aria-label={isZone ? 'Virtus por NeruxAI — Inicio' : 'NeruxAI Virtus — Inicio'}>
       <span class="brand-mark" aria-hidden="true">
         <svg viewBox="0 0 40 40" fill="none">
           <path d="M9.5 23.6c5.1-9.2 13.5-12.4 21.8-11.8-.5 8.7-5.8 16.2-16.3 17.2" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"></path>
@@ -17,19 +20,37 @@ const { appUrl, variant = 'global' } = Astro.props;
           <path d="M8.7 31.1c4.9 2.2 9.8 2.1 14.4.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
         </svg>
       </span>
-      <span class="brand-name">NeruxAI</span>
-      <span class="brand-product">Virtus</span>
+      {isZone ? (
+        <>
+          <span class="brand-name brand-name--zone">VIRTUS</span>
+          <span class="brand-product">by NeruxAI</span>
+        </>
+      ) : (
+        <>
+          <span class="brand-name">NeruxAI</span>
+          <span class="brand-product">Virtus</span>
+        </>
+      )}
     </a>
 
-    <nav class="header-nav" aria-label="Navegación principal">
-      <a href="#como-funciona">Cómo funciona</a>
-      <a href="#diferencia">La diferencia</a>
-      <a href="#perfiles">Perfiles</a>
-    </nav>
+    {isZone ? (
+      <nav class="header-nav header-nav--zone" aria-label="Landings de Virtus">
+        <a href="/">Visión general</a>
+        <a href="/estudiante" aria-current={activeZone === 'student' ? 'page' : undefined}>Estudiante</a>
+        <a href="/rendimiento" aria-current={activeZone === 'performance' ? 'page' : undefined}>Rendimiento</a>
+      </nav>
+    ) : (
+      <nav class="header-nav" aria-label="Navegación principal">
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#diferencia">La diferencia</a>
+        <a href="#perfiles">Perfiles</a>
+      </nav>
+    )}
 
     <a
       class="login-link"
       href={appUrl}
+      data-app-link
       data-track="app_login_clicked"
       data-track-location="header"
     >
@@ -44,6 +65,9 @@ const { appUrl, variant = 'global' } = Astro.props;
 
 <style>
   .site-header {
+    --zone-primary: var(--flow);
+    --zone-secondary: var(--root);
+    --zone-action: var(--root-deep);
     position: fixed;
     z-index: 100;
     inset: 0 0 auto;
@@ -56,6 +80,7 @@ const { appUrl, variant = 'global' } = Astro.props;
   }
 
   .header-inner {
+    position: relative;
     display: flex;
     height: 100%;
     align-items: center;
@@ -95,6 +120,11 @@ const { appUrl, variant = 'global' } = Astro.props;
     letter-spacing: 0;
   }
 
+  .brand-name--zone {
+    font-size: 1.08rem;
+    font-weight: 820;
+  }
+
   .brand-product {
     border: 1px solid rgb(47 107 79 / 22%);
     border-radius: 999px;
@@ -124,7 +154,86 @@ const { appUrl, variant = 'global' } = Astro.props;
   }
 
   .header-nav a:hover {
-      color: var(--root);
+    color: var(--root);
+  }
+
+  .site-header--student {
+    --zone-primary: #d8b56d;
+    --zone-secondary: #5d78a6;
+    --zone-action: #4d668f;
+  }
+
+  .site-header--performance {
+    --zone-primary: #e0702f;
+    --zone-secondary: #9c3f1b;
+    --zone-action: #8b3519;
+  }
+
+  .site-header--zone {
+    height: 7.35rem;
+    border-color: color-mix(in srgb, var(--zone-secondary) 18%, transparent);
+  }
+
+  .site-header--zone .header-inner {
+    padding-bottom: 2.65rem;
+  }
+
+  .site-header--zone .brand-mark {
+    background: linear-gradient(135deg, var(--zone-secondary), color-mix(in srgb, var(--zone-primary) 55%, var(--zone-secondary)));
+    box-shadow: 0 7px 18px color-mix(in srgb, var(--zone-secondary) 20%, transparent);
+  }
+
+  .site-header--zone .brand-product {
+    border-color: color-mix(in srgb, var(--zone-secondary) 24%, transparent);
+    color: var(--zone-action);
+  }
+
+  .header-nav--zone {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    height: 2.65rem;
+    align-items: stretch;
+    gap: 0.25rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .header-nav--zone::-webkit-scrollbar {
+    display: none;
+  }
+
+  .header-nav--zone a {
+    position: relative;
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    padding: 0 0.72rem;
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+
+  .header-nav--zone a[aria-current='page'] {
+    color: var(--zone-action);
+    font-weight: 760;
+  }
+
+  .header-nav--zone a[aria-current='page']::after {
+    position: absolute;
+    right: 0.65rem;
+    bottom: 0;
+    left: 0.65rem;
+    height: 0.18rem;
+    border-radius: 999px 999px 0 0;
+    background: var(--zone-primary);
+    content: '';
+  }
+
+  .site-header--zone .login-link {
+    background: linear-gradient(120deg, var(--zone-action), color-mix(in srgb, var(--zone-primary) 18%, var(--zone-action)));
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--zone-secondary) 20%, transparent);
   }
 
   .login-link {
@@ -177,6 +286,27 @@ const { appUrl, variant = 'global' } = Astro.props;
 
     .login-link {
       padding-inline: 1rem;
+    }
+
+    .site-header--zone {
+      height: 4.7rem;
+    }
+
+    .site-header--zone .header-inner {
+      padding-bottom: 0;
+    }
+
+    .header-nav--zone {
+      position: static;
+      width: auto;
+      height: 100%;
+      align-items: stretch;
+      gap: 0.35rem;
+      overflow: visible;
+    }
+
+    .header-nav--zone a {
+      padding-inline: 0.85rem;
     }
   }
 </style>
