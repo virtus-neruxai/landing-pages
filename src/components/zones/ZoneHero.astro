@@ -13,6 +13,34 @@ interface Props {
 }
 
 const { profile, eyebrow, title, lede, selectorLabel, ctaLabel, microcopy } = Astro.props;
+
+const heroPaths: Record<ZoneProfile, string[]> = {
+  student: [
+    'M-40 475C128 355 205 443 330 338S547 201 922 260',
+    'M330 338c72-22 120-80 148-166',
+    'M330 338c95 9 168 57 214 142',
+  ],
+  performance: [
+    'M-35 446C170 383 308 391 454 310S690 163 930 145',
+    'M-35 490C176 426 318 431 468 350S704 202 930 185',
+    'M-35 402C164 344 298 351 442 270S680 123 930 105',
+  ],
+  stoic: [
+    'M-45 452C120 381 235 416 354 330s246-123 402-67 116 5 187-31',
+    'M354 330c-22-88 11-161 102-220',
+    'M354 330c86 10 147-28 205-103',
+  ],
+  spiritual: [
+    'M-36 482C142 406 230 419 356 335s233-132 394-120 132-47 195-108',
+    'M356 335c57-76 123-123 218-150',
+    'M356 335c93 25 165 76 213 154',
+  ],
+  calm: [
+    'M-45 398C98 327 218 469 361 391s252-68 371-7 154 43 213-9',
+    'M-45 448C98 377 218 519 361 441s252-68 371-7 154 43 213-9',
+    'M-45 498C98 427 218 569 361 491s252-68 371-7 154 43 213-9',
+  ],
+};
 ---
 
 <section class:list={['zone-hero', `zone-hero--${profile}`]} id="zone-hero" aria-labelledby={`${profile}-hero-title`} data-track-section={`${profile}_hero`}>
@@ -20,19 +48,7 @@ const { profile, eyebrow, title, lede, selectorLabel, ctaLabel, microcopy } = As
     <span class="zone-hero__blob zone-hero__blob--primary"></span>
     <span class="zone-hero__blob zone-hero__blob--secondary"></span>
     <svg class="zone-hero__path" viewBox="0 0 900 540" preserveAspectRatio="none">
-      {profile === 'student' ? (
-        <>
-          <path d="M-40 475C128 355 205 443 330 338S547 201 922 260"></path>
-          <path d="M330 338c72-22 120-80 148-166"></path>
-          <path d="M330 338c95 9 168 57 214 142"></path>
-        </>
-      ) : (
-        <>
-          <path d="M-35 446C170 383 308 391 454 310S690 163 930 145"></path>
-          <path d="M-35 490C176 426 318 431 468 350S704 202 930 185"></path>
-          <path d="M-35 402C164 344 298 351 442 270S680 123 930 105"></path>
-        </>
-      )}
+      {heroPaths[profile].map((path) => <path d={path}></path>)}
     </svg>
   </div>
 

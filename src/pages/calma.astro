@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import ZoneHero from '../components/zones/ZoneHero.astro';
+import ZoneDemoSection from '../components/zones/ZoneDemoSection.astro';
+import ZoneFinalCta from '../components/zones/ZoneFinalCta.astro';
+import ZoneFooter from '../components/zones/ZoneFooter.astro';
+import ZoneStickyCta from '../components/zones/ZoneStickyCta.astro';
+import CalmProblem from '../components/zones/calm/CalmProblem.astro';
+import CalmFramework from '../components/zones/calm/CalmFramework.astro';
+import CalmContinuity from '../components/zones/calm/CalmContinuity.astro';
+import '../styles/zones.css';
+
+const appUrl = (import.meta.env.PUBLIC_APP_URL || 'https://virtus.neruxai.com').replace(/\/+$/, '');
+
+const faqs = [
+  {
+    question: '¿Y si ahora mismo tengo muy poca energía?',
+    answer: 'Ese es un punto de partida válido. Virtus reduce la propuesta a una pausa o una acción pequeña que quepa en tu estado de hoy.',
+  },
+  {
+    question: '¿Me va a pedir que sea más productivo?',
+    answer: 'No. El perfil Calma prioriza recuperación y continuidad sin presión. Descansar o hacer menos puede ser la propuesta adecuada.',
+  },
+  {
+    question: '¿Sustituye a un profesional de la salud?',
+    answer: 'No. Virtus no diagnostica ni sustituye atención médica o psicológica. Si el malestar es intenso o persistente, busca apoyo profesional.',
+  },
+];
+---
+
+<BaseLayout
+  profile="calm"
+  title="Virtus Calma — vuelve a avanzar sin añadir más presión"
+  description="Reduce el ruido, escucha tu energía real y encuentra un siguiente paso pequeño y sostenible con el perfil Calma de Virtus."
+>
+  <Header appUrl={appUrl} variant="zone" activeZone="calm" />
+  <div class="zone-page zone-page--calm">
+    <main id="contenido">
+      <ZoneHero
+        profile="calm"
+        eyebrow="Virtus Calma · by NeruxAI"
+        title="No necesitas exigirte más para volver a avanzar"
+        lede="Baja el ruido, reconoce la energía que tienes y encuentra una sola acción que puedas sostener sin convertirla en otra carga."
+        selectorLabel="¿Qué necesita menos presión ahora?"
+        ctaLabel="Encontrar un paso amable"
+        microcopy="Puedes empezar con la energía que tienes hoy, sin exigirte estar mejor primero."
+      />
+      <CalmProblem />
+      <ZoneDemoSection
+        profile="calm"
+        appUrl={appUrl}
+        eyebrow="Del desborde a un paso posible"
+        title="De “no puedo con todo” a una sola acción que cabe en tu energía"
+        lede="Virtus no añade otra lista. Te propone una pausa, una observación concreta y un movimiento pequeño para hoy."
+      />
+      <CalmFramework />
+      <CalmContinuity />
+      <ZoneFinalCta
+        profile="calm"
+        title="No tienes que recuperar todo el ritmo hoy. Solo encontrar una forma amable de empezar."
+        primaryLabel="Encontrar mi siguiente paso"
+        microcopy="Recibe una primera propuesta completa antes de crear una cuenta."
+        faqs={faqs}
+      />
+    </main>
+    <ZoneFooter profile="calm" appUrl={appUrl} />
+    <ZoneStickyCta profile="calm" label="Encontrar un paso amable" />
+  </div>
+</BaseLayout>

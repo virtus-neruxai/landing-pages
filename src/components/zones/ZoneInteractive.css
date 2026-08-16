@@ -11,6 +11,7 @@
   --zone-line: rgb(93 120 166 / 22%);
   --zone-gradient: linear-gradient(120deg, #4d668f, color-mix(in srgb, #d8b56d 18%, #4d668f));
   --zone-gradient-hover: linear-gradient(120deg, #3f567b, color-mix(in srgb, #d8b56d 14%, #3f567b));
+  --zone-heading-font: var(--font-student, Bitter, Georgia, serif);
   color: var(--zone-text);
   font-family: var(--font-body, Inter, system-ui, sans-serif);
 }
@@ -25,6 +26,46 @@
   --zone-line: rgb(156 63 27 / 22%);
   --zone-gradient: linear-gradient(120deg, #8b3519, color-mix(in srgb, #e0702f 28%, #8b3519));
   --zone-gradient-hover: linear-gradient(120deg, #702a16, color-mix(in srgb, #e0702f 22%, #702a16));
+  --zone-heading-font: var(--font-performance, Montserrat, Inter, sans-serif);
+}
+
+.zone-selector--stoic,
+.zone-demo--stoic {
+  --zone-accent: #c6a75e;
+  --zone-deep: #8b2f1f;
+  --zone-dark: #78291c;
+  --zone-soft: #f3e5df;
+  --zone-wash: #f5eedf;
+  --zone-line: rgb(139 47 31 / 24%);
+  --zone-gradient: linear-gradient(120deg, #78291c, color-mix(in srgb, #c6a75e 18%, #78291c));
+  --zone-gradient-hover: linear-gradient(120deg, #612016, color-mix(in srgb, #c6a75e 15%, #612016));
+  --zone-heading-font: var(--font-stoic, Lora, Georgia, serif);
+}
+
+.zone-selector--spiritual,
+.zone-demo--spiritual {
+  --zone-accent: #8aa66a;
+  --zone-deep: #2f6b4f;
+  --zone-dark: #24573f;
+  --zone-soft: #e7efe4;
+  --zone-wash: #e8f1eb;
+  --zone-line: rgb(47 107 79 / 24%);
+  --zone-gradient: linear-gradient(120deg, #24573f, color-mix(in srgb, #8aa66a 18%, #24573f));
+  --zone-gradient-hover: linear-gradient(120deg, #1b4431, color-mix(in srgb, #8aa66a 14%, #1b4431));
+  --zone-heading-font: var(--font-spiritual, Spectral, Georgia, serif);
+}
+
+.zone-selector--calm,
+.zone-demo--calm {
+  --zone-accent: #2f80ed;
+  --zone-deep: #174a7c;
+  --zone-dark: #123d68;
+  --zone-soft: #dfeeff;
+  --zone-wash: #eaf3ff;
+  --zone-line: rgb(23 74 124 / 24%);
+  --zone-gradient: linear-gradient(120deg, #174a7c, color-mix(in srgb, #2f80ed 22%, #174a7c));
+  --zone-gradient-hover: linear-gradient(120deg, #10395f, color-mix(in srgb, #2f80ed 18%, #10395f));
+  --zone-heading-font: var(--font-calm, 'Nunito Sans', Inter, sans-serif);
 }
 
 .zone-selector__label {
@@ -356,15 +397,16 @@
   max-width: 27ch;
   margin: 0;
   color: var(--zone-text);
-  font-family: var(--font-student, Bitter, Georgia, serif);
+  font-family: var(--zone-heading-font);
   font-size: clamp(1.45rem, 4vw, 2rem);
   font-weight: 600;
   line-height: 1.14;
 }
 
-.zone-demo--performance .zone-demo__result-title {
-  font-family: var(--font-performance, Montserrat, Inter, sans-serif);
-  letter-spacing: 0;
+.zone-demo--spiritual .zone-demo__result-title,
+.zone-demo--spiritual .zone-demo__block h4 {
+  font-style: italic;
+  font-weight: 500;
 }
 
 .zone-demo__echo {
@@ -410,14 +452,10 @@
 .zone-demo__block h4 {
   margin: 0;
   color: var(--zone-dark);
-  font-family: var(--font-student, Bitter, Georgia, serif);
+  font-family: var(--zone-heading-font);
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.35;
-}
-
-.zone-demo--performance .zone-demo__block h4 {
-  font-family: var(--font-performance, Montserrat, Inter, sans-serif);
 }
 
 .zone-demo__block p {

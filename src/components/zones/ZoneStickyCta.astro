@@ -41,7 +41,7 @@ const { profile, label } = Astro.props;
     if (zoneFinal) {
       const finalObserver = new IntersectionObserver(
         ([entry]) => {
-          finalVisible = entry?.isIntersecting ?? false;
+          finalVisible = entry ? entry.isIntersecting || entry.boundingClientRect.top < 0 : false;
           updateSticky();
         },
         { threshold: 0.04 },
@@ -69,6 +69,21 @@ const { profile, label } = Astro.props;
   .zone-sticky--performance {
     --sticky-primary: #e0702f;
     --sticky-secondary: #8b3519;
+  }
+
+  .zone-sticky--stoic {
+    --sticky-primary: #c6a75e;
+    --sticky-secondary: #78291c;
+  }
+
+  .zone-sticky--spiritual {
+    --sticky-primary: #8aa66a;
+    --sticky-secondary: #24573f;
+  }
+
+  .zone-sticky--calm {
+    --sticky-primary: #2f80ed;
+    --sticky-secondary: #174a7c;
   }
 
   .zone-sticky a {

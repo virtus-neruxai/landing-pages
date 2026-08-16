@@ -1,0 +1,263 @@
+<section
+  class="section spiritual-problem"
+  id="escuchar-lo-que-importa"
+  aria-labelledby="spiritual-problem-title"
+  data-track-section="spiritual_problem"
+>
+  <div class="container">
+    <header class="spiritual-problem__heading">
+      <span class="section-kicker">Más allá del ruido</span>
+      <h2 class="section-title" id="spiritual-problem-title">
+        Puede que no te falte propósito. Puede que hayas dejado de escucharlo.
+      </h2>
+      <p class="section-lede">
+        Cuando todo pide una respuesta inmediata, lo importante puede quedar enterrado bajo la prisa, las expectativas y la costumbre.
+      </p>
+    </header>
+
+    <div class="spiritual-signals">
+      <svg class="spiritual-signals__root" aria-hidden="true" viewBox="0 0 1000 210" fill="none" preserveAspectRatio="none">
+        <path d="M22 118c135-76 238 61 365-7s240-39 346 30 180 12 247-66" />
+        <path d="M387 111c14 35 37 59 78 75M733 141c26-37 57-57 96-65" />
+      </svg>
+
+      <article class="spiritual-signal spiritual-signal--noise">
+        <svg class="signal-leaf" aria-hidden="true" viewBox="0 0 48 48" fill="none">
+          <path d="M8 36c16-2 25-11 31-27 5 14 1 26-8 31-7 4-15 2-23-4Z" />
+          <path d="M9 36c11-7 20-16 28-27" />
+        </svg>
+        <h3>Ruido</h3>
+        <blockquote>“Cumplo con todo, pero hace tiempo que no me pregunto qué tiene sentido para mí”</blockquote>
+        <p>Crear espacio antes de buscar otra respuesta rápida.</p>
+      </article>
+
+      <article class="spiritual-signal spiritual-signal--distance">
+        <svg class="signal-leaf" aria-hidden="true" viewBox="0 0 48 48" fill="none">
+          <path d="M9 37c4-16 14-25 30-29 1 15-5 26-15 30-6 2-11 1-15-1Z" />
+          <path d="M10 37c8-11 17-20 28-28" />
+        </svg>
+        <h3>Distancia</h3>
+        <blockquote>“Sé qué valores quiero vivir, pero mis días cuentan otra historia”</blockquote>
+        <p>Observar la distancia sin convertirla en culpa.</p>
+      </article>
+
+      <article class="spiritual-signal spiritual-signal--search">
+        <svg class="signal-leaf" aria-hidden="true" viewBox="0 0 48 48" fill="none">
+          <path d="M8 37c15-4 24-13 29-29 6 13 3 25-6 31-7 4-15 3-23-2Z" />
+          <path d="M9 37c10-8 19-18 27-29" />
+        </svg>
+        <h3>Búsqueda</h3>
+        <blockquote>“Siento que algo debe cambiar, aunque todavía no sé nombrarlo”</blockquote>
+        <p>Convertir una intuición en una práctica que puedas observar.</p>
+      </article>
+    </div>
+
+    <p class="spiritual-problem__closing">
+      El sentido no siempre aparece como una revelación. A veces se reconoce en la forma de vivir un solo día.
+    </p>
+  </div>
+</section>
+
+<style>
+  .spiritual-problem {
+    --spiritual-forest: #2f6b4f;
+    --spiritual-deep: #1f4e39;
+    --spiritual-sage: #8aa66a;
+    --spiritual-soft: color-mix(in srgb, var(--spiritual-sage) 14%, var(--surface));
+    background:
+      radial-gradient(ellipse at 93% 8%, color-mix(in srgb, var(--spiritual-sage) 14%, transparent), transparent 34rem),
+      radial-gradient(ellipse at 5% 88%, color-mix(in srgb, var(--spiritual-forest) 9%, transparent), transparent 32rem),
+      var(--background);
+  }
+
+  .spiritual-problem::after {
+    position: absolute;
+    right: -7rem;
+    bottom: -4rem;
+    width: 19rem;
+    height: 14rem;
+    border-radius: 73% 27% 58% 42% / 39% 65% 35% 61%;
+    background: color-mix(in srgb, var(--spiritual-sage) 8%, transparent);
+    content: '';
+    pointer-events: none;
+    transform: rotate(-12deg);
+  }
+
+  .spiritual-problem__heading {
+    position: relative;
+    z-index: 1;
+    max-width: 55rem;
+    margin-bottom: clamp(2.5rem, 7vw, 4.75rem);
+  }
+
+  .spiritual-problem .section-kicker {
+    color: var(--spiritual-deep);
+  }
+
+  .spiritual-problem .section-title {
+    max-width: 21ch;
+    font-family: var(--font-spiritual);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.07;
+  }
+
+  .spiritual-problem .section-lede {
+    max-width: 47rem;
+    margin-bottom: 0;
+  }
+
+  .spiritual-signals {
+    position: relative;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .spiritual-signals__root {
+    display: none;
+  }
+
+  .spiritual-signals__root path {
+    stroke: color-mix(in srgb, var(--spiritual-forest) 35%, transparent);
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+
+  .spiritual-signals__root path:nth-child(2) {
+    stroke: color-mix(in srgb, var(--spiritual-sage) 58%, transparent);
+  }
+
+  .spiritual-signal {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    min-height: 20rem;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--spiritual-forest) 18%, var(--line));
+    border-radius: 2.2rem 2.2rem 2.2rem 0.8rem;
+    padding: clamp(1.35rem, 4vw, 2rem);
+    background: linear-gradient(145deg, var(--spiritual-soft), color-mix(in srgb, var(--surface) 96%, transparent) 68%);
+    box-shadow: 0 16px 38px rgb(31 78 57 / 8%);
+  }
+
+  .spiritual-signal::after {
+    position: absolute;
+    right: -4.2rem;
+    bottom: -4.8rem;
+    width: 11rem;
+    height: 10rem;
+    border-radius: 64% 36% 45% 55% / 43% 62% 38% 57%;
+    background: color-mix(in srgb, var(--spiritual-sage) 11%, transparent);
+    content: '';
+    pointer-events: none;
+    transform: rotate(14deg);
+  }
+
+  .spiritual-signal--distance {
+    border-radius: 2.2rem 0.8rem 2.2rem 2.2rem;
+    background: linear-gradient(150deg, color-mix(in srgb, var(--surface) 89%, var(--spiritual-forest) 11%), var(--surface) 72%);
+  }
+
+  .spiritual-signal--search {
+    border-radius: 0.8rem 2.2rem 2.2rem 2.2rem;
+  }
+
+  .signal-leaf {
+    position: relative;
+    z-index: 1;
+    width: 2.65rem;
+    margin-bottom: 1.25rem;
+    color: var(--spiritual-forest);
+  }
+
+  .signal-leaf path:first-child {
+    fill: color-mix(in srgb, var(--spiritual-sage) 23%, transparent);
+  }
+
+  .signal-leaf path:last-child {
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+  }
+
+  .spiritual-signal h3 {
+    position: relative;
+    z-index: 1;
+    width: fit-content;
+    margin: 0 0 1rem;
+    border-radius: 999px;
+    padding: 0.38rem 0.72rem;
+    background: color-mix(in srgb, var(--spiritual-sage) 14%, var(--surface));
+    color: var(--spiritual-deep);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 780;
+  }
+
+  .spiritual-signal blockquote {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 1.75rem;
+    color: var(--text);
+    font-family: var(--font-spiritual);
+    font-size: clamp(1.2rem, 3.8vw, 1.58rem);
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.34;
+  }
+
+  .spiritual-signal > p {
+    position: relative;
+    z-index: 1;
+    margin: auto 0 0;
+    border-top: 1px solid color-mix(in srgb, var(--spiritual-forest) 18%, var(--line));
+    padding-top: 1.1rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .spiritual-problem__closing {
+    position: relative;
+    z-index: 1;
+    max-width: 49rem;
+    margin: clamp(2.5rem, 6vw, 4.25rem) auto 0;
+    border-left: 3px solid var(--spiritual-sage);
+    padding: 0.25rem 0 0.25rem clamp(1rem, 3vw, 1.5rem);
+    color: var(--spiritual-deep);
+    font-family: var(--font-spiritual);
+    font-size: clamp(1.15rem, 3vw, 1.5rem);
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 52rem) {
+    .spiritual-signals {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(1rem, 2.4vw, 2rem);
+      padding-block: 1.5rem;
+    }
+
+    .spiritual-signals__root {
+      position: absolute;
+      z-index: 0;
+      top: -3.8rem;
+      left: 2%;
+      display: block;
+      width: 96%;
+      height: 7.5rem;
+      overflow: visible;
+    }
+
+    .spiritual-signal--noise {
+      transform: translateY(1.15rem);
+    }
+
+    .spiritual-signal--search {
+      transform: translateY(-1.15rem);
+    }
+  }
+</style>

@@ -404,7 +404,518 @@ const performanceSituations: ZoneSituation[] = [
   },
 ];
 
+const stoicSituations: ZoneSituation[] = [
+  {
+    id: "fuera-de-mi-control",
+    label: "Me pesa lo que no controlo",
+    demoVariant: "stoic_outside_control",
+    campaignAliases: [
+      "me pesa lo que no controlo",
+      "no controlo lo que ocurre",
+      "todo está fuera de mi control",
+      "todo esta fuera de mi control",
+    ],
+    exampleInput:
+      "Estoy pendiente de una respuesta que puede cambiar mis planes. No puedo acelerar la decisión y noto que toda mi atención se queda atrapada en imaginar qué ocurrirá.",
+    result: [
+      {
+        title: "Distingue",
+        summary: "La respuesta y su fecha no dependen de ti; preparar bien los dos escenarios, sí.",
+        actions: ["Divide una hoja en «no depende de mí» y «sí depende de mí» y escribe solo hechos."],
+      },
+      {
+        title: "Elige",
+        summary: "Decide qué conducta quieres sostener mientras la incertidumbre sigue abierta.",
+        actions: ["Elige un límite para revisar mensajes y una obligación concreta que mantendrás hoy."],
+      },
+      {
+        title: "Actúa",
+        summary: "Devuelve la atención a una acción terminable bajo tu control.",
+        actions: ["Prepara durante 20 minutos el primer paso común a ambos escenarios y ciérralo."],
+      },
+    ],
+  },
+  {
+    id: "reacciono-sin-elegir",
+    label: "Reacciono antes de elegir",
+    demoVariant: "stoic_reactive_response",
+    campaignAliases: [
+      "reacciono antes de elegir",
+      "reacciono demasiado rápido",
+      "reacciono demasiado rapido",
+      "pierdo la calma al responder",
+    ],
+    exampleInput:
+      "Cuando alguien cuestiona mi trabajo respondo a la defensiva. Después veo matices que no pude escuchar en el momento y me arrepiento del tono que elegí.",
+    result: [
+      {
+        title: "Distingue",
+        summary: "La crítica es un hecho externo; la primera interpretación no tiene por qué gobernar tu respuesta.",
+        actions: ["Escribe la frase recibida sin adjetivos y separa lo dicho de lo que asumiste."],
+      },
+      {
+        title: "Elige",
+        summary: "Define una respuesta que proteja claridad y respeto, no la necesidad de ganar el momento.",
+        actions: ["Prepara una frase de pausa: «Quiero entenderlo bien; déjame revisarlo y te respondo»."],
+      },
+      {
+        title: "Actúa",
+        summary: "Practica la pausa en una situación de bajo riesgo antes de necesitarla bajo presión.",
+        actions: ["En la próxima objeción, haz una pregunta de precisión antes de defender tu posición."],
+      },
+    ],
+  },
+  {
+    id: "conversacion-dificil",
+    label: "Pospongo una conversación difícil",
+    demoVariant: "stoic_difficult_conversation",
+    campaignAliases: [
+      "pospongo una conversación difícil",
+      "pospongo una conversacion dificil",
+      "evito una conversación",
+      "evito una conversacion",
+    ],
+    exampleInput:
+      "Tengo que poner un límite en una relación de trabajo. Llevo semanas posponiéndolo porque no puedo controlar cómo reaccionará la otra persona.",
+    result: [
+      {
+        title: "Distingue",
+        summary: "No controlas la reacción ajena; sí la honestidad, el momento y la forma de tu mensaje.",
+        actions: ["Formula el límite en una frase que describa conducta, impacto y petición concreta."],
+      },
+      {
+        title: "Elige",
+        summary: "Decide qué valor quieres practicar aunque la conversación resulte incómoda.",
+        actions: ["Escoge entre claridad, justicia o respeto y úsalo para revisar tu borrador."],
+      },
+      {
+        title: "Actúa",
+        summary: "Convierte la anticipación indefinida en un compromiso observable.",
+        actions: ["Propón hoy una hora de 20 minutos para hablar, sin resolver la conversación por mensaje."],
+      },
+    ],
+  },
+  {
+    id: "fallo-me-desordena",
+    label: "Un fallo me desordena",
+    demoVariant: "stoic_setback_response",
+    campaignAliases: [
+      "un fallo me desordena",
+      "fallé y me castigo",
+      "falle y me castigo",
+      "no acepto equivocarme",
+    ],
+    exampleInput:
+      "Cometí un error en algo importante y desde entonces repaso todo lo que debería haber hecho. Quiero repararlo, pero el castigo mental ocupa más espacio que la acción.",
+    result: [
+      {
+        title: "Distingue",
+        summary: "El error ya ocurrió; aprender, reparar y preparar una respuesta distinta siguen disponibles.",
+        actions: ["Describe el hecho, el impacto y la parte reparable sin convertirlo en un juicio sobre ti."],
+      },
+      {
+        title: "Elige",
+        summary: "Cambia la pregunta «¿cómo pude?» por «¿qué exige ahora una respuesta responsable?». ",
+        actions: ["Define una reparación concreta y una salvaguarda para evitar repetir el mismo fallo."],
+      },
+      {
+        title: "Actúa",
+        summary: "Haz primero la parte de la reparación que no necesita más análisis.",
+        actions: ["Envía la corrección, reconoce el error o agenda el ajuste antes de terminar el día."],
+      },
+    ],
+  },
+  {
+    id: "constancia-sin-excusas",
+    label: "Sé qué hacer, pero no lo sostengo",
+    demoVariant: "stoic_consistent_action",
+    campaignAliases: [
+      "sé qué hacer pero no lo sostengo",
+      "se que hacer pero no lo sostengo",
+      "me falta constancia",
+      "quiero más disciplina",
+      "quiero mas disciplina",
+    ],
+    exampleInput:
+      "Tengo claro el hábito que quiero construir, pero negocio conmigo cada día. Cuando fallo una vez doy la semana por perdida y espero a volver a sentirme preparado.",
+    result: [
+      {
+        title: "Distingue",
+        summary: "La motivación cambia; presentarte a una versión mínima de la práctica sigue siendo elegible.",
+        actions: ["Define la unidad mínima que cuenta incluso en un día incómodo: cinco minutos o una repetición."],
+      },
+      {
+        title: "Elige",
+        summary: "Comprométete con la conducta que quieres entrenar, no con una semana perfecta.",
+        actions: ["Fija una señal diaria y una regla: después de fallar, la siguiente ocasión nunca se negocia."],
+      },
+      {
+        title: "Actúa",
+        summary: "Practica hoy la versión mínima para recuperar continuidad sin dramatizar el tropiezo.",
+        actions: ["Haz ahora la primera unidad y registra solo «me presenté», sin puntuar el rendimiento."],
+      },
+    ],
+  },
+];
+
+const spiritualSituations: ZoneSituation[] = [
+  {
+    id: "vivo-en-automatico",
+    label: "Vivo en automático",
+    demoVariant: "spiritual_autopilot",
+    campaignAliases: [
+      "vivo en automático",
+      "vivo en automatico",
+      "voy en automático",
+      "voy en automatico",
+      "he perdido el sentido",
+    ],
+    exampleInput:
+      "Cumplo con lo esperado y los días avanzan, pero casi nunca me pregunto si la forma en que vivo se parece a lo que considero valioso. Siento que estoy presente en todo menos en mi propia vida.",
+    result: [
+      {
+        title: "Enraíza",
+        summary: "Haz espacio para escuchar qué parte de tu vida todavía se siente verdadera.",
+        actions: ["Reserva diez minutos sin pantalla y nombra un momento reciente en el que sí te sentiste presente."],
+      },
+      {
+        title: "Alinea",
+        summary: "Elige un valor que quieras reconocer hoy en una conducta visible.",
+        actions: ["Completa la frase «hoy quiero vivir con más…» y tradúcela a una decisión pequeña."],
+      },
+      {
+        title: "Encárnalo",
+        summary: "Devuelve el sentido a lo cotidiano mediante una acción, no mediante otra idea abstracta.",
+        actions: ["Haz esa decisión antes de terminar el día y registra qué cambió en tu forma de estar."],
+      },
+    ],
+  },
+  {
+    id: "meta-no-me-representa",
+    label: "Persigo algo que ya no me representa",
+    demoVariant: "spiritual_misaligned_goal",
+    campaignAliases: [
+      "persigo algo que ya no me representa",
+      "mi meta ya no tiene sentido",
+      "objetivo sin propósito",
+      "objetivo sin proposito",
+    ],
+    exampleInput:
+      "Llevo mucho tiempo persiguiendo una meta que antes tenía sentido. Ahora sigo por compromiso y por todo lo invertido, aunque la persona que quiero ser ya no parece estar detrás de ella.",
+    result: [
+      {
+        title: "Enraíza",
+        summary: "Separa el valor profundo que inició el camino de la forma concreta que tomó la meta.",
+        actions: ["Escribe qué valor querías cuidar al empezar y si la meta actual todavía lo expresa."],
+      },
+      {
+        title: "Alinea",
+        summary: "Reconoce qué merece conservarse aunque cambie la forma de avanzar.",
+        actions: ["Elige una parte viva del propósito y una parte que hoy sostienes solo por inercia."],
+      },
+      {
+        title: "Encárnalo",
+        summary: "Prueba una alternativa reversible antes de decidir desde la culpa o el cansancio.",
+        actions: ["Dedica esta semana un bloque a una forma nueva de vivir el mismo valor y compara la experiencia."],
+      },
+    ],
+  },
+  {
+    id: "decisiones-contra-valores",
+    label: "Mis decisiones chocan con mis valores",
+    demoVariant: "spiritual_values_tension",
+    campaignAliases: [
+      "mis decisiones chocan con mis valores",
+      "no vivo según mis valores",
+      "no vivo segun mis valores",
+      "me siento incoherente",
+    ],
+    exampleInput:
+      "Digo que las relaciones y el cuidado son centrales para mí, pero acepto compromisos que me dejan sin tiempo ni presencia. Sé que algo no encaja y aun así repito la misma elección.",
+    result: [
+      {
+        title: "Enraíza",
+        summary: "Nombra la tensión sin convertirla en culpa: dos necesidades legítimas están compitiendo.",
+        actions: ["Escribe qué proteges al decir que sí y qué valor queda sin espacio cuando lo haces."],
+      },
+      {
+        title: "Alinea",
+        summary: "Define una frontera que permita reconocer ambos valores en vez de declarar uno y vivir el otro.",
+        actions: ["Decide un límite concreto de tiempo o disponibilidad para el próximo compromiso."],
+      },
+      {
+        title: "Encárnalo",
+        summary: "Haz visible la coherencia en una conversación o una reserva real de tiempo.",
+        actions: ["Comunica el límite o protege un bloque para la relación que dices querer cuidar."],
+      },
+    ],
+  },
+  {
+    id: "cambio-sin-sentido",
+    label: "Atravieso un cambio sin sentido claro",
+    demoVariant: "spiritual_transition_meaning",
+    campaignAliases: [
+      "atravieso un cambio sin sentido claro",
+      "cambio de etapa",
+      "transición sin sentido",
+      "transicion sin sentido",
+      "no entiendo esta etapa",
+    ],
+    exampleInput:
+      "Una etapa importante ha terminado y todavía no sé qué significa ni qué viene después. Quiero encontrar una respuesta rápido, pero todo lo nuevo parece ajeno y lo anterior ya no vuelve.",
+    result: [
+      {
+        title: "Enraíza",
+        summary: "No necesitas cerrar el significado de la etapa mientras todavía la estás atravesando.",
+        actions: ["Nombra qué terminó, qué permanece y qué pregunta merece acompañarte sin respuesta inmediata."],
+      },
+      {
+        title: "Alinea",
+        summary: "Usa tus valores como orientación provisional cuando aún no existe un mapa completo.",
+        actions: ["Elige un valor que pueda guiar esta semana aunque no defina toda la etapa."],
+      },
+      {
+        title: "Encárnalo",
+        summary: "Crea un gesto de transición que reconozca el cierre y abra espacio a lo que emerge.",
+        actions: ["Cierra una obligación de la etapa anterior y prueba una actividad coherente con el valor elegido."],
+      },
+    ],
+  },
+  {
+    id: "volver-a-escucharme",
+    label: "Necesito volver a escucharme",
+    demoVariant: "spiritual_reconnect_inner_voice",
+    campaignAliases: [
+      "necesito volver a escucharme",
+      "quiero reconectar conmigo",
+      "me he desconectado de mí",
+      "me he desconectado de mi",
+      "necesito propósito",
+      "necesito proposito",
+    ],
+    exampleInput:
+      "Escucho consejos, expectativas y comparaciones todo el tiempo. Cuanto más intento encontrar la respuesta correcta fuera, menos reconozco qué deseo cuidar yo en esta etapa.",
+    result: [
+      {
+        title: "Enraíza",
+        summary: "Reduce por un momento las voces externas para recuperar una señal propia y concreta.",
+        actions: ["Pasa quince minutos sin consumir opiniones y escribe qué decisión vuelve una y otra vez."],
+      },
+      {
+        title: "Alinea",
+        summary: "Contrasta esa decisión con valores vividos, no con una identidad ideal.",
+        actions: ["Recuerda dos momentos reales en los que actuaste con coherencia y busca qué compartían."],
+      },
+      {
+        title: "Encárnalo",
+        summary: "Da una forma pequeña a la voz propia para poder observarla en la experiencia.",
+        actions: ["Elige una acción de menos de 20 minutos que no harías para impresionar a nadie y realízala."],
+      },
+    ],
+  },
+];
+
+const calmSituations: ZoneSituation[] = [
+  {
+    id: "todo-me-supera",
+    label: "Todo me supera ahora",
+    demoVariant: "calm_overwhelmed",
+    campaignAliases: [
+      "todo me supera",
+      "todo me supera ahora",
+      "no puedo con todo",
+      "estoy saturado",
+      "estoy saturada",
+    ],
+    exampleInput:
+      "Tengo varias cosas pequeñas pendientes y, juntas, se sienten imposibles. Salto de una a otra, no termino ninguna y cada nueva notificación hace que quiera desconectar de todo.",
+    result: [
+      {
+        title: "Respira",
+        summary: "Primero baja una marcha; no tienes que resolver la lista mientras el ruido está arriba.",
+        actions: ["Aparta la pantalla y haz cuatro respiraciones lentas con los pies apoyados."],
+      },
+      {
+        title: "Observa",
+        summary: "Distingue lo urgente de lo que solo está haciendo ruido al mismo tiempo.",
+        actions: ["Escribe una sola obligación de hoy y mueve el resto a una lista que no mirarás durante una hora."],
+      },
+      {
+        title: "Avanza",
+        summary: "Elige un movimiento que quepa en la energía que tienes, no en la que desearías tener.",
+        actions: ["Dedica cinco minutos al primer gesto de esa obligación y decide después si continúas."],
+      },
+    ],
+  },
+  {
+    id: "no-consigo-parar",
+    label: "No consigo parar",
+    demoVariant: "calm_cannot_pause",
+    campaignAliases: [
+      "no consigo parar",
+      "no sé parar",
+      "no se parar",
+      "siempre estoy haciendo algo",
+      "necesito bajar el ritmo",
+    ],
+    exampleInput:
+      "Termino una cosa y abro otra aunque esté cansado. Cuando intento parar siento que debería aprovechar el tiempo, así que descanso mirando tareas y vuelvo igual de agotado.",
+    result: [
+      {
+        title: "Respira",
+        summary: "Parar unos minutos no es perder el día; es permitir que tu atención deje de perseguirse.",
+        actions: ["Pon una alarma de cinco minutos y siéntate sin completar, ordenar ni planificar nada."],
+      },
+      {
+        title: "Observa",
+        summary: "Mira qué pensamiento convierte cada pausa en una obligación nueva, sin discutir con él.",
+        actions: ["Nombra en una frase qué temes que ocurra si hoy haces menos."],
+      },
+      {
+        title: "Avanza",
+        summary: "Protege un final visible para que el descanso no tenga que competir con otra tarea abierta.",
+        actions: ["Elige una hora de cierre y deja escrita la primera acción de mañana antes de desconectar."],
+      },
+    ],
+  },
+  {
+    id: "culpa-por-descansar",
+    label: "Descansar me da culpa",
+    demoVariant: "calm_rest_guilt",
+    campaignAliases: [
+      "descansar me da culpa",
+      "me siento culpable por descansar",
+      "culpa por descansar",
+      "no merezco descansar",
+    ],
+    exampleInput:
+      "Sé que necesito descansar, pero en cuanto paro pienso en todo lo pendiente y siento que no me lo he ganado. Acabo ni recuperándome ni avanzando de verdad.",
+    result: [
+      {
+        title: "Respira",
+        summary: "El cansancio no necesita un permiso moral para ser atendido.",
+        actions: ["Haz una pausa de tres minutos y observa dónde notas tensión sin intentar corregirla."],
+      },
+      {
+        title: "Observa",
+        summary: "Separa el hecho de estar cansado de la regla aprendida de que siempre deberías producir.",
+        actions: ["Escribe qué señal concreta te indica que continuar ahora empeoraría la tarea o tu estado."],
+      },
+      {
+        title: "Avanza",
+        summary: "Convierte la recuperación en una decisión acotada, no en una negociación interminable.",
+        actions: ["Elige veinte minutos de descanso sin pantalla y fija qué harás —o no harás— al terminar."],
+      },
+    ],
+  },
+  {
+    id: "vuelvo-a-exigirme",
+    label: "Vuelvo a exigirme demasiado",
+    demoVariant: "calm_pressure_cycle",
+    campaignAliases: [
+      "vuelvo a exigirme demasiado",
+      "me exijo demasiado",
+      "siempre vuelvo a la presión",
+      "siempre vuelvo a la presion",
+      "ciclo de exigencia",
+    ],
+    exampleInput:
+      "Empiezo intentando cuidarme, pero en pocos días convierto cualquier rutina en otra prueba que tengo que hacer perfecta. Si no cumplo, abandono y vuelvo a empezar con más presión.",
+    result: [
+      {
+        title: "Respira",
+        summary: "Interrumpe la idea de que hoy tienes que compensar los días anteriores.",
+        actions: ["Reduce la rutina de hoy a su versión de dos minutos antes de decidir si haces más."],
+      },
+      {
+        title: "Observa",
+        summary: "Detecta el momento exacto en que el cuidado se convierte en examen.",
+        actions: ["Completa la frase «esto deja de ayudarme cuando…» con una señal observable."],
+      },
+      {
+        title: "Avanza",
+        summary: "Practica continuidad flexible: hacer menos también puede mantener el vínculo con la rutina.",
+        actions: ["Al terminar hoy, registra si la práctica te dejó igual, con más espacio o con más presión."],
+      },
+    ],
+  },
+  {
+    id: "empezar-sin-presion",
+    label: "Necesito empezar sin presión",
+    demoVariant: "calm_gentle_start",
+    campaignAliases: [
+      "necesito empezar sin presión",
+      "necesito empezar sin presion",
+      "quiero un paso pequeño",
+      "quiero un paso pequeno",
+      "no tengo energía para empezar",
+      "no tengo energia para empezar",
+    ],
+    exampleInput:
+      "Hay algo importante que quiero retomar, pero ahora mismo cualquier plan completo me bloquea. Necesito una forma de acercarme sin convertirlo en otra exigencia que no puedo sostener.",
+    result: [
+      {
+        title: "Respira",
+        summary: "No tienes que sentirte preparado para hacer contacto con el primer paso.",
+        actions: ["Antes de empezar, haz tres respiraciones lentas y suelta la expectativa de terminar."],
+      },
+      {
+        title: "Observa",
+        summary: "Ajusta la acción a tu capacidad de hoy, no al plan ideal de una versión con más energía.",
+        actions: ["Elige una parte que pueda abrirse, leerse o prepararse en menos de cinco minutos."],
+      },
+      {
+        title: "Avanza",
+        summary: "Deja una huella pequeña que haga más amable el siguiente encuentro con la tarea.",
+        actions: ["Haz esa parte y termina escribiendo una única frase con el siguiente gesto posible."],
+      },
+    ],
+  },
+];
+
 export const ZONE_CONTENT: Record<ZoneProfile, ZoneProfileContent> = {
+  stoic: {
+    selectorLabel: "¿Qué está poniendo a prueba tu respuesta?",
+    selectorCta: "Elegir mi siguiente acción",
+    selectorMicrocopy: "No controlas todo lo que ocurre. Sí puedes practicar cómo responder.",
+    demoLabel: "Describe la situación que tienes delante",
+    demoHint: "Parte del ejemplo o cuéntalo con tus palabras. Máximo 500 caracteres.",
+    demoButton: "Ordenar mi respuesta",
+    generatingLabel: "Separando hechos, juicio y acción bajo tu control…",
+    resultEyebrow: "Tu práctica de respuesta",
+    resultTitle: "Una acción elegida para las próximas 24 horas",
+    previewCopy: "Verás qué no depende de ti, qué respuesta quieres elegir y qué acción concreta puedes practicar hoy.",
+    saveCta: "Guardar mi práctica y continuar",
+    situations: stoicSituations,
+  },
+  spiritual: {
+    selectorLabel: "¿Dónde notas hoy la desconexión?",
+    selectorCta: "Volver a lo que importa",
+    selectorMicrocopy: "No necesitas una creencia concreta ni tener resuelto tu propósito.",
+    demoLabel: "Describe dónde sientes que falta coherencia",
+    demoHint: "Puedes editar el ejemplo y expresarlo desde tus propias palabras.",
+    demoButton: "Crear mi práctica de coherencia",
+    generatingLabel: "Conectando la situación con valores y una práctica real…",
+    resultEyebrow: "Tu práctica de coherencia",
+    resultTitle: "Un camino breve de la intención a la vida cotidiana",
+    previewCopy: "Verás cómo enraizarte, alinear una decisión con tus valores y encarnarla en una acción observable.",
+    saveCta: "Guardar mi práctica y continuar",
+    situations: spiritualSituations,
+  },
+  calm: {
+    selectorLabel: "¿Qué necesita menos presión ahora?",
+    selectorCta: "Encontrar un paso amable",
+    selectorMicrocopy: "Puedes empezar con la energía que tienes hoy, sin exigirte estar mejor primero.",
+    demoLabel: "Describe qué se siente demasiado en este momento",
+    demoHint: "Parte del ejemplo o hazlo tuyo. No necesitas explicarlo todo.",
+    demoButton: "Preparar un paso suave",
+    generatingLabel: "Reduciendo el ruido y ajustando el paso a tu energía…",
+    resultEyebrow: "Tu siguiente paso amable",
+    resultTitle: "Una respuesta pequeña que cabe en el día de hoy",
+    previewCopy: "Verás una pausa breve, una observación concreta y una sola acción ajustada a tu energía actual.",
+    saveCta: "Guardar mi paso y continuar",
+    situations: calmSituations,
+  },
   student: {
     selectorLabel: "¿En qué punto estás?",
     selectorCta: "Aclarar mi siguiente paso",
@@ -415,6 +926,7 @@ export const ZONE_CONTENT: Record<ZoneProfile, ZoneProfileContent> = {
     generatingLabel: "Ordenando la duda y preparando una prueba pequeña…",
     resultEyebrow: "Tu experimento de claridad",
     resultTitle: "Un plan de 7 días para obtener evidencia",
+    previewCopy: "Verás qué mantener, qué explorar y qué observar durante 7 días para obtener evidencia real.",
     saveCta: "Guardar mi plan y continuar",
     situations: studentSituations,
   },
@@ -428,6 +940,7 @@ export const ZONE_CONTENT: Record<ZoneProfile, ZoneProfileContent> = {
     generatingLabel: "Separando estabilidad, dirección y siguiente movimiento…",
     resultEyebrow: "Tu auditoría de dirección",
     resultTitle: "Una decisión que puedes contrastar durante 14 días",
+    previewCopy: "Verás qué proteger, qué cuestionar y qué experimentar durante 14 días para recuperar criterio.",
     saveCta: "Guardar mi auditoría y continuar",
     situations: performanceSituations,
   },

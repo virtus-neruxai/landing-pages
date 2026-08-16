@@ -5,6 +5,8 @@ import '@fontsource/spectral/latin-500.css';
 import '@fontsource/spectral/latin-500-italic.css';
 import '@fontsource/lora/latin-600.css';
 import '@fontsource/nunito-sans/latin-600.css';
+import '@fontsource/nunito-sans/latin-700.css';
+import '@fontsource/nunito-sans/latin-800.css';
 import '@fontsource/montserrat/latin-600.css';
 import '@fontsource/bitter/latin-600.css';
 import '../styles/global.css';
@@ -50,6 +52,11 @@ const {
 
       type CampaignData = Partial<Record<'source' | 'medium' | 'campaign' | 'content' | 'influencer_id', string>>;
 
+      type ZoneSelectionDetail = {
+        profile?: string;
+        selected_situation?: string;
+      };
+
       const campaignStorageKey = 'virtus:campaign';
       const campaignParams = [
         ['utm_source', 'source'],
@@ -93,7 +100,7 @@ const {
         ...(pageProfile ? { profile: pageProfile } : {}),
       };
 
-      const decorateAppLink = (link: HTMLAnchorElement) => {
+      const decorateAppLink = (link: HTMLAnchorElement, selectedSituationOverride?: string) => {
         try {
           const destination = new URL(link.href, window.location.href);
           campaignParams.forEach(([queryKey, propertyKey]) => {
@@ -103,11 +110,13 @@ const {
           if (pageProfile && !destination.searchParams.has('profile')) destination.searchParams.set('profile', pageProfile);
 
           if (pageProfile) {
-            let selectedSituation: string | null = null;
-            try {
-              selectedSituation = window.sessionStorage.getItem(`virtus:zone-situation:${pageProfile}`);
-            } catch {
-              // La campaña de la URL se conserva aunque el navegador bloquee sessionStorage.
+            let selectedSituation: string | null = selectedSituationOverride ?? null;
+            if (!selectedSituation) {
+              try {
+                selectedSituation = window.sessionStorage.getItem(`virtus:zone-situation:${pageProfile}`);
+              } catch {
+                // La campaña de la URL se conserva aunque el navegador bloquee sessionStorage.
+              }
             }
             if (selectedSituation) destination.searchParams.set('selected_situation', selectedSituation);
           }
@@ -118,7 +127,16 @@ const {
         }
       };
 
-      document.querySelectorAll<HTMLAnchorElement>('a[data-app-link]').forEach(decorateAppLink);
+      document.querySelectorAll<HTMLAnchorElement>('a[data-app-link]').forEach((link) => decorateAppLink(link));
+
+      window.addEventListener('virtus:zone-situation', (event) => {
+        const detail = (event as CustomEvent<ZoneSelectionDetail>).detail;
+        if (!detail?.selected_situation || detail.profile !== pageProfile) return;
+
+        document.querySelectorAll<HTMLAnchorElement>('a[data-app-link]').forEach((link) => {
+          decorateAppLink(link, detail.selected_situation);
+        });
+      });
 
       window.addEventListener(
         'virtus:analytics',
@@ -157,7 +175,8 @@ const {
             name: trackedElement.dataset.track ?? 'landing_click',
             properties: {
               location: trackedElement.dataset.trackLocation ?? 'unknown',
-              label: trackedElement.textContent?.trim() ?? '',
+              label: trackedElement.dataset.trackLabel ?? trackedElement.textContent?.trim() ?? '',
+              ...(trackedElement.dataset.trackProfile ? { profile: trackedElement.dataset.trackProfile } : {}),
             },
           });
         }

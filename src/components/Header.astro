@@ -76,6 +76,21 @@ const brandHref = isZone && activeZone ? zoneRoutes[activeZone] : '/';
   </div>
 </header>
 
+<script>
+  const zoneNavigation = document.querySelector<HTMLElement>('.header-nav--zone');
+  const activeZoneLink = zoneNavigation?.querySelector<HTMLElement>('[aria-current="page"]');
+
+  if (zoneNavigation && activeZoneLink) {
+    window.requestAnimationFrame(() => {
+      const maximumScroll = zoneNavigation.scrollWidth - zoneNavigation.clientWidth;
+      if (maximumScroll <= 0) return;
+
+      const centeredPosition = activeZoneLink.offsetLeft - (zoneNavigation.clientWidth - activeZoneLink.offsetWidth) / 2;
+      zoneNavigation.scrollLeft = Math.max(0, Math.min(centeredPosition, maximumScroll));
+    });
+  }
+</script>
+
 <style>
   .site-header {
     --zone-primary: var(--flow);
@@ -170,6 +185,10 @@ const brandHref = isZone && activeZone ? zoneRoutes[activeZone] : '/';
     color: var(--root);
   }
 
+  .site-header--zone .header-nav a:hover {
+    color: var(--zone-action);
+  }
+
   .site-header--student {
     --zone-primary: #d8b56d;
     --zone-secondary: #5d78a6;
@@ -230,6 +249,8 @@ const brandHref = isZone && activeZone ? zoneRoutes[activeZone] : '/';
     gap: 0.25rem;
     overflow-x: auto;
     scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 calc(100% - 2rem), transparent 100%);
+    mask-image: linear-gradient(90deg, #000 0%, #000 calc(100% - 2rem), transparent 100%);
   }
 
   .header-nav--zone::-webkit-scrollbar {
@@ -251,6 +272,12 @@ const brandHref = isZone && activeZone ? zoneRoutes[activeZone] : '/';
     font-weight: 760;
   }
 
+  .header-nav--zone a:focus-visible {
+    border-radius: 0.55rem;
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--zone-action);
+  }
+
   .header-nav--zone a[aria-current='page']::after {
     position: absolute;
     right: 0.65rem;
@@ -258,7 +285,7 @@ const brandHref = isZone && activeZone ? zoneRoutes[activeZone] : '/';
     left: 0.65rem;
     height: 0.18rem;
     border-radius: 999px 999px 0 0;
-    background: var(--zone-primary);
+    background: var(--zone-action);
     content: '';
   }
 
@@ -337,6 +364,8 @@ const brandHref = isZone && activeZone ? zoneRoutes[activeZone] : '/';
       align-items: stretch;
       gap: 0.35rem;
       overflow: visible;
+      -webkit-mask-image: none;
+      mask-image: none;
     }
 
     .header-nav--zone a {

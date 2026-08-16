@@ -1,0 +1,283 @@
+<section
+  class="section stoic-framework"
+  id="distingue-elige-actua"
+  aria-labelledby="stoic-framework-title"
+  data-track-section="stoic_framework"
+>
+  <div class="container stoic-framework__layout">
+    <header class="stoic-framework__intro">
+      <span class="section-kicker">Distingue · Elige · Actúa</span>
+      <h2 class="section-title" id="stoic-framework-title">El autodominio empieza antes de la acción</h2>
+      <p class="section-lede">
+        Virtus no te pide que suprimas lo que sientes. Te ayuda a crear el espacio necesario para responder con
+        claridad y convertir esa elección en conducta.
+      </p>
+      <a
+        class="stoic-framework__cta"
+        href="#zone-demo"
+        data-track="zone_framework_cta_clicked"
+        data-track-location="stoic_framework"
+      >
+        Practicar lo que depende de mí
+        <span aria-hidden="true">→</span>
+      </a>
+    </header>
+
+    <div class="practice-path">
+      <svg aria-hidden="true" viewBox="0 0 760 320" fill="none" preserveAspectRatio="none">
+        <path d="M25 180c102-122 182 67 294-15s210-42 282 39 103 39 139-80" />
+      </svg>
+      <ol class="practice-stages">
+        <li>
+          <span class="stage-marker" aria-hidden="true">01</span>
+          <div>
+            <h3>Distingue</h3>
+            <p>Separa los hechos, tus juicios y aquello que no está bajo tu control.</p>
+          </div>
+        </li>
+        <li>
+          <span class="stage-marker" aria-hidden="true">02</span>
+          <div>
+            <h3>Elige</h3>
+            <p>Decide qué respuesta representa mejor tus valores en esta situación.</p>
+          </div>
+        </li>
+        <li>
+          <span class="stage-marker" aria-hidden="true">03</span>
+          <div>
+            <h3>Actúa</h3>
+            <p>Llévala a un gesto concreto: una conversación, un límite o el siguiente paso útil.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<style>
+  .stoic-framework {
+    --stoic-gold: #c6a75e;
+    --stoic-oxide: #8b2f1f;
+    --stoic-gold-soft: #f3ead5;
+    background:
+      radial-gradient(ellipse at 9% 13%, color-mix(in srgb, var(--stoic-gold) 15%, transparent), transparent 31rem),
+      radial-gradient(ellipse at 93% 87%, color-mix(in srgb, var(--stoic-oxide) 8%, transparent), transparent 32rem),
+      var(--surface);
+  }
+
+  .stoic-framework::before {
+    position: absolute;
+    bottom: -7rem;
+    left: -8rem;
+    width: 23rem;
+    height: 16rem;
+    border-radius: 56% 44% 34% 66% / 39% 62% 38% 61%;
+    background: color-mix(in srgb, var(--stoic-gold) 8%, transparent);
+    content: '';
+    pointer-events: none;
+    transform: rotate(12deg);
+  }
+
+  .stoic-framework__layout {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: clamp(3rem, 8vw, 6rem);
+    align-items: center;
+  }
+
+  .stoic-framework__intro {
+    max-width: 49rem;
+  }
+
+  .stoic-framework .section-kicker {
+    color: var(--stoic-oxide);
+  }
+
+  .stoic-framework .section-title {
+    max-width: 19ch;
+    font-family: var(--font-stoic);
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.08;
+  }
+
+  .stoic-framework .section-lede {
+    max-width: 42rem;
+    margin-bottom: 0;
+  }
+
+  .stoic-framework__cta {
+    display: inline-flex;
+    min-height: 3.35rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    margin-top: 1.75rem;
+    border: 1px solid color-mix(in srgb, var(--stoic-oxide) 82%, var(--stoic-gold));
+    border-radius: 999px;
+    padding: 0.88rem 1.35rem;
+    background: linear-gradient(120deg, color-mix(in srgb, var(--stoic-gold) 31%, var(--stoic-oxide)), var(--stoic-oxide));
+    color: var(--white);
+    font-size: 0.95rem;
+    font-weight: 760;
+    line-height: 1.15;
+    text-decoration: none;
+    box-shadow: 0 14px 30px color-mix(in srgb, var(--stoic-oxide) 23%, transparent);
+    transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+  }
+
+  .stoic-framework__cta:hover {
+    box-shadow: 0 18px 36px color-mix(in srgb, var(--stoic-oxide) 29%, transparent);
+    filter: saturate(1.06);
+    transform: translateY(-2px);
+  }
+
+  .stoic-framework__cta:focus-visible {
+    outline-color: var(--surface);
+    box-shadow: 0 0 0 5px var(--stoic-oxide);
+  }
+
+  .practice-path {
+    position: relative;
+    min-width: 0;
+  }
+
+  .practice-path > svg {
+    display: none;
+  }
+
+  .practice-path > svg path {
+    stroke: color-mix(in srgb, var(--stoic-gold) 58%, transparent);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-dasharray: 8 11;
+  }
+
+  .practice-stages {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .practice-stages li {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1rem;
+    min-height: 11rem;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--stoic-oxide) 15%, var(--line));
+    border-radius: 1.8rem 1.8rem 0.75rem 1.8rem;
+    padding: clamp(1.25rem, 4vw, 1.75rem);
+    background: color-mix(in srgb, var(--surface) 92%, var(--stoic-gold-soft));
+    box-shadow: 0 18px 40px rgb(93 65 35 / 8%);
+  }
+
+  .practice-stages li::after {
+    position: absolute;
+    right: -3.8rem;
+    bottom: -4.5rem;
+    width: 10rem;
+    height: 8rem;
+    border-radius: 64% 36% 46% 54% / 43% 64% 36% 57%;
+    background: color-mix(in srgb, var(--stoic-gold) 10%, transparent);
+    content: '';
+    pointer-events: none;
+    transform: rotate(-11deg);
+  }
+
+  .practice-stages li:nth-child(2) {
+    border-radius: 1.8rem 0.75rem 1.8rem 1.8rem;
+    background: color-mix(in srgb, var(--surface) 93%, var(--stoic-oxide) 7%);
+  }
+
+  .practice-stages li:nth-child(2)::after {
+    background: color-mix(in srgb, var(--stoic-oxide) 7%, transparent);
+    transform: rotate(8deg);
+  }
+
+  .practice-stages li:nth-child(3) {
+    border-color: color-mix(in srgb, var(--stoic-gold) 34%, var(--line));
+    border-radius: 0.75rem 1.8rem 1.8rem 1.8rem;
+  }
+
+  .stage-marker {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 2.65rem;
+    height: 2.5rem;
+    place-items: center;
+    border-radius: 57% 43% 51% 49% / 44% 61% 39% 56%;
+    background: color-mix(in srgb, var(--stoic-gold) 22%, var(--surface));
+    color: var(--stoic-oxide);
+    font-size: 0.68rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 800;
+    transform: rotate(-4deg);
+  }
+
+  .practice-stages li:nth-child(2) .stage-marker {
+    background: color-mix(in srgb, var(--stoic-oxide) 10%, var(--surface));
+    transform: rotate(4deg);
+  }
+
+  .practice-stages li > div {
+    position: relative;
+    z-index: 1;
+    padding-top: 0.15rem;
+  }
+
+  .practice-stages h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text);
+    font-family: var(--font-stoic);
+    font-size: clamp(1.35rem, 3.6vw, 1.75rem);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .practice-stages p {
+    max-width: 25rem;
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.93rem;
+    line-height: 1.55;
+  }
+
+  @media (min-width: 48rem) {
+    .practice-path {
+      padding-block: 1.4rem;
+    }
+
+    .practice-path > svg {
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .practice-stages {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .practice-stages li:nth-child(2) {
+      transform: translateY(1.25rem);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .stoic-framework__layout {
+      grid-template-columns: minmax(0, 0.76fr) minmax(36rem, 1.24fr);
+    }
+  }
+</style>

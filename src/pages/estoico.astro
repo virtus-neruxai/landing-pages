@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import ZoneHero from '../components/zones/ZoneHero.astro';
+import ZoneDemoSection from '../components/zones/ZoneDemoSection.astro';
+import ZoneFinalCta from '../components/zones/ZoneFinalCta.astro';
+import ZoneFooter from '../components/zones/ZoneFooter.astro';
+import ZoneStickyCta from '../components/zones/ZoneStickyCta.astro';
+import StoicProblem from '../components/zones/stoic/StoicProblem.astro';
+import StoicFramework from '../components/zones/stoic/StoicFramework.astro';
+import StoicContinuity from '../components/zones/stoic/StoicContinuity.astro';
+import '../styles/zones.css';
+
+const appUrl = (import.meta.env.PUBLIC_APP_URL || 'https://virtus.neruxai.com').replace(/\/+$/, '');
+
+const faqs = [
+  {
+    question: '¿Necesito conocer el estoicismo?',
+    answer: 'No. Virtus traduce sus principios a preguntas y acciones cotidianas: distinguir lo que depende de ti, elegir una respuesta y practicarla.',
+  },
+  {
+    question: '¿Me ayudará a dejar de sentir emociones difíciles?',
+    answer: 'No intenta suprimirlas. Te ayuda a reconocer lo que sientes sin entregar a ese primer impulso toda la decisión sobre cómo actuar.',
+  },
+  {
+    question: '¿Sustituye a un terapeuta o profesional?',
+    answer: 'No. Virtus no diagnostica ni sustituye acompañamiento psicológico, médico o profesional. Puede ayudarte a ordenar una situación y preparar mejor una conversación.',
+  },
+];
+---
+
+<BaseLayout
+  profile="stoic"
+  title="Virtus Estoico — elige tu respuesta y actúa con claridad"
+  description="Distingue lo que depende de ti, elige una respuesta coherente y conviértela en una acción concreta con Virtus."
+>
+  <Header appUrl={appUrl} variant="zone" activeZone="stoic" />
+  <div class="zone-page zone-page--stoic">
+    <main id="contenido">
+      <ZoneHero
+        profile="stoic"
+        eyebrow="Virtus Estoico · by NeruxAI"
+        title="No controlas todo lo que ocurre. Sí puedes elegir cómo responder."
+        lede="Separa el hecho de tu primera interpretación, devuelve la energía a lo que depende de ti y conviértelo en una acción concreta."
+        selectorLabel="¿Qué está poniendo a prueba tu respuesta?"
+        ctaLabel="Elegir mi siguiente acción"
+        microcopy="No se trata de aguantar más. Se trata de responder con más criterio."
+      />
+      <StoicProblem />
+      <ZoneDemoSection
+        profile="stoic"
+        appUrl={appUrl}
+        eyebrow="Del impulso a la elección"
+        title="Convierte una situación que pesa en una respuesta bajo tu control"
+        lede="Virtus separa hechos, juicios y margen de acción para proponerte una práctica concreta durante las próximas 24 horas."
+      />
+      <StoicFramework />
+      <StoicContinuity />
+      <ZoneFinalCta
+        profile="stoic"
+        title="No necesitas dominar lo que ocurre. Necesitas practicar la respuesta que quieres sostener."
+        primaryLabel="Practicar lo que depende de mí"
+        microcopy="Recibe una primera práctica completa antes de crear una cuenta."
+        faqs={faqs}
+      />
+    </main>
+    <ZoneFooter profile="stoic" appUrl={appUrl} />
+    <ZoneStickyCta profile="stoic" label="Elegir mi siguiente acción" />
+  </div>
+</BaseLayout>

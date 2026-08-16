@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import ZoneHero from '../components/zones/ZoneHero.astro';
+import ZoneDemoSection from '../components/zones/ZoneDemoSection.astro';
+import ZoneFinalCta from '../components/zones/ZoneFinalCta.astro';
+import ZoneFooter from '../components/zones/ZoneFooter.astro';
+import ZoneStickyCta from '../components/zones/ZoneStickyCta.astro';
+import SpiritualProblem from '../components/zones/spiritual/SpiritualProblem.astro';
+import SpiritualFramework from '../components/zones/spiritual/SpiritualFramework.astro';
+import SpiritualContinuity from '../components/zones/spiritual/SpiritualContinuity.astro';
+import '../styles/zones.css';
+
+const appUrl = (import.meta.env.PUBLIC_APP_URL || 'https://virtus.neruxai.com').replace(/\/+$/, '');
+
+const faqs = [
+  {
+    question: '¿Tengo que seguir una tradición espiritual?',
+    answer: 'No. El perfil Espiritual es abierto y no confesional. Parte de tus propios valores, prácticas y forma de entender el propósito.',
+  },
+  {
+    question: '¿Y si todavía no sé cuál es mi propósito?',
+    answer: 'No necesitas formular una respuesta definitiva. Virtus empieza por lo que hoy valoras y te ayuda a probar una forma concreta de vivirlo.',
+  },
+  {
+    question: '¿Sustituye acompañamiento religioso o profesional?',
+    answer: 'No. Puede complementar tu reflexión, pero no sustituye una comunidad, una guía espiritual, terapia ni asesoramiento profesional.',
+  },
+];
+---
+
+<BaseLayout
+  profile="spiritual"
+  title="Virtus Espiritual — alinea tus acciones con tus valores"
+  description="Reconecta con lo que valoras y convierte el propósito en una práctica cotidiana, abierta y no confesional, con Virtus."
+>
+  <Header appUrl={appUrl} variant="zone" activeZone="spiritual" />
+  <div class="zone-page zone-page--spiritual">
+    <main id="contenido">
+      <ZoneHero
+        profile="spiritual"
+        eyebrow="Virtus Espiritual · by NeruxAI"
+        title="Cuando te alejas de lo que valoras, avanzar también puede sentirse vacío"
+        lede="Reconecta con lo que importa, contrasta tus decisiones con tus valores y dales una forma concreta en la vida cotidiana."
+        selectorLabel="¿Dónde notas hoy la desconexión?"
+        ctaLabel="Volver a lo que importa"
+        microcopy="No necesitas una creencia concreta ni tener resuelto tu propósito."
+      />
+      <SpiritualProblem />
+      <ZoneDemoSection
+        profile="spiritual"
+        appUrl={appUrl}
+        eyebrow="De la intención a la práctica"
+        title="Convierte una sensación de desconexión en un gesto de coherencia"
+        lede="Virtus te ayuda a escuchar la tensión, nombrar el valor que quieres cuidar y probar una acción real sin imponer respuestas espirituales."
+      />
+      <SpiritualFramework />
+      <SpiritualContinuity />
+      <ZoneFinalCta
+        profile="spiritual"
+        title="Tu propósito no tiene que ser una frase perfecta. Puede empezar en la forma de vivir hoy."
+        primaryLabel="Crear mi práctica de coherencia"
+        microcopy="Recibe tu primera práctica completa antes de crear una cuenta."
+        faqs={faqs}
+      />
+    </main>
+    <ZoneFooter profile="spiritual" appUrl={appUrl} />
+    <ZoneStickyCta profile="spiritual" label="Volver a lo que importa" />
+  </div>
+</BaseLayout>

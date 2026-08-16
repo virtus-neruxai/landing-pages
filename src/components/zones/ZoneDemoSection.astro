@@ -35,6 +35,11 @@ const { profile, appUrl, eyebrow, title, lede } = Astro.props;
       var(--surface);
   }
 
+  .zone-demo-section:focus-visible {
+    outline: 3px solid var(--zone-action);
+    outline-offset: -3px;
+  }
+
   .zone-demo-section__heading {
     display: grid;
     gap: 1rem 4rem;

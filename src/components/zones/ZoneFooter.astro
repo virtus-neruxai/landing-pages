@@ -7,6 +7,13 @@ interface Props {
 }
 
 const { profile, appUrl } = Astro.props;
+const taglines: Record<ZoneProfile, string> = {
+  stoic: 'Claridad ante lo que ocurre. Carácter en la forma de responder.',
+  spiritual: 'Raíz en tus valores. Presencia en la forma de vivirlos.',
+  calm: 'Menos presión. Un ritmo que puedas sostener.',
+  student: 'Dirección antes que más ruido. Un siguiente paso que puedas contrastar.',
+  performance: 'Dirección antes que más ruido. Un siguiente paso que puedas contrastar.',
+};
 ---
 
 <footer class:list={['zone-footer', `zone-footer--${profile}`]}>
@@ -18,7 +25,7 @@ const { profile, appUrl } = Astro.props;
         <small>by NeruxAI</small>
       </div>
     </div>
-    <p>Dirección antes que más ruido. Un siguiente paso que puedas contrastar.</p>
+    <p>{taglines[profile]}</p>
     <nav aria-label="Enlaces del pie">
       <a href="/">Visión general</a>
       <a href={appUrl} data-app-link data-track="app_login_clicked" data-track-location="zone_footer">Iniciar sesión</a>
@@ -41,6 +48,24 @@ const { profile, appUrl } = Astro.props;
     --footer-primary: #e0702f;
     --footer-secondary: #9c3f1b;
     --footer-action: #8b3519;
+  }
+
+  .zone-footer--stoic {
+    --footer-primary: #c6a75e;
+    --footer-secondary: #8b2f1f;
+    --footer-action: #78291c;
+  }
+
+  .zone-footer--spiritual {
+    --footer-primary: #2f6b4f;
+    --footer-secondary: #8aa66a;
+    --footer-action: #24573f;
+  }
+
+  .zone-footer--calm {
+    --footer-primary: #2f80ed;
+    --footer-secondary: #174a7c;
+    --footer-action: #174a7c;
   }
 
   .zone-footer__inner {

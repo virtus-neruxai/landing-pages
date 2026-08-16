@@ -1,0 +1,259 @@
+<section
+  class="section stoic-continuity"
+  id="practica-estoica"
+  aria-labelledby="stoic-continuity-title"
+  data-track-section="stoic_continuity"
+>
+  <div class="container stoic-continuity__layout">
+    <header class="stoic-continuity__copy">
+      <span class="section-kicker">Práctica, no pose</span>
+      <h2 class="section-title" id="stoic-continuity-title">
+        Tu respuesta deja de depender del impulso del momento
+      </h2>
+      <p class="section-lede">
+        Virtus conecta lo que ocurrió, cómo lo interpretaste y qué hiciste después. Así puedes revisar tu respuesta
+        sin castigarte y practicar una forma más coherente de actuar.
+      </p>
+
+      <p class="continuity-trust">
+        Virtus trabaja con lo que tú decides registrar. Sus observaciones describen conductas, no tu valor personal ni
+        un diagnóstico.
+      </p>
+      <p class="continuity-audience">
+        Para personas que no buscan volverse invulnerables, sino responder con más criterio.
+      </p>
+    </header>
+
+    <figure class="practice-review" aria-labelledby="practice-review-caption">
+      <figcaption class="sr-only" id="practice-review-caption">
+        Ejemplo de revisión de una respuesta desde una situación inicial hasta el siguiente ensayo
+      </figcaption>
+
+      <ol class="review-sequence">
+        <li class="review-step review-step--situation">
+          <span class="review-step__number" aria-hidden="true">01</span>
+          <div>
+            <small>Situación</small>
+            <p>Una reunión cambia tus prioridades cuando ya tenías el día organizado.</p>
+          </div>
+        </li>
+        <li class="review-step review-step--judgment">
+          <span class="review-step__number" aria-hidden="true">02</span>
+          <div>
+            <small>Juicio inicial</small>
+            <blockquote>“Todo se está desordenando otra vez.”</blockquote>
+          </div>
+        </li>
+        <li class="review-step review-step--response">
+          <span class="review-step__number" aria-hidden="true">03</span>
+          <div>
+            <small>Respuesta elegida</small>
+            <p>Aclarar el límite, proteger una prioridad y terminar el siguiente paso útil.</p>
+          </div>
+        </li>
+        <li class="review-step review-step--next">
+          <span class="review-step__number" aria-hidden="true">04</span>
+          <div>
+            <small>Siguiente ensayo</small>
+            <p>Preparar una frase breve para responder al próximo cambio sin reaccionar en caliente.</p>
+          </div>
+        </li>
+      </ol>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .stoic-continuity {
+    --stoic-gold: #c6a75e;
+    --stoic-oxide: #8b2f1f;
+    --stoic-gold-soft: #f3ead5;
+    background:
+      radial-gradient(ellipse at 9% 91%, color-mix(in srgb, var(--stoic-oxide) 7%, transparent), transparent 31rem),
+      radial-gradient(ellipse at 94% 8%, color-mix(in srgb, var(--stoic-gold) 14%, transparent), transparent 34rem),
+      var(--background);
+  }
+
+  .stoic-continuity::after {
+    position: absolute;
+    top: 4rem;
+    right: -8rem;
+    width: 21rem;
+    height: 14rem;
+    border-radius: 39% 61% 46% 54% / 63% 37% 63% 37%;
+    background: color-mix(in srgb, var(--stoic-gold) 7%, transparent);
+    content: '';
+    pointer-events: none;
+    transform: rotate(9deg);
+  }
+
+  .stoic-continuity__layout {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: clamp(3rem, 8vw, 6rem);
+    align-items: center;
+  }
+
+  .stoic-continuity__copy {
+    max-width: 50rem;
+  }
+
+  .stoic-continuity .section-kicker {
+    color: var(--stoic-oxide);
+  }
+
+  .stoic-continuity .section-title {
+    max-width: 21ch;
+    font-family: var(--font-stoic);
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.08;
+  }
+
+  .stoic-continuity .section-lede {
+    max-width: 43rem;
+    margin-bottom: 0;
+  }
+
+  .continuity-trust {
+    margin: clamp(2rem, 5vw, 3rem) 0 0;
+    border-left: 3px solid var(--stoic-gold);
+    padding: 0.2rem 0 0.2rem 1rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .continuity-audience {
+    margin: 1.4rem 0 0;
+    color: color-mix(in srgb, var(--stoic-oxide) 78%, var(--text));
+    font-family: var(--font-stoic);
+    font-size: 0.98rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .practice-review {
+    position: relative;
+    margin: 0;
+    border: 1px solid color-mix(in srgb, var(--stoic-oxide) 16%, var(--line));
+    border-radius: 2.25rem 2.25rem 0.85rem 2.25rem;
+    padding: clamp(1rem, 4vw, 1.7rem);
+    background: linear-gradient(145deg, color-mix(in srgb, var(--surface) 90%, var(--stoic-gold-soft)), var(--surface));
+    box-shadow: 0 26px 64px rgb(93 65 35 / 12%);
+  }
+
+  .practice-review::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0.8rem -0.65rem -0.65rem 0.8rem;
+    border-radius: inherit;
+    background: color-mix(in srgb, var(--stoic-gold) 9%, transparent);
+    content: '';
+  }
+
+  .review-sequence {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .review-step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    gap: 0.8rem;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--stoic-oxide) 12%, var(--line));
+    border-radius: 1.25rem;
+    padding: 1rem;
+    background: color-mix(in srgb, var(--surface) 95%, transparent);
+  }
+
+  .review-step::after {
+    position: absolute;
+    right: -2.8rem;
+    bottom: -3.4rem;
+    width: 7rem;
+    height: 6rem;
+    border-radius: 64% 36% 46% 54% / 42% 66% 34% 58%;
+    background: color-mix(in srgb, var(--stoic-gold) 8%, transparent);
+    content: '';
+    pointer-events: none;
+  }
+
+  .review-step__number,
+  .review-step > div {
+    position: relative;
+    z-index: 1;
+  }
+
+  .review-step__number {
+    display: grid;
+    width: 2.35rem;
+    height: 2.25rem;
+    place-items: center;
+    border-radius: 59% 41% 53% 47% / 43% 62% 38% 57%;
+    background: color-mix(in srgb, var(--stoic-gold) 19%, var(--surface));
+    color: var(--stoic-oxide);
+    font-size: 0.65rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 800;
+    transform: rotate(-4deg);
+  }
+
+  .review-step small {
+    display: block;
+    margin-bottom: 0.38rem;
+    color: var(--stoic-oxide);
+    font-size: 0.68rem;
+    font-weight: 800;
+    line-height: 1.3;
+  }
+
+  .review-step p,
+  .review-step blockquote {
+    margin: 0;
+    color: var(--text);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .review-step blockquote {
+    font-family: var(--font-stoic);
+    font-size: clamp(1rem, 2.5vw, 1.13rem);
+    font-weight: 600;
+  }
+
+  .review-step--judgment {
+    background: color-mix(in srgb, var(--surface) 93%, var(--stoic-oxide) 7%);
+  }
+
+  .review-step--response {
+    border-color: color-mix(in srgb, var(--stoic-gold) 30%, var(--line));
+  }
+
+  .review-step--next {
+    border-color: color-mix(in srgb, var(--stoic-oxide) 22%, var(--line));
+    background: color-mix(in srgb, var(--surface) 84%, var(--stoic-gold) 16%);
+  }
+
+  .review-step--next p {
+    font-weight: 650;
+  }
+
+  @media (min-width: 58rem) {
+    .stoic-continuity__layout {
+      grid-template-columns: minmax(0, 1fr) minmax(25rem, 0.88fr);
+    }
+
+    .practice-review {
+      transform: rotate(0.35deg);
+    }
+  }
+</style>

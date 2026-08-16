@@ -1,0 +1,251 @@
+<section
+  class="section calm-framework"
+  id="respira-observa-avanza"
+  aria-labelledby="calm-framework-title"
+  data-track-section="calm_framework"
+>
+  <div class="container calm-framework__layout">
+    <header class="calm-framework__intro">
+      <span class="section-kicker">Respira · Observa · Avanza</span>
+      <h2 class="section-title" id="calm-framework-title">
+        No tienes que resolverlo todo para volver a moverte
+      </h2>
+      <p class="section-lede">
+        Virtus no convierte tu bienestar en otra exigencia. Te ayuda a crear espacio, leer lo que necesitas y elegir un paso amable y concreto.
+      </p>
+      <a
+        class="calm-framework__cta"
+        href="#zone-demo"
+        data-track="zone_framework_cta_clicked"
+        data-track-location="calm_framework"
+      >
+        Encontrar un paso que sí cabe
+        <svg aria-hidden="true" viewBox="0 0 22 18" fill="none">
+          <path d="M2 11c5-5 11-6 18-4M16 3l4 4-4 4" />
+        </svg>
+      </a>
+    </header>
+
+    <div class="calm-framework__flow">
+      <svg class="flow-line" aria-hidden="true" viewBox="0 0 620 620" fill="none" preserveAspectRatio="none">
+        <path d="M88 84c115-79 206 5 167 99-31 74-112 105-39 180 79 82 229 20 246 114 9 47-37 80-110 91" />
+        <path d="M362 568c34-19 65-22 101-12" />
+      </svg>
+
+      <ol class="flow-steps">
+        <li>
+          <span class="flow-marker" aria-hidden="true">1</span>
+          <div>
+            <h3>Respira</h3>
+            <p>Baja el volumen antes de decidir qué hacer con él.</p>
+          </div>
+        </li>
+        <li>
+          <span class="flow-marker" aria-hidden="true">2</span>
+          <div>
+            <h3>Observa</h3>
+            <p>Nombra la carga, la energía y lo que hoy necesita cuidado.</p>
+          </div>
+        </li>
+        <li>
+          <span class="flow-marker" aria-hidden="true">3</span>
+          <div>
+            <h3>Avanza</h3>
+            <p>Elige un movimiento pequeño que puedas sostener sin castigarte.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<style>
+  .calm-framework {
+    --calm-blue: #2f80ed;
+    --calm-deep: #174a7c;
+    --calm-soft: #e6f1ff;
+    background:
+      radial-gradient(ellipse at 12% 12%, color-mix(in srgb, var(--calm-blue) 11%, transparent), transparent 34rem),
+      radial-gradient(ellipse at 90% 88%, color-mix(in srgb, var(--calm-deep) 8%, transparent), transparent 35rem),
+      var(--surface);
+  }
+
+  .calm-framework::before {
+    position: absolute;
+    bottom: -6rem;
+    left: -8rem;
+    width: 22rem;
+    height: 15rem;
+    border-radius: 61% 39% 34% 66% / 39% 58% 42% 61%;
+    background: color-mix(in srgb, var(--calm-blue) 7%, transparent);
+    content: '';
+    pointer-events: none;
+    transform: rotate(10deg);
+  }
+
+  .calm-framework__layout {
+    display: grid;
+    gap: clamp(3rem, 8vw, 6rem);
+    align-items: center;
+  }
+
+  .calm-framework__intro {
+    position: relative;
+    z-index: 1;
+    max-width: 48rem;
+  }
+
+  .calm-framework .section-kicker {
+    color: var(--calm-deep);
+  }
+
+  .calm-framework .section-title {
+    max-width: 19ch;
+    font-family: var(--font-calm);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.08;
+  }
+
+  .calm-framework__cta {
+    display: inline-flex;
+    min-height: 3.35rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    margin-top: 1rem;
+    border: 1px solid color-mix(in srgb, var(--calm-blue) 72%, var(--calm-deep));
+    border-radius: 999px;
+    padding: 0.88rem 1.35rem;
+    background: linear-gradient(120deg, color-mix(in srgb, var(--calm-blue) 78%, var(--calm-deep)), var(--calm-deep));
+    color: var(--white);
+    font-size: 0.95rem;
+    font-weight: 760;
+    line-height: 1.15;
+    text-decoration: none;
+    box-shadow: 0 14px 30px rgb(23 74 124 / 22%);
+    transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+  }
+
+  .calm-framework__cta:hover {
+    box-shadow: 0 18px 36px rgb(23 74 124 / 28%);
+    filter: saturate(1.06);
+    transform: translateY(-2px);
+  }
+
+  .calm-framework__cta svg {
+    width: 1.15rem;
+    flex: 0 0 auto;
+  }
+
+  .calm-framework__cta path {
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .calm-framework__flow {
+    position: relative;
+    min-width: 0;
+  }
+
+  .flow-line {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  .flow-line path {
+    stroke: color-mix(in srgb, var(--calm-blue) 30%, transparent);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-dasharray: 8 11;
+  }
+
+  .flow-line path:last-child {
+    stroke: color-mix(in srgb, var(--calm-deep) 36%, transparent);
+  }
+
+  .flow-steps {
+    position: relative;
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .flow-steps li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 3rem minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+    min-height: 9.5rem;
+    border: 1px solid color-mix(in srgb, var(--calm-deep) 15%, var(--line));
+    border-radius: 2rem 2rem 2rem 0.8rem;
+    padding: 1.35rem;
+    background: color-mix(in srgb, var(--surface) 90%, var(--calm-soft));
+    box-shadow: 0 14px 34px rgb(23 74 124 / 8%);
+  }
+
+  .flow-steps li:nth-child(2) {
+    margin-left: clamp(0.75rem, 6vw, 3rem);
+    border-radius: 2rem 0.8rem 2rem 2rem;
+    background: color-mix(in srgb, var(--surface) 84%, var(--calm-soft));
+  }
+
+  .flow-steps li:nth-child(3) {
+    margin-right: clamp(0.75rem, 6vw, 3rem);
+    border-radius: 0.8rem 2rem 2rem;
+  }
+
+  .flow-marker {
+    display: grid;
+    width: 2.8rem;
+    height: 2.65rem;
+    place-items: center;
+    border-radius: 62% 38% 57% 43% / 43% 62% 38% 57%;
+    background: color-mix(in srgb, var(--calm-blue) 17%, var(--surface));
+    color: var(--calm-deep);
+    font-family: var(--font-calm);
+    font-weight: 800;
+    transform: rotate(-5deg);
+  }
+
+  .flow-steps li:nth-child(2) .flow-marker {
+    background: color-mix(in srgb, var(--calm-deep) 12%, var(--surface));
+    transform: rotate(5deg);
+  }
+
+  .flow-steps h3 {
+    margin-bottom: 0.42rem;
+    color: var(--calm-deep);
+    font-family: var(--font-calm);
+    font-size: clamp(1.35rem, 1.2rem + 0.65vw, 1.75rem);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .flow-steps p {
+    max-width: 26rem;
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.94rem;
+    line-height: 1.52;
+  }
+
+  @media (min-width: 54rem) {
+    .calm-framework__layout {
+      grid-template-columns: minmax(0, 0.86fr) minmax(27rem, 1fr);
+    }
+
+    .calm-framework__cta {
+      margin-top: 1.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,278 @@
+<section
+  class="section stoic-problem"
+  id="lo-que-depende-de-ti"
+  aria-labelledby="stoic-problem-title"
+  data-track-section="stoic_problem"
+>
+  <div class="container stoic-problem__layout">
+    <header class="stoic-problem__heading">
+      <span class="section-kicker">No es dureza</span>
+      <h2 class="section-title" id="stoic-problem-title">
+        No necesitas aguantarlo todo. Necesitas distinguir dónde sí puedes actuar.
+      </h2>
+      <p class="section-lede">
+        Cuando intentas controlar lo externo, gastas energía sin mover nada. Virtus te ayuda a separar el hecho,
+        tu juicio y la respuesta que sí depende de ti.
+      </p>
+    </header>
+
+    <div class="control-map" role="group" aria-label="Ejemplo para distinguir una situación, su interpretación y la respuesta posible">
+      <svg class="control-map__path" aria-hidden="true" viewBox="0 0 420 520" fill="none" preserveAspectRatio="none">
+        <path d="M68 24c-33 91 77 112 65 206S38 374 124 472" />
+        <path d="M133 230c78-47 138-34 213 17s66 140 9 224" />
+      </svg>
+
+      <article class="control-card control-card--event">
+        <span class="control-card__mark" aria-hidden="true">01</span>
+        <div>
+          <h3>Lo que ocurre</h3>
+          <p>Un plazo cambia, alguien responde de otro modo o el resultado no llega cuando esperabas.</p>
+        </div>
+        <small>No depende enteramente de ti</small>
+      </article>
+
+      <article class="control-card control-card--judgment">
+        <span class="control-card__mark" aria-hidden="true">02</span>
+        <div>
+          <h3>Lo que interpretas</h3>
+          <blockquote>“Si no sale perfecto, he fallado.”</blockquote>
+        </div>
+        <small>Puedes examinarlo</small>
+      </article>
+
+      <article class="control-card control-card--response">
+        <span class="control-card__mark" aria-hidden="true">03</span>
+        <div>
+          <h3>Cómo respondes</h3>
+          <p>Pedir contexto, ajustar el siguiente paso y actuar sin añadir una lucha innecesaria.</p>
+        </div>
+        <small>Está en tu mano</small>
+      </article>
+    </div>
+  </div>
+
+  <div class="container">
+    <p class="stoic-problem__closing">
+      Aceptar lo que no controlas no es resignarte. Es devolver tu esfuerzo al lugar donde puede servir.
+    </p>
+  </div>
+</section>
+
+<style>
+  .stoic-problem {
+    --stoic-gold: #c6a75e;
+    --stoic-oxide: #8b2f1f;
+    --stoic-gold-soft: #f3ead5;
+    background:
+      radial-gradient(ellipse at 92% 12%, color-mix(in srgb, var(--stoic-gold) 15%, transparent), transparent 34rem),
+      radial-gradient(ellipse at 4% 90%, color-mix(in srgb, var(--stoic-oxide) 7%, transparent), transparent 31rem),
+      var(--background);
+  }
+
+  .stoic-problem::after {
+    position: absolute;
+    right: -8rem;
+    bottom: -6rem;
+    width: 22rem;
+    height: 14rem;
+    border-radius: 63% 37% 54% 46% / 42% 68% 32% 58%;
+    background: color-mix(in srgb, var(--stoic-gold) 8%, transparent);
+    content: '';
+    pointer-events: none;
+    transform: rotate(-10deg);
+  }
+
+  .stoic-problem__layout,
+  .stoic-problem > .container:last-child {
+    position: relative;
+    z-index: 1;
+  }
+
+  .stoic-problem__layout {
+    display: grid;
+    gap: clamp(3rem, 8vw, 6rem);
+    align-items: center;
+  }
+
+  .stoic-problem__heading {
+    max-width: 49rem;
+  }
+
+  .stoic-problem .section-kicker {
+    color: var(--stoic-oxide);
+  }
+
+  .stoic-problem .section-title {
+    max-width: 21ch;
+    font-family: var(--font-stoic);
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.08;
+  }
+
+  .stoic-problem .section-lede {
+    max-width: 43rem;
+    margin-bottom: 0;
+  }
+
+  .control-map {
+    position: relative;
+    display: grid;
+    gap: 0.85rem;
+    min-width: 0;
+  }
+
+  .control-map__path {
+    display: none;
+  }
+
+  .control-map__path path {
+    stroke: color-mix(in srgb, var(--stoic-gold) 58%, transparent);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-dasharray: 7 11;
+  }
+
+  .control-map__path path:last-child {
+    stroke: color-mix(in srgb, var(--stoic-oxide) 33%, transparent);
+  }
+
+  .control-card {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 2.75rem minmax(0, 1fr);
+    gap: 0.9rem 1rem;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--stoic-oxide) 14%, var(--line));
+    border-radius: 1.8rem 1.8rem 1.8rem 0.75rem;
+    padding: 1.25rem;
+    background: color-mix(in srgb, var(--surface) 93%, var(--stoic-gold-soft));
+    box-shadow: 0 16px 38px rgb(93 65 35 / 8%);
+  }
+
+  .control-card::after {
+    position: absolute;
+    right: -3.5rem;
+    bottom: -4rem;
+    width: 9rem;
+    height: 7rem;
+    border-radius: 62% 38% 46% 54% / 42% 64% 36% 58%;
+    background: color-mix(in srgb, var(--stoic-gold) 11%, transparent);
+    content: '';
+    pointer-events: none;
+    transform: rotate(-12deg);
+  }
+
+  .control-card--judgment {
+    margin-left: clamp(0.65rem, 4vw, 2rem);
+    border-radius: 1.8rem 0.75rem 1.8rem 1.8rem;
+    background: color-mix(in srgb, var(--surface) 94%, var(--stoic-oxide) 6%);
+  }
+
+  .control-card--response {
+    margin-right: clamp(0.65rem, 4vw, 2rem);
+    border-color: color-mix(in srgb, var(--stoic-gold) 35%, var(--line));
+    border-radius: 0.75rem 1.8rem 1.8rem 1.8rem;
+  }
+
+  .control-card--response::after {
+    background: color-mix(in srgb, var(--stoic-oxide) 7%, transparent);
+    transform: rotate(9deg);
+  }
+
+  .control-card__mark {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 2.65rem;
+    height: 2.5rem;
+    place-items: center;
+    border-radius: 60% 40% 53% 47% / 44% 61% 39% 56%;
+    background: color-mix(in srgb, var(--stoic-gold) 23%, var(--surface));
+    color: color-mix(in srgb, var(--stoic-oxide) 88%, var(--text));
+    font-size: 0.68rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 800;
+    transform: rotate(-4deg);
+  }
+
+  .control-card > div,
+  .control-card small {
+    position: relative;
+    z-index: 1;
+  }
+
+  .control-card h3 {
+    margin-bottom: 0.45rem;
+    color: var(--text);
+    font-family: var(--font-stoic);
+    font-size: clamp(1.2rem, 3.2vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .control-card p,
+  .control-card blockquote {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .control-card blockquote {
+    color: var(--text);
+    font-family: var(--font-stoic);
+    font-size: 1rem;
+    font-weight: 550;
+  }
+
+  .control-card small {
+    grid-column: 2;
+    width: fit-content;
+    border-radius: 999px;
+    padding: 0.34rem 0.65rem;
+    background: color-mix(in srgb, var(--stoic-gold) 16%, var(--surface));
+    color: color-mix(in srgb, var(--stoic-oxide) 83%, var(--text));
+    font-size: 0.68rem;
+    font-weight: 760;
+    line-height: 1.25;
+  }
+
+  .control-card--response small {
+    background: color-mix(in srgb, var(--stoic-oxide) 9%, var(--surface));
+  }
+
+  .stoic-problem__closing {
+    max-width: 52rem;
+    margin: clamp(2.75rem, 7vw, 5rem) 0 0;
+    border-left: 3px solid var(--stoic-gold);
+    padding: 0.3rem 0 0.3rem clamp(1rem, 3vw, 1.5rem);
+    color: color-mix(in srgb, var(--stoic-oxide) 72%, var(--text));
+    font-family: var(--font-stoic);
+    font-size: clamp(1.18rem, 1.05rem + 0.65vw, 1.62rem);
+    font-weight: 600;
+    line-height: 1.45;
+  }
+
+  @media (min-width: 58rem) {
+    .stoic-problem__layout {
+      grid-template-columns: minmax(0, 1.04fr) minmax(25rem, 0.86fr);
+    }
+
+    .control-map {
+      padding-block: 1.5rem;
+    }
+
+    .control-map__path {
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+  }
+</style>

@@ -23,6 +23,36 @@
   --zone-font: var(--font-performance);
 }
 
+.zone-page--stoic {
+  --zone-primary: #c6a75e;
+  --zone-secondary: #8b2f1f;
+  --zone-action: #78291c;
+  --zone-action-hover: #612016;
+  --zone-soft: #f3e9e2;
+  --zone-primary-soft: #f5eedf;
+  --zone-font: var(--font-stoic);
+}
+
+.zone-page--spiritual {
+  --zone-primary: #2f6b4f;
+  --zone-secondary: #8aa66a;
+  --zone-action: #24573f;
+  --zone-action-hover: #1b4431;
+  --zone-soft: #e8f0e8;
+  --zone-primary-soft: #edf3e7;
+  --zone-font: var(--font-spiritual);
+}
+
+.zone-page--calm {
+  --zone-primary: #2f80ed;
+  --zone-secondary: #174a7c;
+  --zone-action: #174a7c;
+  --zone-action-hover: #10395f;
+  --zone-soft: #e7f1fb;
+  --zone-primary-soft: #eaf3ff;
+  --zone-font: var(--font-calm);
+}
+
 .zone-page [id] {
   scroll-margin-top: 8.2rem;
 }
@@ -37,6 +67,12 @@
   font-style: normal;
   font-weight: 600;
   letter-spacing: 0;
+}
+
+.zone-page--spiritual .section-title,
+.zone-page--spiritual .zone-title {
+  font-style: italic;
+  font-weight: 500;
 }
 
 .zone-button {
@@ -95,7 +131,7 @@
   transform: rotate(20deg);
 }
 
-@media (min-width: 60rem) {
+@media (min-width: 76rem) {
   .zone-page [id] {
     scroll-margin-top: 5.5rem;
   }

@@ -6,16 +6,19 @@ interface Props {
 const { appUrl } = Astro.props;
 
 const profiles = [
-  { name: 'Estoico', symbol: '⚖', description: 'Claridad · dominio · acción', tone: 'stoic' },
-  { name: 'Espiritual', symbol: '◌', description: 'Propósito · coherencia · pausa', tone: 'spiritual' },
-  { name: 'Calma', symbol: '≈', description: 'Recuperar · respirar · avanzar', tone: 'calm' },
-  { name: 'Rendimiento', symbol: '↗', description: 'Cuerpo · hábito · medida', tone: 'performance' },
-  { name: 'Estudiante', symbol: '⌁', description: 'Foco · estudio · progreso', tone: 'student' },
+  { name: 'Estoico', symbol: '⚖', description: 'Disciplina · claridad · virtud', tone: 'stoic' },
+  { name: 'Espiritual', symbol: '◌', description: 'Raíz · valores · propósito', tone: 'spiritual' },
+  { name: 'Calma', symbol: '≈', description: 'Respira · observa · avanza', tone: 'calm' },
+  { name: 'Rendimiento', symbol: '↗', description: 'Energía · ritmo · acción', tone: 'performance' },
+  { name: 'Estudiante', symbol: '⌁', description: 'Lectura · método · futuro', tone: 'student' },
 ];
 
 const futureZones = [
-  { label: 'Para estudiantes', route: '/estudiante' },
-  { label: 'Para rendimiento', route: '/rendimiento' },
+  { label: 'Para Estoico', route: '/estoico', tone: 'stoic' },
+  { label: 'Para Espiritual', route: '/espiritual', tone: 'spiritual' },
+  { label: 'Para Calma', route: '/calma', tone: 'calm' },
+  { label: 'Para Estudiante', route: '/estudiante', tone: 'student' },
+  { label: 'Para Rendimiento', route: '/rendimiento', tone: 'performance' },
 ];
 ---
 
@@ -48,21 +51,21 @@ const futureZones = [
       ))}
     </div>
 
-    <div class="future-zones" aria-labelledby="future-zones-title">
+    <section class="future-zones" aria-labelledby="future-zones-title">
       <div>
         <span class="future-label">Recorridos específicos</span>
         <h3 id="future-zones-title">Encuentra el recorrido para tu momento</h3>
-        <p>Explora una experiencia centrada en tu dirección académica o en la siguiente etapa de tu rendimiento.</p>
+        <p>Explora una experiencia centrada en la voz, el ritmo y la perspectiva que mejor acompañan tu momento.</p>
       </div>
       <div class="zone-buttons">
         {futureZones.map((zone) => (
-          <a href={zone.route} data-route={zone.route} data-track="profile_zone_clicked" data-track-location="profiles">
+          <a class={`zone-link--${zone.tone}`} href={zone.route} data-route={zone.route} data-track="profile_zone_clicked" data-track-location="profiles" data-track-profile={zone.tone} data-track-label={zone.label}>
             {zone.label}
             <span aria-hidden="true">↗</span>
           </a>
         ))}
       </div>
-    </div>
+    </section>
   </div>
 </section>
 
@@ -276,16 +279,34 @@ const futureZones = [
     transform: translateY(-1px);
   }
 
-  .zone-buttons a:first-child {
+  .zone-buttons .zone-link--student {
     border-color: color-mix(in srgb, #5d78a6 34%, var(--line));
     background: color-mix(in srgb, #d8b56d 10%, var(--surface));
     color: #4d668f;
   }
 
-  .zone-buttons a:last-child {
+  .zone-buttons .zone-link--performance {
     border-color: color-mix(in srgb, #9c3f1b 30%, var(--line));
     background: color-mix(in srgb, #e0702f 9%, var(--surface));
     color: #8b3519;
+  }
+
+  .zone-buttons .zone-link--stoic {
+    border-color: color-mix(in srgb, #8b2f1f 32%, var(--line));
+    background: color-mix(in srgb, #c6a75e 10%, var(--surface));
+    color: #78291c;
+  }
+
+  .zone-buttons .zone-link--spiritual {
+    border-color: color-mix(in srgb, #2f6b4f 34%, var(--line));
+    background: color-mix(in srgb, #8aa66a 11%, var(--surface));
+    color: #24573f;
+  }
+
+  .zone-buttons .zone-link--calm {
+    border-color: color-mix(in srgb, #174a7c 32%, var(--line));
+    background: color-mix(in srgb, #2f80ed 9%, var(--surface));
+    color: #174a7c;
   }
 
   @media (min-width: 34rem) {

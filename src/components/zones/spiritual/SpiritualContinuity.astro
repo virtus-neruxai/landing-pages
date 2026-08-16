@@ -1,0 +1,269 @@
+<section
+  class="section spiritual-continuity"
+  id="coherencia-espiritual"
+  aria-labelledby="spiritual-continuity-title"
+  data-track-section="spiritual_continuity"
+>
+  <div class="container spiritual-continuity__layout">
+    <div class="spiritual-continuity__copy">
+      <span class="section-kicker">Coherencia cotidiana</span>
+      <h2 class="section-title" id="spiritual-continuity-title">Tus valores dejan de quedarse en palabras</h2>
+      <p class="section-lede">
+        Virtus relaciona lo que declaras, lo que registras y lo que haces para ayudarte a volver a tu centro, sin convertir tu vida en una puntuación.
+      </p>
+
+      <p class="continuity-trust">
+        Tú decides qué registrar. La lectura es reflexiva: no mide tu valor, no diagnostica y no sustituye tu propia interpretación.
+      </p>
+      <p class="continuity-audience">
+        Para personas que buscan vivir con más propósito, con o sin una práctica espiritual definida.
+      </p>
+    </div>
+
+    <figure class="practice-reading" aria-labelledby="practice-reading-caption">
+      <figcaption class="sr-only" id="practice-reading-caption">
+        Ejemplo ilustrativo de cómo Virtus relaciona un valor declarado con registros visibles y propone una práctica
+      </figcaption>
+
+      <span class="practice-reading__label">Ejemplo ilustrativo</span>
+
+      <div class="reading-step reading-step--center">
+        <span>Valor declarado</span>
+        <p>“Quiero estar presente en mis relaciones.”</p>
+      </div>
+
+      <div class="reading-step reading-step--records">
+        <span>Registros visibles</span>
+        <ul>
+          <li>Tres conversaciones importantes aplazadas</li>
+          <li>Cuatro días terminados sin una pausa</li>
+          <li>Disponibilidad constante para lo urgente</li>
+        </ul>
+      </div>
+
+      <blockquote class="reading-step reading-step--reflection">
+        <span>Reflexión del mentor</span>
+        <p>“Has protegido la disponibilidad, pero has dejado poco espacio para la presencia que querías cuidar.”</p>
+      </blockquote>
+
+      <div class="reading-step reading-step--practice">
+        <span>Práctica posible</span>
+        <p>Una conversación sin móvil y cinco minutos después para anotar qué cambia.</p>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .spiritual-continuity {
+    --spiritual-forest: #2f6b4f;
+    --spiritual-deep: #1f4e39;
+    --spiritual-sage: #8aa66a;
+    --spiritual-soft: #edf3e7;
+    background:
+      radial-gradient(ellipse at 8% 88%, color-mix(in srgb, var(--spiritual-forest) 9%, transparent), transparent 32rem),
+      radial-gradient(ellipse at 94% 8%, color-mix(in srgb, var(--spiritual-sage) 14%, transparent), transparent 35rem),
+      var(--background);
+  }
+
+  .spiritual-continuity::before {
+    position: absolute;
+    top: -5rem;
+    right: -7rem;
+    width: 21rem;
+    height: 14rem;
+    border-radius: 39% 61% 48% 52% / 66% 40% 60% 34%;
+    background: color-mix(in srgb, var(--spiritual-sage) 8%, transparent);
+    content: '';
+    pointer-events: none;
+    transform: rotate(10deg);
+  }
+
+  .spiritual-continuity__layout {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 3.5rem;
+    align-items: center;
+  }
+
+  .spiritual-continuity__copy {
+    max-width: 51rem;
+  }
+
+  .spiritual-continuity .section-kicker {
+    color: var(--spiritual-deep);
+  }
+
+  .spiritual-continuity .section-title {
+    max-width: 19ch;
+    font-family: var(--font-spiritual);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.07;
+  }
+
+  .spiritual-continuity .section-lede {
+    max-width: 46rem;
+  }
+
+  .continuity-trust {
+    margin: clamp(2rem, 5vw, 3rem) 0 0;
+    border-left: 3px solid var(--spiritual-sage);
+    padding: 0.2rem 0 0.2rem 1rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.56;
+  }
+
+  .continuity-audience {
+    margin: 1.4rem 0 0;
+    color: var(--spiritual-deep);
+    font-family: var(--font-spiritual);
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.12rem);
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .practice-reading {
+    position: relative;
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+    border: 1px solid color-mix(in srgb, var(--spiritual-forest) 19%, var(--line));
+    border-radius: var(--radius-lg) var(--radius-lg) var(--radius-sm) var(--radius-lg);
+    padding: clamp(1rem, 4vw, 1.7rem);
+    background: color-mix(in srgb, var(--surface) 92%, var(--spiritual-soft));
+    box-shadow: 0 26px 64px rgb(31 78 57 / 13%);
+  }
+
+  .practice-reading::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0.8rem -0.65rem -0.65rem 0.8rem;
+    border-radius: inherit;
+    background: color-mix(in srgb, var(--spiritual-sage) 10%, transparent);
+    content: '';
+  }
+
+  .practice-reading__label {
+    width: fit-content;
+    margin-bottom: 0.15rem;
+    border: 1px solid color-mix(in srgb, var(--spiritual-sage) 42%, var(--line));
+    border-radius: 999px;
+    padding: 0.35rem 0.68rem;
+    background: color-mix(in srgb, var(--spiritual-sage) 11%, var(--surface));
+    color: var(--spiritual-deep);
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 800;
+  }
+
+  .reading-step {
+    position: relative;
+    margin: 0;
+    border: 1px solid color-mix(in srgb, var(--spiritual-forest) 13%, var(--line));
+    border-radius: var(--radius-md);
+    padding: 1rem 1.05rem;
+    background: var(--surface);
+  }
+
+  .reading-step > span {
+    display: block;
+    margin-bottom: 0.45rem;
+    color: var(--spiritual-deep);
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 800;
+  }
+
+  .reading-step p {
+    margin: 0;
+    color: var(--text);
+    font-size: 0.92rem;
+    line-height: 1.52;
+  }
+
+  .reading-step--center p,
+  .reading-step--reflection p {
+    font-family: var(--font-spiritual);
+    font-size: clamp(1.03rem, 0.97rem + 0.3vw, 1.2rem);
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .reading-step--records ul {
+    display: grid;
+    gap: 0.45rem;
+    margin: 0;
+    padding: 0;
+    color: var(--text-muted);
+    font-size: 0.84rem;
+    line-height: 1.45;
+    list-style: none;
+  }
+
+  .reading-step--records li {
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .reading-step--records li::before {
+    position: absolute;
+    top: 0.62em;
+    left: 0;
+    width: 0.48rem;
+    height: 0.22rem;
+    border-radius: 65% 35% 58% 42%;
+    background: var(--spiritual-sage);
+    content: '';
+    transform: rotate(-18deg);
+  }
+
+  .reading-step--reflection {
+    border-color: color-mix(in srgb, var(--spiritual-sage) 38%, var(--line));
+    background: linear-gradient(135deg, color-mix(in srgb, var(--spiritual-soft) 75%, var(--surface)), var(--surface));
+  }
+
+  .reading-step--reflection::after {
+    position: absolute;
+    top: 0.9rem;
+    right: 1rem;
+    width: 2.8rem;
+    height: 2rem;
+    border: solid var(--spiritual-sage);
+    border-width: 0 0 1.5px 1.5px;
+    border-radius: 0 0 0 100%;
+    content: '';
+    opacity: 0.72;
+    transform: rotate(-16deg);
+  }
+
+  .reading-step--reflection p {
+    max-width: 28rem;
+    padding-right: 2.5rem;
+  }
+
+  .reading-step--practice {
+    border-color: color-mix(in srgb, var(--spiritual-forest) 29%, var(--line));
+    background: color-mix(in srgb, var(--spiritual-forest) 8%, var(--surface));
+  }
+
+  .reading-step--practice p {
+    color: var(--spiritual-deep);
+    font-weight: 650;
+  }
+
+  @media (min-width: 58rem) {
+    .spiritual-continuity__layout {
+      grid-template-columns: minmax(0, 1fr) minmax(25rem, 0.88fr);
+      gap: clamp(4rem, 8vw, 7rem);
+    }
+
+    .practice-reading {
+      transform: rotate(-0.25deg);
+    }
+  }
+</style>

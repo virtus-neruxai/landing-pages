@@ -1,0 +1,200 @@
+<section
+  class="section calm-problem"
+  id="menos-presion"
+  aria-labelledby="calm-problem-title"
+  data-track-section="calm_problem"
+>
+  <div class="container calm-problem__layout">
+    <header class="calm-problem__heading">
+      <span class="section-kicker">No necesitas exigirte más</span>
+      <h2 class="section-title" id="calm-problem-title">
+        Cuando todo pesa, hacer más fuerza no siempre ayuda
+      </h2>
+      <p class="section-lede">
+        Virtus parte de cómo llegas hoy. Reduce la presión, distingue lo urgente de lo que puede esperar y propone un paso que sí cabe en tu energía real.
+      </p>
+    </header>
+
+    <ul class="calm-signals" aria-label="Situaciones en las que bajar la presión ayuda a recuperar movimiento">
+      <li>
+        <span class="signal-wave" aria-hidden="true"><i></i><i></i><i></i></span>
+        <div>
+          <h3>Todo parece urgente</h3>
+          <p>Separar lo esencial de lo que puede esperar.</p>
+        </div>
+      </li>
+      <li>
+        <span class="signal-wave" aria-hidden="true"><i></i><i></i><i></i></span>
+        <div>
+          <h3>Descansar también da culpa</h3>
+          <p>Convertir la recuperación en contexto, no en una deuda.</p>
+        </div>
+      </li>
+      <li>
+        <span class="signal-wave" aria-hidden="true"><i></i><i></i><i></i></span>
+        <div>
+          <h3>Hasta empezar abruma</h3>
+          <p>Reducir el siguiente paso hasta que vuelva a ser posible.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <p class="calm-problem__closing">
+      Bajar el ritmo no es rendirse. A veces es la forma más honesta de volver a avanzar.
+    </p>
+  </div>
+</section>
+
+<style>
+  .calm-problem {
+    --calm-blue: #2f80ed;
+    --calm-deep: #174a7c;
+    --calm-soft: #e6f1ff;
+    background:
+      radial-gradient(ellipse at 94% 10%, color-mix(in srgb, var(--calm-blue) 12%, transparent), transparent 34rem),
+      radial-gradient(ellipse at 5% 88%, color-mix(in srgb, var(--calm-deep) 7%, transparent), transparent 30rem),
+      var(--background);
+  }
+
+  .calm-problem::after {
+    position: absolute;
+    z-index: 0;
+    right: -8rem;
+    bottom: -5rem;
+    width: 22rem;
+    height: 12rem;
+    border-radius: 66% 34% 58% 42% / 42% 68% 32% 58%;
+    background: color-mix(in srgb, var(--calm-blue) 7%, transparent);
+    content: '';
+    pointer-events: none;
+    transform: rotate(-7deg);
+  }
+
+  .calm-problem__layout,
+  .calm-problem > .container:last-child {
+    position: relative;
+    z-index: 1;
+  }
+
+  .calm-problem__layout {
+    display: grid;
+    gap: clamp(2.5rem, 7vw, 5rem);
+    align-items: center;
+  }
+
+  .calm-problem__heading {
+    max-width: 48rem;
+  }
+
+  .calm-problem .section-kicker {
+    color: var(--calm-deep);
+  }
+
+  .calm-problem .section-title {
+    max-width: 20ch;
+    font-family: var(--font-calm);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.08;
+  }
+
+  .calm-signals {
+    display: grid;
+    gap: 0.9rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .calm-signals li {
+    display: grid;
+    grid-template-columns: 4rem minmax(0, 1fr);
+    gap: 1rem;
+    align-items: center;
+    min-height: 7.4rem;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--calm-deep) 16%, var(--line));
+    border-radius: 2rem 2rem 2rem 0.9rem;
+    padding: 1.1rem 1.2rem;
+    background: linear-gradient(145deg, color-mix(in srgb, var(--surface) 88%, var(--calm-soft)), var(--surface));
+    box-shadow: 0 14px 34px rgb(23 74 124 / 8%);
+  }
+
+  .calm-signals li:nth-child(2) {
+    border-radius: 2rem 0.9rem 2rem 2rem;
+  }
+
+  .calm-signals li:nth-child(3) {
+    border-radius: 0.9rem 2rem 2rem;
+  }
+
+  .signal-wave {
+    display: grid;
+    gap: 0.35rem;
+    width: 3.5rem;
+  }
+
+  .signal-wave i {
+    display: block;
+    height: 0.28rem;
+    border-radius: 999px 999px 65% 65%;
+    background: color-mix(in srgb, var(--calm-blue) 72%, var(--calm-deep));
+    transform: rotate(-4deg);
+  }
+
+  .signal-wave i:first-child {
+    width: 2.15rem;
+    margin-left: 0.6rem;
+  }
+
+  .signal-wave i:nth-child(2) {
+    width: 3.35rem;
+    transform: rotate(3deg);
+  }
+
+  .signal-wave i:last-child {
+    width: 2.55rem;
+    margin-left: 0.25rem;
+  }
+
+  .calm-signals h3 {
+    margin-bottom: 0.3rem;
+    color: var(--text);
+    font-family: var(--font-calm);
+    font-size: clamp(1.05rem, 0.98rem + 0.35vw, 1.28rem);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .calm-signals p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .calm-problem__closing {
+    max-width: 52rem;
+    margin: clamp(2.5rem, 6vw, 4.5rem) 0 0;
+    border-left: 3px solid var(--calm-blue);
+    padding: 0.3rem 0 0.3rem clamp(1rem, 3vw, 1.5rem);
+    color: var(--calm-deep);
+    font-family: var(--font-calm);
+    font-size: clamp(1.15rem, 1.03rem + 0.6vw, 1.55rem);
+    font-weight: 700;
+    line-height: 1.45;
+  }
+
+  @media (min-width: 56rem) {
+    .calm-problem__layout {
+      grid-template-columns: minmax(0, 1.05fr) minmax(22rem, 0.95fr);
+      gap: clamp(4rem, 8vw, 7rem);
+    }
+
+    .calm-signals li:nth-child(2) {
+      transform: translateX(1.25rem);
+    }
+  }
+</style>

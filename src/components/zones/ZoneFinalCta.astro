@@ -36,7 +36,7 @@ const { profile, title, primaryLabel, microcopy, faqs } = Astro.props;
       <p class="zone-trust">{microcopy}</p>
     </div>
 
-    <div class="zone-final__faq" aria-labelledby={`${profile}-faq-title`}>
+    <section class="zone-final__faq" aria-labelledby={`${profile}-faq-title`}>
       <p class="zone-final__faq-label" id={`${profile}-faq-title`}>Antes de empezar</p>
       {faqs.map((item, index) => (
         <details>
@@ -48,7 +48,7 @@ const { profile, title, primaryLabel, microcopy, faqs } = Astro.props;
           <p>{item.answer}</p>
         </details>
       ))}
-    </div>
+    </section>
   </div>
 </section>
 

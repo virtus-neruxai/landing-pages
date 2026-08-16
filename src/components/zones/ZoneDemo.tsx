@@ -344,11 +344,7 @@ export default function ZoneDemo({ profile, appUrl }: ZoneDemoProps) {
         ) : (
           <div className="zone-demo__preview">
             <p className="zone-demo__preview-kicker">La respuesta no será una frase motivacional</p>
-            <p>
-              {profile === "student"
-                ? "Verás qué mantener, qué explorar y qué observar durante 7 días para obtener evidencia real."
-                : "Verás qué proteger, qué cuestionar y qué experimentar durante 14 días para recuperar criterio."}
-            </p>
+            <p>{content.previewCopy}</p>
           </div>
         )}
       </section>

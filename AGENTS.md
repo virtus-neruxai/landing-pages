@@ -9,7 +9,7 @@ Este directorio contiene la landing pública y estática de Virtus. Es un proyec
 - Lenguaje visible: español.
 - Gestor de paquetes: pnpm 9.
 - Node.js: 22.12 o superior.
-- Rutas actuales: `/`, `/estudiante` y `/rendimiento`.
+- Rutas actuales: `/`, `/estoico`, `/espiritual`, `/calma`, `/estudiante` y `/rendimiento`.
 - Fuera de alcance: backend, autenticación, pagos, infraestructura y despliegue.
 
 Para cambios limitados a esta landing no es necesario leer el código de otros servicios del monorepo.
@@ -40,6 +40,9 @@ No existe actualmente una suite de tests automatizados propia. Los cambios visua
 | Ruta | Composición | Identidad |
 |---|---|---|
 | `/` | `src/pages/index.astro` + componentes globales en `src/components/` | NeruxAI como marca principal, Virtus como producto |
+| `/estoico` | `src/pages/estoico.astro` + compartidos de `zones/` + `zones/stoic/` | Virtus principal; oro/óxido y Lora |
+| `/espiritual` | `src/pages/espiritual.astro` + compartidos de `zones/` + `zones/spiritual/` | Virtus principal; bosque/salvia y Spectral |
+| `/calma` | `src/pages/calma.astro` + compartidos de `zones/` + `zones/calm/` | Virtus principal; azul/marino y Nunito Sans |
 | `/estudiante` | `src/pages/estudiante.astro` + compartidos de `zones/` + `zones/student/` | Virtus principal; oro/pizarra y Bitter |
 | `/rendimiento` | `src/pages/rendimiento.astro` + compartidos de `zones/` + `zones/performance/` | Virtus principal; naranja/óxido y Montserrat |
 
@@ -60,7 +63,7 @@ No introducir un store global ni llamadas de red para resolver cambios que encaj
   - Decora enlaces hacia la app.
   - Emite eventos genéricos de clic y visibilidad de secciones.
 - `src/components/Header.astro`
-  - Contrato estable: `variant: 'global' | 'zone'` y `activeZone?: 'student' | 'performance'`.
+  - Contrato estable: `variant: 'global' | 'zone'` y `activeZone?: ZoneProfile`.
   - La variante global y la jerarquía de marca de las zonas son deliberadamente distintas.
 - `src/components/Hero.astro`, `CenterFormula.astro` y `MissionDemoSection.astro`
   - El hero global presenta la secuencia práctica de «Mi centro», inspirada en Euler y siempre rotulada como metáfora creativa.
@@ -73,7 +76,7 @@ No introducir un store global ni llamadas de red para resolver cambios que encaj
 - `src/styles/global.css`
   - Reset, utilidades compartidas, botones, foco y reducción de movimiento.
 - `src/styles/zones.css`
-  - Variables y patrones comunes de las dos zonas.
+  - Variables y patrones comunes de las cinco zonas.
 - `src/components/zones/zoneContent.ts`
   - Fuente única de tipos, situaciones, aliases UTM, ejemplos y respuestas de las demos segmentadas.
   - No duplicar estos datos en páginas o componentes.
@@ -84,10 +87,10 @@ No introducir un store global ni llamadas de red para resolver cambios que encaj
 - `src/components/zones/zoneAnalytics.ts`
   - Enriquece y emite eventos interactivos de las zonas.
 - `src/components/zones/ZoneInteractive.css`
-  - Estilos de selector y demo para ambos perfiles.
+  - Estilos de selector y demo para los cinco perfiles.
 - `src/components/zones/ZoneHero.astro`, `ZoneDemoSection.astro`, `ZoneFinalCta.astro`, `ZoneFooter.astro`, `ZoneStickyCta.astro`
   - Estructura compartida de las zonas.
-- `src/components/zones/student/` y `src/components/zones/performance/`
+- `src/components/zones/stoic/`, `spiritual/`, `calm/`, `student/` y `performance/`
   - Secciones exclusivas de cada perfil.
 
 Para cambiar orden, SEO o copy de primer nivel, empezar por la página de la ruta. Para cambiar una situación o resultado, empezar por `zoneContent.ts`.
@@ -159,9 +162,20 @@ La landing usa la dirección clara “Flujo + Raíz”:
 - Landing global: azul `#2F80ED`, verde `#2F6B4F` y CTA azul→verde.
 - Estudiante: oro `#D8B56D`, pizarra `#5D78A6`, tipografía Bitter.
 - Rendimiento: naranja `#E0702F`, óxido `#9C3F1B`, tipografía Montserrat.
+- Estoico: oro `#C6A75E`, óxido `#8B2F1F`, tipografía Lora.
+- Espiritual: verde bosque `#2F6B4F`, salvia `#8AA66A`, tipografía Spectral.
+- Calma: azul `#2F80ED`, marino `#174A7C`, tipografía Nunito Sans.
 - Display global: Spectral cursiva 500. Cuerpo: Inter.
 
-Los colores identitarios claros se usan en fondos, líneas y decoración. Para texto pequeño o botones con texto blanco se usan variantes más oscuras (`#4D668F` en Estudiante y `#8B3519` en Rendimiento) para conservar contraste AA.
+Los colores identitarios claros se usan en fondos, líneas y decoración. Para texto pequeño o botones con texto blanco se usan variantes más oscuras (`#78291C` Estoico, `#24573F` Espiritual, `#174A7C` Calma, `#4D668F` Estudiante y `#8B3519` Rendimiento) para conservar contraste AA.
+
+Marcos narrativos de las zonas:
+
+- Estoico: `Distingue · Elige · Actúa`; autodominio práctico, nunca dureza, supresión emocional o resignación.
+- Espiritual: `Raíz · Valores · Propósito`; lenguaje abierto y no confesional, sin imponer tradiciones.
+- Calma: `Respira · Observa · Avanza`; validar primero, reducir presión y proponer una sola acción factible.
+- Estudiante: `Sostén · Explora · Decide`; experimentar antes de tomar decisiones irreversibles.
+- Rendimiento: `Norte · Renuncia · Movimiento`; dirección y criterio, nunca estética hustle.
 
 Mantener estas invariantes:
 
@@ -194,7 +208,7 @@ Si el documento de zonas y el blueprint principal difieren visualmente, aplicar 
 
 Para cambios de UI o interacción, comprobar:
 
-1. `/`, `/estudiante` y `/rendimiento` cargan sin errores de consola.
+1. `/`, `/estoico`, `/espiritual`, `/calma`, `/estudiante` y `/rendimiento` cargan sin errores de consola.
 2. No existe overflow horizontal a 390 px ni a 1440 px.
 3. Header fijo, pestaña activa y jerarquía de marca son correctos.
 4. Un `utm_content` conocido preselecciona el chip esperado.
@@ -209,6 +223,9 @@ Aliases útiles para smoke test:
 
 - `/estudiante?utm_content=estudio%20por%20inercia` → “Voy por inercia”.
 - `/rendimiento?utm_content=demasiados%20proyectos` → “Demasiados frentes abiertos”.
+- `/estoico?utm_content=me%20falta%20constancia` → “Sé qué hacer, pero no lo sostengo”.
+- `/espiritual?utm_content=objetivo%20sin%20propósito` → “Persigo algo que ya no me representa”.
+- `/calma?utm_content=culpa%20por%20descansar` → “Descansar me da culpa”.
 
 ## 9. Archivos generados y seguridad del worktree
 
@@ -216,5 +233,6 @@ Aliases útiles para smoke test:
 - Este repositorio mantiene actualmente `dist/` y parte de `.astro/` bajo control de versiones.
 - `pnpm check` puede regenerar `.astro/types.d.ts`.
 - `pnpm build` regenera `dist/` y cambia hashes de assets; que desaparezca el hash anterior y aparezca uno nuevo es normal.
+- `.astro/.prerender/` es caché temporal del build y está ignorado; no se entrega ni se edita.
 - Revisar `git status` antes de empezar y al terminar. No revertir cambios previos del usuario ni archivos generados ajenos al trabajo actual.
 - No realizar despliegues ni modificar servicios vecinos salvo petición explícita.
