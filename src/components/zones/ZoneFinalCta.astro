@@ -1,11 +1,13 @@
 ---
+import type { ZoneProfile } from './zoneContent';
+
 interface FaqItem {
   question: string;
   answer: string;
 }
 
 interface Props {
-  profile: 'student' | 'performance';
+  profile: ZoneProfile;
   title: string;
   primaryLabel: string;
   microcopy: string;

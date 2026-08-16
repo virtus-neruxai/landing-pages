@@ -1,0 +1,317 @@
+---
+const dimensions = [
+  { symbol: 'e', name: 'Cambio', description: 'Qué se mueve, termina o empieza.' },
+  { symbol: 'i', name: 'Perspectiva', description: 'Desde qué interpretación lo estás mirando.' },
+  { symbol: 'π', name: 'Ciclo', description: 'Qué parece repetirse o pertenecer a una etapa.' },
+  { symbol: '−1', name: 'Oposición', description: 'Qué necesidades legítimas están en tensión.' },
+  { symbol: '±1', name: 'Integración', description: 'Qué respuesta puede reconocer ambos polos.' },
+  { symbol: '0', name: 'Equilibrio', description: 'Qué propósito o valores sirven ahora de referencia.' },
+];
+---
+
+<figure class="center-formula" aria-labelledby="formula-title">
+  <div class="formula-source">
+    <div>
+      <span class="formula-source__label">Inspirada en la identidad de Euler</span>
+      <p
+        class="formula-equation"
+        aria-label="e elevado a i por pi, más uno, igual a cero"
+      >
+        e<sup>iπ</sup> + 1 = 0
+      </p>
+    </div>
+    <span class="formula-caveat">Metáfora creativa, no explicación científica</span>
+  </div>
+
+  <figcaption id="formula-title">
+    Seis formas de comprender un momento antes de elegir el siguiente movimiento.
+  </figcaption>
+
+  <ol class="formula-steps">
+    {dimensions.map((dimension, index) => (
+      <li class={`formula-step formula-step--${index + 1}`}>
+        <span class="formula-symbol" aria-hidden="true">{dimension.symbol}</span>
+        <div>
+          <span class="formula-index">0{index + 1}</span>
+          <h2>{dimension.name}</h2>
+          <p>{dimension.description}</p>
+        </div>
+      </li>
+    ))}
+  </ol>
+
+  <p class="product-formula" aria-label="Fórmula de producto: Cambio, Perspectiva, Ciclo, Oposición, Integración, Equilibrio y Nuevo cambio">
+    Cambio <span>→</span> Perspectiva <span>→</span> Ciclo <span>→</span> Oposición <span>→</span> Integración <span>→</span> Equilibrio <strong>→ Nuevo cambio</strong>
+  </p>
+</figure>
+
+<style>
+  .center-formula {
+    position: relative;
+    width: min(100%, 47rem);
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--root) 23%, var(--line));
+    border-radius: var(--radius-lg) var(--radius-lg) var(--radius-sm) var(--radius-lg);
+    padding: clamp(1.1rem, 3vw, 1.7rem);
+    background:
+      radial-gradient(circle at 96% 4%, color-mix(in srgb, var(--flow) 12%, transparent), transparent 16rem),
+      radial-gradient(circle at 4% 96%, color-mix(in srgb, var(--sage) 16%, transparent), transparent 17rem),
+      rgb(255 253 249 / 91%);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(15px) saturate(125%);
+  }
+
+  .center-formula::after {
+    position: absolute;
+    z-index: 0;
+    right: -5rem;
+    bottom: -6rem;
+    width: 15rem;
+    height: 13rem;
+    border-radius: 66% 34% 53% 47% / 43% 61% 39% 57%;
+    background: color-mix(in srgb, var(--root) 8%, transparent);
+    content: '';
+    pointer-events: none;
+    transform: rotate(-12deg);
+  }
+
+  .formula-source,
+  .formula-steps,
+  .product-formula,
+  figcaption {
+    position: relative;
+    z-index: 1;
+  }
+
+  .formula-source {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.9rem;
+  }
+
+  .formula-source__label {
+    display: block;
+    margin-bottom: 0.16rem;
+    color: var(--root-deep);
+    font-size: 0.58rem;
+    font-weight: 740;
+    line-height: 1.35;
+  }
+
+  .formula-equation {
+    margin: 0;
+    color: var(--text);
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 1.05rem + 1vw, 1.75rem);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1;
+  }
+
+  .formula-equation sup {
+    position: relative;
+    top: -0.12em;
+    font-size: 0.58em;
+  }
+
+  .formula-caveat {
+    max-width: 13rem;
+    border-radius: 999px;
+    padding: 0.42rem 0.65rem;
+    background: color-mix(in srgb, var(--sage) 17%, var(--surface));
+    color: var(--root-deep);
+    font-size: 0.54rem;
+    font-weight: 670;
+    line-height: 1.35;
+    text-align: center;
+  }
+
+  figcaption {
+    max-width: 34rem;
+    margin: 1rem 0 0.85rem;
+    color: var(--text);
+    font-family: var(--font-display);
+    font-size: clamp(0.95rem, 0.88rem + 0.36vw, 1.18rem);
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.35;
+  }
+
+  .formula-steps {
+    display: grid;
+    gap: 1.1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .formula-step {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.65rem;
+    min-width: 0;
+    min-height: 6.1rem;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 1.15rem 1.15rem 1.15rem 0.45rem;
+    padding: 0.75rem;
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
+    box-shadow: 0 8px 20px rgb(47 107 79 / 5%);
+  }
+
+  .formula-step:nth-child(even) {
+    border-radius: 1.15rem 0.45rem 1.15rem 1.15rem;
+    background: color-mix(in srgb, var(--surface) 90%, var(--root-soft));
+  }
+
+  .formula-step:not(:last-child)::after {
+    position: absolute;
+    z-index: 2;
+    bottom: -1rem;
+    left: 50%;
+    display: grid;
+    width: 1.5rem;
+    height: 1.5rem;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, var(--root) 24%, var(--line));
+    border-radius: 60% 40% 58% 42%;
+    background: var(--surface);
+    color: var(--root);
+    content: '↓';
+    font-size: 0.72rem;
+    font-weight: 760;
+    line-height: 1;
+    transform: translateX(-50%);
+  }
+
+  .formula-symbol {
+    display: grid;
+    width: 2.1rem;
+    height: 2.1rem;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, var(--flow) 24%, var(--line));
+    border-radius: 64% 36% 57% 43% / 42% 63% 37% 58%;
+    background: color-mix(in srgb, var(--flow) 9%, var(--surface));
+    color: var(--flow-deep);
+    font-family: var(--font-display);
+    font-size: 0.93rem;
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .formula-step:nth-child(n + 4) .formula-symbol {
+    border-color: color-mix(in srgb, var(--root) 28%, var(--line));
+    background: color-mix(in srgb, var(--root) 9%, var(--surface));
+    color: var(--root-deep);
+  }
+
+  .formula-index {
+    display: block;
+    color: var(--root);
+    font-size: 0.48rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 780;
+    line-height: 1.2;
+  }
+
+  .formula-step h2 {
+    margin: 0.12rem 0 0.15rem;
+    color: var(--text);
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.15;
+  }
+
+  .formula-step p {
+    margin: 0;
+    overflow-wrap: anywhere;
+    color: var(--text-muted);
+    font-size: 0.58rem;
+    line-height: 1.35;
+  }
+
+  .product-formula {
+    margin: 1rem 0 0;
+    border-top: 1px solid var(--line);
+    padding-top: 0.85rem;
+    color: var(--text-muted);
+    font-size: 0.58rem;
+    font-weight: 650;
+    line-height: 1.6;
+  }
+
+  .product-formula span {
+    padding-inline: 0.12rem;
+    color: var(--root);
+  }
+
+  .product-formula strong {
+    color: var(--root-deep);
+    font-weight: 780;
+  }
+
+  @media (min-width: 38rem) {
+    .formula-steps {
+      grid-template-areas:
+        'step-1 step-2 step-3'
+        'step-6 step-5 step-4';
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem 1.1rem;
+    }
+
+    .formula-step--1 { grid-area: step-1; }
+    .formula-step--2 { grid-area: step-2; }
+    .formula-step--3 { grid-area: step-3; }
+    .formula-step--4 { grid-area: step-4; }
+    .formula-step--5 { grid-area: step-5; }
+    .formula-step--6 { grid-area: step-6; }
+
+    .formula-step:not(:last-child)::after {
+      top: 50%;
+      right: -1.35rem;
+      bottom: auto;
+      left: auto;
+      content: '→';
+      transform: translateY(-50%);
+    }
+
+    .formula-step--3::after {
+      top: auto !important;
+      right: 50% !important;
+      bottom: -1.15rem !important;
+      content: '↓' !important;
+      transform: translateX(50%) !important;
+    }
+
+    .formula-step--4::after,
+    .formula-step--5::after {
+      right: auto !important;
+      left: -1.35rem !important;
+      content: '←' !important;
+    }
+
+    .formula-step--6::after {
+      display: none;
+    }
+  }
+
+  @media (max-width: 27rem) {
+    .formula-source {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .formula-caveat {
+      max-width: none;
+      text-align: left;
+    }
+  }
+</style>

@@ -62,6 +62,12 @@ No introducir un store global ni llamadas de red para resolver cambios que encaj
 - `src/components/Header.astro`
   - Contrato estable: `variant: 'global' | 'zone'` y `activeZone?: 'student' | 'performance'`.
   - La variante global y la jerarquía de marca de las zonas son deliberadamente distintas.
+- `src/components/Hero.astro`, `CenterFormula.astro` y `MissionDemoSection.astro`
+  - El hero global presenta la secuencia práctica de «Mi centro», inspirada en Euler y siempre rotulada como metáfora creativa.
+  - `HeroDemo` vive en `MissionDemoSection`, inmediatamente después del hero; conservar `#prueba-tu-mision` y `client:visible`.
+- `src/components/CenterPreview.astro`
+  - Presentación estática de «Mi centro» en la landing global; enlaza a `/mentor` sin consultar la API ni simular una medición real.
+  - Mantiene visible que es una lectura reflexiva y no un diagnóstico o una valoración objetiva.
 - `src/styles/tokens.css`
   - Fuente de verdad para tokens globales, tipografías, escala, radios y sombras.
 - `src/styles/global.css`
@@ -134,6 +140,7 @@ Eventos del funnel implementados aquí:
 - `profile_demo_completed`
 - `profile_plan_generated`
 - `profile_plan_save_clicked`
+- `center_cta_clicked`
 
 Los eventos posteriores al salto a la app —registro, primera misión y retención— pertenecen a la aplicación, no a este repositorio.
 

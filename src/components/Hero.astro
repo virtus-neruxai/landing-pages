@@ -1,5 +1,12 @@
 ---
-import HeroDemo from './HeroDemo';
+import CenterFormula from './CenterFormula.astro';
+
+interface Props {
+  appUrl: string;
+}
+
+const { appUrl } = Astro.props;
+const mentorUrl = `${appUrl}/mentor`;
 ---
 
 <section class="hero" aria-labelledby="hero-title" data-track-section="hero">
@@ -21,11 +28,14 @@ import HeroDemo from './HeroDemo';
             <path d="M15.5 9.5c1.2-4 4.3-6.2 8.2-6.5-.4 3.8-2.7 6.7-6.5 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
           </svg>
         </span>
-        NeruxAI — salud física, mental y espiritual
+        Mi centro · Coherencia dinámica
       </p>
-      <h1 id="hero-title">Deja de posponer lo que de verdad te importa</h1>
+      <p class="hero-sequence-preview" aria-hidden="true">
+        Cambio <span>→</span> Perspectiva <span>→</span> Ciclo <span>→</span> Oposición <span>→</span> Integración <span>→</span> Equilibrio <strong>↻ Nuevo cambio</strong>
+      </p>
+      <h1 id="hero-title">Encuentra un centro desde el que poder cambiar con la vida.</h1>
       <p class="hero-lede">
-        Escribe tu objetivo. Virtus lo convierte en tareas y rutinas conectadas con tu propósito — y se adapta según cómo vas de verdad.
+        Virtus relaciona tu misión con lo que has vivido y decidido para ayudarte a comprender el cambio, reconocer tensiones y elegir tu siguiente movimiento.
       </p>
       <div class="hero-actions">
         <a
@@ -40,17 +50,24 @@ import HeroDemo from './HeroDemo';
             <path d="M4 10h11m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
         </a>
-        <span class="hero-note">
-          <svg aria-hidden="true" viewBox="0 0 20 20" fill="none">
-            <path d="m5.5 10.5 2.8 2.8 6.2-6.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-          Sin tarjeta. Resultado en 10 segundos.
-        </span>
+        <a
+          class="button button--ghost hero-center-action"
+          href={mentorUrl}
+          data-app-link
+          data-track="center_cta_clicked"
+          data-track-location="hero"
+        >
+          Ir a Mi centro
+          <span aria-hidden="true">↗</span>
+        </a>
       </div>
+      <p class="hero-note">
+        Tu misión es el centro declarado desde el que empieza la lectura.
+      </p>
     </div>
 
-    <div class="hero-demo-wrap">
-      <HeroDemo client:visible />
+    <div class="hero-formula-wrap">
+      <CenterFormula />
     </div>
   </div>
 </section>
@@ -61,7 +78,7 @@ import HeroDemo from './HeroDemo';
     isolation: isolate;
     min-height: 100svh;
     overflow: clip;
-    padding: 8.5rem 0 4rem;
+    padding: 8.5rem 0 4.5rem;
     background:
       linear-gradient(155deg, rgb(255 253 249 / 76%), rgb(243 249 246 / 72%)),
       var(--background);
@@ -130,7 +147,7 @@ import HeroDemo from './HeroDemo';
   }
 
   .hero-copy {
-    max-width: 43rem;
+    max-width: 45rem;
   }
 
   .hero-eyebrow {
@@ -159,11 +176,29 @@ import HeroDemo from './HeroDemo';
     width: 100%;
   }
 
+  .hero-sequence-preview {
+    margin: -0.55rem 0 1.15rem;
+    color: var(--text-muted);
+    font-size: 0.62rem;
+    font-weight: 620;
+    line-height: 1.65;
+  }
+
+  .hero-sequence-preview span {
+    padding-inline: 0.1rem;
+    color: var(--root);
+  }
+
+  .hero-sequence-preview strong {
+    color: var(--root-deep);
+    font-weight: 760;
+  }
+
   h1 {
-    max-width: 11.7ch;
+    max-width: 13ch;
     margin-bottom: 1.5rem;
     font-family: var(--font-display);
-    font-size: var(--step-4);
+    font-size: clamp(2.8rem, 2.05rem + 3.4vw, 5.15rem);
     font-style: italic;
     font-weight: 500;
     letter-spacing: 0;
@@ -171,7 +206,7 @@ import HeroDemo from './HeroDemo';
   }
 
   .hero-lede {
-    max-width: 38rem;
+    max-width: 39rem;
     margin-bottom: 2rem;
     color: var(--text-muted);
     font-size: var(--step-1);
@@ -182,30 +217,29 @@ import HeroDemo from './HeroDemo';
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.75rem;
+  }
+
+  .hero-center-action {
+    border-color: color-mix(in srgb, var(--root) 32%, var(--line));
+    color: var(--root-deep);
   }
 
   .hero-note {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
+    max-width: 33rem;
+    margin: 0.9rem 0 0;
     color: var(--text-muted);
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     font-weight: 550;
+    line-height: 1.5;
   }
 
-  .hero-note svg {
-    width: 1rem;
-    height: 1rem;
-    color: var(--root);
-  }
-
-  .hero-demo-wrap {
+  .hero-formula-wrap {
     position: relative;
     min-width: 0;
   }
 
-  .hero-demo-wrap::before {
+  .hero-formula-wrap::before {
     position: absolute;
     z-index: -1;
     inset: 7% -4% -5% 8%;
@@ -251,16 +285,20 @@ import HeroDemo from './HeroDemo';
   }
 
   @media (min-width: 64rem) {
+    .hero-sequence-preview {
+      display: none;
+    }
+
     .hero {
       display: flex;
-      min-height: 52rem;
+      min-height: 54rem;
       align-items: center;
       padding: 8rem 0 4rem;
     }
 
     .hero-grid {
-      grid-template-columns: minmax(0, 0.92fr) minmax(30rem, 1.08fr);
-      gap: clamp(3rem, 6vw, 6rem);
+      grid-template-columns: minmax(0, 0.8fr) minmax(34rem, 1.2fr);
+      gap: clamp(3rem, 5vw, 5rem);
     }
   }
 

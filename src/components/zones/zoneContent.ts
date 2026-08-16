@@ -1,4 +1,4 @@
-export type ZoneProfile = "student" | "performance";
+export type ZoneProfile = "stoic" | "spiritual" | "calm" | "student" | "performance";
 
 export type ZoneResultBlock = {
   title: string;
@@ -25,6 +25,7 @@ export type ZoneProfileContent = {
   generatingLabel: string;
   resultEyebrow: string;
   resultTitle: string;
+  previewCopy: string;
   saveCta: string;
   situations: ZoneSituation[];
 };

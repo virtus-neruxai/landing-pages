@@ -1,0 +1,90 @@
+---
+import HeroDemo from './HeroDemo';
+---
+
+<section
+  class="section mission-demo-section"
+  aria-labelledby="mission-demo-section-title"
+  data-track-section="mission_demo"
+>
+  <div class="container mission-demo-layout">
+    <div class="mission-demo-copy">
+      <span class="section-kicker">El primer paso</span>
+      <h2 class="section-title" id="mission-demo-section-title">
+        Pon en palabras la dirección que quieres proteger.
+      </h2>
+      <p class="section-lede">
+        Tu misión se convierte en un primer plan concreto. Es la referencia que permite que cada cambio posterior conserve sentido.
+      </p>
+      <p class="mission-demo-note">Demostración local · El resultado aparece antes del registro.</p>
+    </div>
+
+    <div class="mission-demo-stage">
+      <HeroDemo client:visible />
+    </div>
+  </div>
+</section>
+
+<style>
+  .mission-demo-section {
+    background:
+      radial-gradient(ellipse at 6% 16%, color-mix(in srgb, var(--flow) 8%, transparent), transparent 28rem),
+      radial-gradient(ellipse at 94% 86%, color-mix(in srgb, var(--sage) 13%, transparent), transparent 30rem),
+      var(--surface);
+  }
+
+  .mission-demo-layout {
+    display: grid;
+    gap: clamp(2.5rem, 7vw, 5.5rem);
+    align-items: center;
+  }
+
+  .mission-demo-copy {
+    max-width: 40rem;
+  }
+
+  .mission-demo-copy .section-title {
+    max-width: 15ch;
+  }
+
+  .mission-demo-copy .section-lede {
+    margin-bottom: 0;
+  }
+
+  .mission-demo-note {
+    margin: 1.35rem 0 0;
+    color: var(--root);
+    font-size: 0.72rem;
+    font-weight: 670;
+  }
+
+  .mission-demo-stage {
+    position: relative;
+    min-width: 0;
+  }
+
+  .mission-demo-stage::before {
+    position: absolute;
+    z-index: 0;
+    inset: 5% -3% -4% 5%;
+    border-radius: 38% 62% 54% 46% / 49% 41% 59% 51%;
+    background: linear-gradient(145deg, color-mix(in srgb, var(--flow) 11%, transparent), color-mix(in srgb, var(--root) 13%, transparent));
+    content: '';
+    filter: blur(16px);
+  }
+
+  .mission-demo-stage :global(.hero-demo) {
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (min-width: 64rem) {
+    .mission-demo-layout {
+      grid-template-columns: minmax(20rem, 0.62fr) minmax(34rem, 1.38fr);
+    }
+
+    .mission-demo-stage :global(.hero-demo) {
+      margin-left: auto;
+    }
+  }
+</style>
