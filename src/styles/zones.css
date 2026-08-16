@@ -13,6 +13,11 @@
     var(--background);
 }
 
+.zone-page--student {
+  --zone-soft: #f7f0df;
+  --zone-primary-soft: #f7f0df;
+}
+
 .zone-page--performance {
   --zone-primary: #e0702f;
   --zone-secondary: #9c3f1b;
@@ -28,8 +33,8 @@
   --zone-secondary: #8b2f1f;
   --zone-action: #78291c;
   --zone-action-hover: #612016;
-  --zone-soft: #f3e9e2;
-  --zone-primary-soft: #f5eedf;
+  --zone-soft: #f3ead5;
+  --zone-primary-soft: #f3ead5;
   --zone-font: var(--font-stoic);
 }
 

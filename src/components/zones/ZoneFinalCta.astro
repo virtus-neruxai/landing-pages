@@ -61,6 +61,20 @@ const { profile, title, primaryLabel, microcopy, faqs } = Astro.props;
       var(--surface-strong);
   }
 
+  .zone-final--student {
+    background:
+      radial-gradient(ellipse at 8% 20%, color-mix(in srgb, var(--zone-primary) 18%, transparent), transparent 30rem),
+      radial-gradient(ellipse at 92% 82%, color-mix(in srgb, var(--zone-secondary) 15%, transparent), transparent 32rem),
+      var(--zone-primary-soft);
+  }
+
+  .zone-final--stoic {
+    background:
+      radial-gradient(ellipse at 8% 20%, color-mix(in srgb, var(--zone-primary) 18%, transparent), transparent 30rem),
+      radial-gradient(ellipse at 92% 82%, color-mix(in srgb, var(--zone-secondary) 15%, transparent), transparent 32rem),
+      var(--zone-primary-soft);
+  }
+
   .zone-final__shape {
     position: absolute;
     border-radius: var(--radius-blob);
